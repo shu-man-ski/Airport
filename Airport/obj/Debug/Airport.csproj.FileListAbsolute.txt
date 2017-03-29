@@ -1,0 +1,15 @@
+C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Airport.exe.config
+C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Airport.exe
+C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Airport.pdb
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.csprojResolveAssemblyReference.cache
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\AuthorizationWindow.baml
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\MainWindow.baml
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\AuthorizationWindow.g.cs
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\MainWindow.g.cs
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\App.g.cs
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport_MarkupCompile.cache
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.g.resources
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.Properties.Resources.resources
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.csproj.GenerateResource.Cache
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.exe
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.pdb
