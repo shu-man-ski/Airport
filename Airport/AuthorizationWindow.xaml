@@ -17,7 +17,7 @@
 
         <Image Grid.Column="0" x:Name="mainImage" Grid.RowSpan="6" Margin="0,10,150,10">
             <Image.Source>
-                <FormatConvertedBitmap Source="C:\Users\dima-\Desktop\Airport\Airport\Image\aut.png"/>
+                <FormatConvertedBitmap Source="D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\Image\aut.png"/>
             </Image.Source>
         </Image>
 

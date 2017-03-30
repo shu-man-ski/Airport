@@ -9,7 +9,7 @@
             <TabItem Header="Авиарейсы">
                 <Grid>
                     <Label Content="Номер авиарейса" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="123,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="ID_авиарейса" HorizontalAlignment="Left" Height="26" Margin="123,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Авиакомпания" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
                     <TextBox HorizontalAlignment="Left" Height="26" Margin="123,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Label Content="Количество мест" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top"/>
@@ -30,11 +30,11 @@
                             <TextBox HorizontalAlignment="Left" Height="26" Margin="394,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         </Grid>
                     </GroupBox>
-                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Width="233" Height="38"/>
+                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Width="233" Height="38" Click="Button_Click_1"/>
 
                     <DataGrid x:Name="flightGrid" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top" Height="233" Width="958">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding ID}" Header="ID рейса" Width="60"/>
+                        <!--<DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding ID_рейса}" Header="ID рейса" Width="60"/>
                             <DataGridTextColumn Binding="{Binding Авиакомания}" Header="Авиакомпания" Width="95"/>
                             <DataGridTextColumn Binding="{Binding Аэропорт_отправления}" Header="Аэропорт отправления" Width="140"/>
                             <DataGridTextColumn Binding="{Binding Аэропорт_прибытия}" Header="Аэропорт прибытия" Width="120"/>
@@ -43,7 +43,7 @@
                             <DataGridTextColumn Binding="{Binding Время_отправления}" Header="Время отправления" Width="120"/>
                             <DataGridTextColumn Binding="{Binding Время_прибытия}" Header="Время прибытия" Width="105"/>
                             <DataGridTextColumn Binding="{Binding Количество_мест}" Header="Количество мест" Width="105"/>
-                        </DataGrid.Columns>
+                        </DataGrid.Columns>-->
                     </DataGrid>
 
                     <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Height="128" Width="422">

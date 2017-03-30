@@ -13,3 +13,18 @@ C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.Properties.Resources.re
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.csproj.GenerateResource.Cache
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.exe
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.pdb
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\bin\Debug\Airport.exe.config
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.exe
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.pdb
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\bin\Debug\Airport.exe
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\bin\Debug\Airport.pdb
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.csprojResolveAssemblyReference.cache
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\AuthorizationWindow.baml
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\MainWindow.baml
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\AuthorizationWindow.g.cs
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\MainWindow.g.cs
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\App.g.cs
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport_MarkupCompile.cache
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.g.resources
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.Properties.Resources.resources
+D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.csproj.GenerateResource.Cache
