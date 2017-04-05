@@ -4,35 +4,72 @@
         Title="Продажа авиабилетов" WindowStartupLocation="CenterScreen" 
         Height="600" Width="1000"
         Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate TargetType="TextBox" x:Key="textBoxBorderRadius">
+            <Border CornerRadius="2" BorderBrush="#FFB8B8B8" BorderThickness="1"/>
+        </ControlTemplate>
+        <ControlTemplate TargetType="DatePicker" x:Key="datePickerBorderRadius">
+            <Border CornerRadius="2" BorderBrush="#FFB8B8B8" BorderThickness="1"/>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="buttonAdd">
+            <Border CornerRadius="2" BorderBrush="#FF7E7E7E" BorderThickness="1" 
+                    Background="#FF9CC0FF">
+                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="Добавить" />
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="buttonUpdate">
+            <Border CornerRadius="2" BorderBrush="#FF7E7E7E" BorderThickness="1" 
+                    Background="#FF95FFE2">
+                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="Обновить" />
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="buttonFind">
+            <Border CornerRadius="2" BorderBrush="#FF7E7E7E" BorderThickness="1" 
+                    Background="#FFC0FF95">
+                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="Найти" />
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="buttonDel">
+            <Border CornerRadius="2" BorderBrush="#FF7E7E7E" BorderThickness="1" 
+                    Background="#FFFFAD95">
+                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="Удалить" />
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="569" VerticalAlignment="Top" Width="984">
+        <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Width="994">
             <TabItem Header="Авиарейсы">
-                <Grid>
-                    <Label Content="Номер авиарейса" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="ID_авиарейса" HorizontalAlignment="Left" Height="26" Margin="123,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Label Content="Авиакомпания" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="123,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Label Content="Количество мест" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="123,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <GroupBox Header="Информация об отправлении и прибытии" VerticalAlignment="Top" Margin="319,34,84,0" Height="130">
+                <Grid Height="544">
+                    <GroupBox Header="Добавить рейс" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="261" Height="128">
                         <Grid>
-                            <Label Content="Аэропорт отправления" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="26" Margin="143,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Аэропорт прибытия" HorizontalAlignment="Left" Margin="268,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="26" Margin="394,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Дата отправления" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top"/>
-                            <DatePicker HorizontalAlignment="Left" Margin="143,41,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
-                            <Label Content="Дата прибытия" HorizontalAlignment="Left" Margin="268,41,0,0" VerticalAlignment="Top"/>
-                            <DatePicker HorizontalAlignment="Left" Margin="394,42,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
-                            <Label Content="Время отправления" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="26" Margin="143,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Время прибытия" HorizontalAlignment="Left" Margin="268,73,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="26" Margin="394,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Номер авиарейса" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="ID_авиарейса" Template="{StaticResource textBoxBorderRadius}" HorizontalAlignment="Left" Height="26" Margin="123,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Авиакомпания" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="108"/>
+                            <TextBox HorizontalAlignment="Left" Template="{StaticResource textBoxBorderRadius}" Height="26" Margin="123,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Количество мест" HorizontalAlignment="Left" Margin="0,72,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Template="{StaticResource textBoxBorderRadius}" Height="26" Margin="123,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         </Grid>
                     </GroupBox>
-                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Width="233" Height="38" Click="Button_Click_1"/>
 
-                    <DataGrid x:Name="flightGrid" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top" Height="233" Width="958">
+                    <GroupBox Header="Информация об отправлении и прибытии" VerticalAlignment="Top" Margin="276,10,173,0" Height="128">
+                        <Grid>
+                            <Label Content="Аэропорт отправления" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox Template="{StaticResource textBoxBorderRadius}" HorizontalAlignment="Left" Height="26" Margin="143,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Аэропорт прибытия" HorizontalAlignment="Left" Margin="268,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox Template="{StaticResource textBoxBorderRadius}" HorizontalAlignment="Left" Height="26" Margin="394,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Дата отправления" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="138"/>
+                            <DatePicker HorizontalAlignment="Left" Margin="143,41,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+                            <Label Content="Дата прибытия" HorizontalAlignment="Left" Margin="268,41,0,0" VerticalAlignment="Top" Width="121"/>
+                            <DatePicker HorizontalAlignment="Left" Margin="394,42,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+                            <Label Content="Время отправления" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Width="138"/>
+                            <TextBox Template="{StaticResource textBoxBorderRadius}" HorizontalAlignment="Left" Height="26" Margin="143,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Время прибытия" HorizontalAlignment="Left" Margin="268,73,0,0" VerticalAlignment="Top" Width="121"/>
+                            <TextBox Template="{StaticResource textBoxBorderRadius}" HorizontalAlignment="Left" Height="26" Margin="394,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button Template="{StaticResource buttonAdd}" Width="158" Click="Button_Click_1" Margin="820,103,10,407"/>
+
+                    <DataGrid x:Name="flightGrid" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Height="259" Width="968" HeadersVisibility="Column" MinColumnWidth="136.4">
                         <!--<DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding ID_рейса}" Header="ID рейса" Width="60"/>
                             <DataGridTextColumn Binding="{Binding Авиакомания}" Header="Авиакомпания" Width="95"/>
@@ -46,24 +83,24 @@
                         </DataGrid.Columns>-->
                     </DataGrid>
 
-                    <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Height="128" Width="422">
+                    <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Height="128" Width="402">
                         <Grid>
-                            <Label Content="Поиск по номеру авиарейса" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="26" Margin="195,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Поиск по аэропорту прибытия" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="26" Margin="195,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Поиск по авиакомпании" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="26" Margin="195,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Button Content="Найти" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
-                            <Button Content="Найти" HorizontalAlignment="Left" Margin="320,41,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
-                            <Button Content="Найти" HorizontalAlignment="Left" Margin="320,72,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+                            <Label Content="Поиск по номеру авиарейса" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="180"/>
+                            <TextBox Template="{StaticResource textBoxBorderRadius}" HorizontalAlignment="Left" Height="26" Margin="185,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Поиск по аэропорту прибытия" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top"/>
+                            <TextBox Template="{StaticResource textBoxBorderRadius}" HorizontalAlignment="Left" Height="26" Margin="185,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Поиск по авиакомпании" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Width="180"/>
+                            <TextBox Template="{StaticResource textBoxBorderRadius}" HorizontalAlignment="Left" Height="26" Margin="185,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Button Template="{StaticResource buttonFind}" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+                            <Button Template="{StaticResource buttonFind}" HorizontalAlignment="Left" Margin="310,41,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+                            <Button Template="{StaticResource buttonFind}" HorizontalAlignment="Left" Margin="310,72,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
                         </Grid>
                     </GroupBox>
 
-                    <Label Content="Удалить рейс" HorizontalAlignment="Left" Margin="432,467,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" Margin="520,467,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="645,467,0,0" Height="26"/>
-                    <Button Content="Обновить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="894,407,0,0" Height="26" Click="Button_Click"/>
+                    <Label Content="Удалить рейс" HorizontalAlignment="Left" Margin="503,415,0,0" VerticalAlignment="Top"/>
+                    <TextBox Template="{StaticResource textBoxBorderRadius}" HorizontalAlignment="Left" Height="26" Margin="591,415,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button Template="{StaticResource buttonDel}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="716,415,0,0" Height="26" RenderTransformOrigin="1.473,-1.692"/>
+                    <Button Template="{StaticResource buttonUpdate}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="894,415,0,0" Height="26" Click="Button_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Пассажиры"/>
