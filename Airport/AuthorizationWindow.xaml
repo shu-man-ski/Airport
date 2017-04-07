@@ -3,23 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Авторизация" 
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    <Window.Resources>
-        <ControlTemplate TargetType="TextBox" x:Key="textBoxBorderRadius">
-            <Border CornerRadius="2" BorderBrush="#FFB8B8B8" BorderThickness="1"/>
-        </ControlTemplate>
-        <ControlTemplate TargetType="Button" x:Key="buttonEnter">
-            <Border CornerRadius="2" BorderBrush="#FF7E7E7E" BorderThickness="1" 
-                    Background="#FFC0FF95">
-                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="Вход" />
-            </Border>
-        </ControlTemplate>
-        <ControlTemplate TargetType="Button" x:Key="buttonCancel">
-            <Border CornerRadius="2" BorderBrush="#FF7E7E7E" BorderThickness="1" 
-                    Background="#FFFFAD95">
-                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="Отмена" />
-            </Border>
-        </ControlTemplate>
-    </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -39,13 +22,89 @@
         </Image>
 
         <TextBlock Grid.Row="0" Margin="105,0,0,0" >Введите логин:</TextBlock>
-        <TextBox Name="loginBox" Grid.Row="1" Margin="105,0,0,0" HorizontalAlignment="Left" Width="145"></TextBox>
+        <TextBox Name="loginBox" Grid.Row="1" Margin="105,0,0,0" HorizontalAlignment="Left" Width="145">
+            <TextBox.Template>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Border x:Name="TextBoxBorder"
+                                    BorderBrush="#FF8C8C8C" 
+                                    BorderThickness="1" 
+                                    CornerRadius="3" Opacity="1">
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                          BorderThickness="0" IsTabStop="False" 
+                                          Margin="0" Padding="{TemplateBinding Padding}">
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
         <TextBlock Grid.Row="3" Margin="105,0,0,0">Введите пароль:</TextBlock>
-        <TextBox Name="passwordBox"  Grid.Row="4" Margin="105,0,0,0"></TextBox>
+        <PasswordBox PasswordChar="•" Name="passwordBox" Grid.Row="4" Margin="105,0,0,0">
+            <PasswordBox.Template>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Grid>
+                        <Border x:Name="TextBoxBorder"
+                                BorderBrush="#FF8C8C8C" 
+                                BorderThickness="1" 
+                                CornerRadius="3" Opacity="1">
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                          BorderThickness="0" IsTabStop="False" 
+                                          Margin="0" Padding="{TemplateBinding Padding}">
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </PasswordBox.Template>
+        </PasswordBox>
 
         <WrapPanel Grid.Row="6" HorizontalAlignment="Right" Margin="0,0,0,0">
-            <Button IsDefault="True" Template="{StaticResource buttonEnter}" Click="Accept_Click" MinWidth="60" Margin="0,0,5,0" Height="20" Width="70"/>
-            <Button IsCancel="True" Template="{StaticResource buttonCancel}" MinWidth="60" Click="Button_Click" Height="20" Width="70"/>
+            <Button Content="Вход" IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="0,0,5,0" Height="20" Width="70" Background="#FFC0FF95">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="buttonBorder" 
+                                BorderBrush="#FF8C8C8C" 
+                                BorderThickness="1"
+                                CornerRadius="3"
+                                Background="{TemplateBinding Background}"
+                                Height="{TemplateBinding Height}"
+                                Width="{TemplateBinding Width}">
+                            <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="buttonBorder" Property="Background" Value="#FF86FF33"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button IsCancel="True" MinWidth="60" Click="Button_Click" Height="20" Width="70" Content="Отмена" Background="#FFFFAD95">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="buttonBorder" 
+                                BorderBrush="#FF8C8C8C" 
+                                BorderThickness="1"
+                                CornerRadius="3"
+                                Background="{TemplateBinding Background}"
+                                Height="{TemplateBinding Height}"
+                                Width="{TemplateBinding Width}">
+                            <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="buttonBorder" Property="Background" Value="#FFF7734C"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </WrapPanel>
     </Grid>
 </Window>

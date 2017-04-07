@@ -26,7 +26,7 @@ namespace Airport
         }
         public string Password
         {
-            get { return passwordBox.Text; }
+            get { return passwordBox.Password; }
         }
 
         public AuthorizationWindow()
