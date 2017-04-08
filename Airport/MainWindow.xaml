@@ -100,9 +100,37 @@
                     BorderBrush="#FF8C8C8C" 
                     BorderThickness="1"
                     CornerRadius="3"
-                    Background="White"
-                    Height="{TemplateBinding Height}"
-                    Width="{TemplateBinding Width}">
+                    Background="White">
+                <ScrollViewer x:Name="PART_ContentHost" 
+                              BorderThickness="0" IsTabStop="False" 
+                              Margin="0" Padding="{TemplateBinding Padding}">
+                </ScrollViewer>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="DatePicker" x:Key="datePicker">
+            <Border x:Name="dateGridBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="White">
+                <ScrollViewer x:Name="PART_ContentHost" 
+                              BorderThickness="0" IsTabStop="False" 
+                              Margin="0" Padding="{TemplateBinding Padding}">
+                </ScrollViewer>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="TabItem" x:Key="tabItem">
+            <Border x:Name="tabItemBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="White">
+                <ScrollViewer x:Name="PART_ContentHost" 
+                              BorderThickness="0" IsTabStop="False" 
+                              Margin="0" Padding="{TemplateBinding Padding}"
+                              Height="{TemplateBinding Height}"
+                              Width="{TemplateBinding Width}">
+                </ScrollViewer>
             </Border>
         </ControlTemplate>
     </Window.Resources>
@@ -127,19 +155,19 @@
                             <Label Content="Аэропорт прибытия" HorizontalAlignment="Left" Margin="268,10,0,0" VerticalAlignment="Top"/>
                             <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="394,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Дата отправления" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="138"/>
-                            <DatePicker HorizontalAlignment="Left" Margin="143,48,0,0" VerticalAlignment="Top" Width="120" Height="20"/>
+                            <DatePicker HorizontalAlignment="Left" Margin="143,48,0,0" VerticalAlignment="Top" Width="120" Height="20" Padding="2,-5,2,2" UseLayoutRounding="False" FontStyle="Italic"/>
                             <Label Content="Дата прибытия" HorizontalAlignment="Left" Margin="268,41,0,0" VerticalAlignment="Top" Width="121"/>
-                            <DatePicker HorizontalAlignment="Left" Margin="394,48,0,0" VerticalAlignment="Top" Width="120" Height="20"/>
+                            <DatePicker HorizontalAlignment="Left" Margin="394,48,0,0" VerticalAlignment="Top" Width="120" Height="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="2,-5,2,2" ScrollViewer.CanContentScroll="True" FontStyle="Italic"/>
                             <Label Content="Время отправления" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Width="138"/>
-                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="143,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="143,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Время прибытия" HorizontalAlignment="Left" Margin="268,73,0,0" VerticalAlignment="Top" Width="121"/>
-                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="394,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="394,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         </Grid>
                     </GroupBox>
                     <Button Content="Добавить" Template="{StaticResource buttonBlue}" Click="Button_Click_1" Margin="820,78,20,439"/>
                     <Button Content="Обновить" Template="{StaticResource buttonCyan}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="820,110,0,0" Height="27" Click="Button_Click"/>
 
-                    <DataGrid x:Name="flightGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="259" Width="958" HeadersVisibility="Column" MinColumnWidth="136.4" Margin="10,143,0,0"></DataGrid>
+                    <DataGrid x:Name="flightGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="259" Width="958" HeadersVisibility="Column" MinColumnWidth="130.0" MaxColumnWidth="141.0" Margin="10,143,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
 
                     <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Height="128" Width="402">
                         <Grid>
