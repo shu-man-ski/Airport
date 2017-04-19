@@ -4,136 +4,6 @@
         Title="Продажа авиабилетов" WindowStartupLocation="CenterScreen" 
         Height="600" Width="1000"
         Loaded="Window_Loaded" ResizeMode="NoResize">
-    <Window.Resources>
-        <ControlTemplate TargetType="{x:Type TextBox}" x:Key="textBox">
-            <Grid>
-                <Border x:Name="TextBoxBorder"
-                        BorderBrush="#FF8C8C8C" 
-                        BorderThickness="1" 
-                        CornerRadius="3" 
-                        Opacity="1">
-                    <ScrollViewer x:Name="PART_ContentHost" 
-                                  BorderThickness="0" IsTabStop="False" 
-                                  Margin="0" Padding="{TemplateBinding Padding}">
-                    </ScrollViewer>
-                </Border>
-            </Grid>
-        </ControlTemplate>
-        <ControlTemplate TargetType="Button" x:Key="buttonBlue">
-            <Border x:Name="buttonBlueBorder" 
-                    BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
-                    CornerRadius="3"
-                    Background="#FF9CC0FF"
-                    Height="{TemplateBinding Height}"
-                    Width="{TemplateBinding Width}">
-                <ContentControl Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Content="{TemplateBinding Content}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="buttonBlueBorder" Property="Background" Value="#FF5E98FD"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <ControlTemplate TargetType="Button" x:Key="buttonCyan">
-            <Border x:Name="buttonCyanBorder" 
-                    BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
-                    CornerRadius="3"
-                    Background="#FF95FFE2"
-                    Height="{TemplateBinding Height}"
-                    Width="{TemplateBinding Width}">
-                <ContentControl Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Content="{TemplateBinding Content}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="buttonCyanBorder" Property="Background" Value="#FF48F7C7"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <ControlTemplate TargetType="Button" x:Key="buttonGreen">
-            <Border x:Name="buttonGreenBorder" 
-                    BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
-                    CornerRadius="3"
-                    Background="#FFC0FF95"
-                    Height="{TemplateBinding Height}"
-                    Width="{TemplateBinding Width}">
-                <ContentControl Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Content="{TemplateBinding Content}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="buttonGreenBorder" Property="Background" Value="#FF86FF33"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <ControlTemplate TargetType="Button" x:Key="buttonRed">
-            <Border x:Name="buttonRedBorder" 
-                    BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
-                    CornerRadius="3"
-                    Background="#FFFFAD95"
-                    Height="{TemplateBinding Height}"
-                    Width="{TemplateBinding Width}">
-                <ContentControl Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Content="{TemplateBinding Content}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="buttonRedBorder" Property="Background" Value="#FFF7734C"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-        <ControlTemplate TargetType="DataGrid" x:Key="dateGrid">
-            <Border x:Name="dateGridBorder" 
-                    BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
-                    CornerRadius="3"
-                    Background="White">
-                <ScrollViewer x:Name="PART_ContentHost" 
-                              BorderThickness="0" IsTabStop="False" 
-                              Margin="0" Padding="{TemplateBinding Padding}">
-                </ScrollViewer>
-            </Border>
-        </ControlTemplate>
-        <ControlTemplate TargetType="DatePicker" x:Key="datePicker">
-            <Border x:Name="dateGridBorder" 
-                    BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
-                    CornerRadius="3"
-                    Background="White">
-                <ScrollViewer x:Name="PART_ContentHost" 
-                              BorderThickness="0" IsTabStop="False" 
-                              Margin="0" Padding="{TemplateBinding Padding}">
-                </ScrollViewer>
-            </Border>
-        </ControlTemplate>
-        <ControlTemplate TargetType="TabItem" x:Key="tabItem">
-            <Border x:Name="tabItemBorder" 
-                    BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
-                    CornerRadius="3"
-                    Background="White">
-                <ScrollViewer x:Name="PART_ContentHost" 
-                              BorderThickness="0" IsTabStop="False" 
-                              Margin="0" Padding="{TemplateBinding Padding}"
-                              Height="{TemplateBinding Height}"
-                              Width="{TemplateBinding Width}">
-                </ScrollViewer>
-            </Border>
-        </ControlTemplate>
-    </Window.Resources>
     <Grid>
         <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Width="994" Height="571">
             <TabItem Header="Авиарейсы">
@@ -188,8 +58,49 @@
                     <Button Content="Удалить" Template="{StaticResource buttonRed}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="894,416,0,0" Height="20" RenderTransformOrigin="1.473,-1.692"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Пассажиры"/>
-            <TabItem Header="Билеты"/>
+            <TabItem Header="Пассажиры">
+                <Grid Height="544">
+                    <Label Content="Номер паспорта" HorizontalAlignment="Left" Margin="13,14,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="a1" Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="145,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="0"/>
+                    <Label Content="Место и дата выдачи" HorizontalAlignment="Left" Margin="13,45,0,0" VerticalAlignment="Top" Width="127"/>
+                    <TextBox HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="145,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="ФИО" HorizontalAlignment="Left" Margin="13,76,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="145,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Регистрация" Template="{StaticResource buttonBlue}" Click="Button_Click_1" Margin="656,110,184,407"/>
+                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="820,110,0,0" Height="27" Click="Button_Click"/>
+
+                    <DataGrid x:Name="a2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="289" Width="958" HeadersVisibility="Column" MinColumnWidth="130.0" MaxColumnWidth="141.0" Margin="10,143,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+
+                    <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,437,0,0" VerticalAlignment="Top" Height="97" Width="402">
+                        <Grid>
+                            <Label Content="Поиск по номеру паспорта" HorizontalAlignment="Left" Margin="0,14,0,0" VerticalAlignment="Top" Width="180"/>
+                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="185,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Поиск по ФИО" HorizontalAlignment="Left" Margin="0,46,0,0" VerticalAlignment="Top"/>
+                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="185,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Button Content="Найти" Template="{StaticResource buttonGreen}" HorizontalAlignment="Left" Margin="310,17,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
+                            <Button Content="Найти" Template="{StaticResource buttonGreen}" HorizontalAlignment="Left" Margin="310,49,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <Label Content="Удалить пассажира с № паспорта" HorizontalAlignment="Left" Margin="568,440,0,0" VerticalAlignment="Top"/>
+                    <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="769,443,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button Content="Удалить" Template="{StaticResource buttonRed}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="894,443,0,0" Height="20" RenderTransformOrigin="1.473,-1.692"/>
+                    <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="13,104,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="145,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Билеты">
+                <Grid Height="544">
+                    <Label Content="Авиарейс" HorizontalAlignment="Left" Margin="13,14,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Пассажир" HorizontalAlignment="Left" Margin="13,45,0,0" VerticalAlignment="Top" Width="127"/>
+                    <Button Content="Купить" Template="{StaticResource buttonBlue}" Click="Button_Click_1" Margin="656,42,184,475"/>
+                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="820,42,0,0" Height="27" Click="Button_Click"/>
+
+                    <DataGrid x:Name="a4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="458" Width="958" HeadersVisibility="Column" MinColumnWidth="130.0" MaxColumnWidth="141.0" Margin="10,76,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="145,18,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="145,49,0,0" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
         </TabControl>
 
 

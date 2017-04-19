@@ -43,3 +43,4 @@ D:\GitHub\Airport\Airport\obj\Debug\Airport_MarkupCompile.cache
 D:\GitHub\Airport\Airport\obj\Debug\Airport.g.resources
 D:\GitHub\Airport\Airport\obj\Debug\Airport.Properties.Resources.resources
 D:\GitHub\Airport\Airport\obj\Debug\Airport.csproj.GenerateResource.Cache
+D:\GitHub\Airport\Airport\obj\Debug\App.baml

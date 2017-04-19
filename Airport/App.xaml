@@ -3,6 +3,135 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ControlTemplate TargetType="TextBox" x:Key="textBox">
+            <Grid>
+                <Border x:Name="TextBoxBorder"
+                        BorderBrush="#FF8C8C8C" 
+                        BorderThickness="1" 
+                        CornerRadius="3" 
+                        Opacity="1">
+                    <ScrollViewer x:Name="PART_ContentHost" 
+                                  BorderThickness="0" IsTabStop="False" 
+                                  Margin="0" Padding="{TemplateBinding Padding}">
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="buttonBlue">
+            <Border x:Name="buttonBlueBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="#FF9CC0FF"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}">
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="buttonBlueBorder" Property="Background" Value="#FF5E98FD"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="buttonCyan">
+            <Border x:Name="buttonCyanBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="#FF95FFE2"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}">
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="buttonCyanBorder" Property="Background" Value="#FF48F7C7"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="buttonGreen">
+            <Border x:Name="buttonGreenBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="#FFC0FF95"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}">
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="buttonGreenBorder" Property="Background" Value="#FF86FF33"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="buttonRed">
+            <Border x:Name="buttonRedBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="#FFFFAD95"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}">
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="buttonRedBorder" Property="Background" Value="#FFF7734C"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        <!--<ControlTemplate TargetType="DataGrid" x:Key="dateGrid">
+            <Border x:Name="dateGridBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="White">
+                <ScrollViewer x:Name="PART_ContentHost" 
+                              BorderThickness="0" IsTabStop="False" 
+                              Margin="0" Padding="{TemplateBinding Padding}">
+                </ScrollViewer>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="DatePicker" x:Key="datePicker">
+            <Border x:Name="dateGridBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="White">
+                <ScrollViewer x:Name="PART_ContentHost" 
+                              BorderThickness="0" IsTabStop="False" 
+                              Margin="0" Padding="{TemplateBinding Padding}">
+                </ScrollViewer>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="TabItem" x:Key="tabItem">
+            <Border x:Name="tabItemBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="White">
+                <ScrollViewer x:Name="PART_ContentHost" 
+                              BorderThickness="0" IsTabStop="False" 
+                              Margin="0" Padding="{TemplateBinding Padding}"
+                              Height="{TemplateBinding Height}"
+                              Width="{TemplateBinding Width}">
+                </ScrollViewer>
+            </Border>
+        </ControlTemplate>-->  
     </Application.Resources>
 </Application>
