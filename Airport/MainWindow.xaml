@@ -13,17 +13,17 @@
                             <Label Content="Номер авиарейса" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
                             <TextBox x:Name="ID_авиарейса" Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="123,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Авиакомпания" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="108"/>
-                            <TextBox HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="123,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="Авиакомпания" HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="123,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Количество мест" HorizontalAlignment="Left" Margin="0,72,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="123,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="Количество_мест" HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="123,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Информация об отправлении и прибытии" VerticalAlignment="Top" Margin="276,10,173,0" Height="128">
                         <Grid>
                             <Label Content="Аэропорт отправления" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="143,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="Аэропорт_отправления" Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="143,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Аэропорт прибытия" HorizontalAlignment="Left" Margin="268,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="394,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="Аэропорт_прибытия" Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="394,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                             <Label Content="Дата отправления" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="138"/>
                             <DatePicker HorizontalAlignment="Left" Margin="143,48,0,0" VerticalAlignment="Top" Width="120" Height="20" Padding="2,-5,2,2" UseLayoutRounding="False" FontStyle="Italic"/>
                             <Label Content="Дата прибытия" HorizontalAlignment="Left" Margin="268,41,0,0" VerticalAlignment="Top" Width="121"/>
@@ -102,8 +102,5 @@
                 </Grid>
             </TabItem>
         </TabControl>
-
-
-
     </Grid>
 </Window>

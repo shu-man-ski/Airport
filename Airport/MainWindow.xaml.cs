@@ -21,14 +21,14 @@ namespace Airport
     public partial class MainWindow : Window
     {
         private Admin _admin;
+        private Flight _flight;
         private bool Authorization { get; set; }
         public static bool AuthorizationWnd { get; set; }
-        string connectionString;
+        private string connectionString;
         private SqlDataAdapter adapter;
         private SqlConnection connection;
         private DataTable flightTable;
 
-        private TextBox text;
 
         public MainWindow()
         {
@@ -38,13 +38,14 @@ namespace Airport
             AuthorizationWnd = true;
 
             _admin = new Admin();
+            _flight = new Flight();
 
             flightTable = new DataTable();
             connection = null;
             // получаем строку подключения из app.config
             connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void CheckAuthoriztion()
         {
             while (!Authorization && AuthorizationWnd)
             {
@@ -60,28 +61,35 @@ namespace Airport
             }
             if (!AuthorizationWnd)
                 this.Close();
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            CheckAuthoriztion();
 
-            string sql = "SELECT * FROM flight";    
+            UpdateDB();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateDB();
+        }
+        private void UpdateDB()
+        {
+            flightTable.Clear();
+
+            string sql = "SELECT * FROM flight";
             try
             {
                 connection = new SqlConnection(connectionString);
                 SqlCommand command = new SqlCommand(sql, connection);
                 adapter = new SqlDataAdapter(command);
 
-                // установка команды на добавление для вызова хранимой процедуры
-                adapter.InsertCommand = new SqlCommand("sp_InsertFlight", connection);
-                adapter.InsertCommand.CommandType = CommandType.StoredProcedure;
-                //adapter.InsertCommand.Parameters.Add(new SqlParameter("@ID_рейса", SqlDbType.Int, 0, "ID_рейса"));
-                //adapter.InsertCommand.Parameters.Add(new SqlParameter("@Авиакомания", SqlDbType.NVarChar, 50, "Авиакомания"));
-                //adapter.InsertCommand.Parameters.Add(new SqlParameter("@Аэропорт_отправления", SqlDbType.NVarChar, 50, "Аэропорт_отправления"));
-                //adapter.InsertCommand.Parameters.Add(new SqlParameter("@Аэропорт_прибытия", SqlDbType.NVarChar, 50, "Аэропорт_прибытия"));
-                //adapter.InsertCommand.Parameters.Add(new SqlParameter("@Дата_отправления", SqlDbType.Date, 0, "Дата_отправления"));
-                //adapter.InsertCommand.Parameters.Add(new SqlParameter("@Дата_прибытия", SqlDbType.Date, 0, "Дата_прибытия"));
-                //adapter.InsertCommand.Parameters.Add(new SqlParameter("@Количество_мест", SqlDbType.Int, 0, "Количество_мест"));
-
                 connection.Open();
                 adapter.Fill(flightTable);
                 flightGrid.ItemsSource = flightTable.DefaultView;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -93,35 +101,44 @@ namespace Airport
                     connection.Close();
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            UpdateDB();
-        }
-        private void UpdateDB()
-        {
-            
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            text = ID_авиарейса;
-            string str_ID_авиарейса = text.Text;
+            _flight.ID = int.Parse(ID_авиарейса.Text);
+            _flight.Airline = Авиакомпания.Text.ToString();
+            _flight.NumSeats = int.Parse(Количество_мест.Text);
+            _flight.AirportFrom = Аэропорт_отправления.Text.ToString();
+            _flight.AirportIn = Аэропорт_прибытия.Text.ToString();
 
-            string sql = "SELECT * FROM flight";
+            string sql = "insert into flight([ID Рейса], [Авиакомания], [Количество мест], [Аэропорт отправления], [Аэропорт прибытия]) VALUES (@ID_рейса, @Авиакомания, @Количество_мест, @Аэропорт_отправления, @Аэропорт_прибытия)";
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@ID_рейса", _flight.ID);
+                command.Parameters.AddWithValue("@Авиакомания", _flight.Airline);
+                command.Parameters.AddWithValue("@Количество_мест", _flight.NumSeats);
+                command.Parameters.AddWithValue("@Аэропорт_отправления", _flight.AirportFrom);
+                command.Parameters.AddWithValue("@Аэропорт_прибытия", _flight.AirportIn);
 
-            connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand(sql, connection);
-            adapter = new SqlDataAdapter(command);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
 
-            adapter.InsertCommand = new SqlCommand("sp_InsertFlight", connection);
-            adapter.InsertCommand.CommandType = CommandType.StoredProcedure;
-
-            connection.Open();
-            adapter.Fill(flightTable);
-            flightGrid.ItemsSource = flightTable.DefaultView;
-
-            if (connection != null)
-                connection.Close();
+            UpdateDB();
         }
     }
 }
