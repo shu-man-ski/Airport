@@ -21,23 +21,58 @@ namespace Airport
     public partial class MainWindow : Window
     {
         private Admin admin;
+        private Plane plane;
         private Flight flight;
         private bool Authorization { get; set; }
         public static bool AuthorizationWnd { get; set; }
         
 
-
         public MainWindow()
         {
             InitializeComponent();
+
+            InitPlaneTypeComboBox();
+            InitPlaneModelComboBox();
+            flightIdPlane.ItemsSource = Database.InitFlightIDPlaneComboBox(flightIdPlane);
+            InitFlightAirline();
 
             Authorization = false;
             AuthorizationWnd = true;
 
             admin = new Admin();
+            plane = new Plane();
             flight = new Flight();
-            this.DataContext = flight;
         }
+
+        private void InitPlaneTypeComboBox()
+        {
+            planeType.Items.Add("Гражданский");
+            planeType.Items.Add("Военный");
+            planeType.Items.Add("Специальный");
+        }
+        private void InitPlaneModelComboBox()
+        {
+            planeModel.Items.Add("Aérospatiale (Франция)");
+            planeModel.Items.Add("Airbus (ЕС)");
+            planeModel.Items.Add("Boeing (США)");
+            planeModel.Items.Add("British Aerospace (Великобритания)");
+            planeModel.Items.Add("British Aircraft (Великобритания)");
+            planeModel.Items.Add("Heinkel (Германия)");
+            planeModel.Items.Add("Junkers (Германия)");
+            planeModel.Items.Add("McDonnell Douglas (США)");
+            planeModel.Items.Add("Messerschmitt (Германия)");
+        }
+        private void InitFlightAirline()
+        {
+            flightAirline.Items.Add("Lufthansa");
+            flightAirline.Items.Add("S7 Airline");
+            flightAirline.Items.Add("Ber Air");
+            flightAirline.Items.Add("RusAir");
+            flightAirline.Items.Add("Minsk Air");
+            flightAirline.Items.Add("AZUR Air");
+            flightAirline.Items.Add("Air Astana");
+        }
+
 
         private void CheckAuthoriztion()
         {
@@ -60,23 +95,31 @@ namespace Airport
         {
             CheckAuthoriztion();
 
+            Database.Update(planesGrid, "Plane");
             Database.Update(flightsGrid, "Flight");
         }
-        
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+
+        private void Plane_Add_Click(object sender, RoutedEventArgs e)
         {
-            flight.ID = int.Parse(ID_авиарейса.Text);
-            flight.Airline = Авиакомпания.Text.ToString();
-            flight.NumSeats = int.Parse(Количество_мест.Text);
-            flight.AirportOfDeparture = Аэропорт_отправления.Text.ToString();
-            flight.AirportOfArrival = Аэропорт_прибытия.Text.ToString();
-            flight.DateOfDeparture = Дата_отправления.SelectedDate.Value;
-            flight.DateOfArrival = Дата_прибытия.SelectedDate.Value;
+            plane.Type = planeType.SelectedItem.ToString();
+            plane.Model = planeModel.SelectedItem.ToString();
+            plane.NumberOfSeats = int.Parse(planeNumberOfSeats.Text);
+            plane.Capacity = int.Parse(planeCapacity.Text);
+            plane.MaintenanceDate = planeMaintenanceDate.SelectedDate.Value.ToString("d");
 
-            Database.AddFlight(flight.ID, flight.Airline, flight.NumSeats,
-                flight.AirportOfDeparture, flight.AirportOfArrival, flight.DateOfDeparture, flight.DateOfArrival);
+            Database.AddPlane(plane.Type, plane.Model, plane.NumberOfSeats, plane.Capacity, plane.MaintenanceDate);
+            Database.Update(planesGrid, "Plane");
+        }
+        private void Flight_Add_Click(object sender, RoutedEventArgs e)
+        {
+            flight.IDPlane = int.Parse(flightIdPlane.Text);
+            flight.Airline = flightAirline.Text;
+            flight.AirportOfArrival = flightAirportOfArrival.Text;
+            flight.DateOfDeparture = flightDateOfDeparture.SelectedDate.Value.ToString("d");
+            flight.DateOfArrival = flightDataOfArrival.SelectedDate.Value.ToString("d");
 
+            Database.AddFlight(flight.IDPlane, flight.Airline, flight.AirportOfArrival, flight.DateOfDeparture, flight.DateOfArrival);
             Database.Update(flightsGrid, "Flight");
         }
         private void UpdateDB_Click(object sender, RoutedEventArgs e)

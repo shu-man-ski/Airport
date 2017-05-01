@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Image Grid.Column="0" x:Name="mainImage" Grid.RowSpan="6" Margin="0,10,150,10">
+        <Image Grid.Column="0" x:Name="mainImage" Grid.RowSpan="6" Margin="0,10,150,10" HorizontalAlignment="Left">
             <Image.Source>
                 <FormatConvertedBitmap Source="D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\Image\aut.png"/>
             </Image.Source>
@@ -24,7 +24,7 @@
         <TextBlock Grid.Row="0" Margin="105,0,0,0" >Введите логин:</TextBlock>
         <TextBox Name="loginBox" Template="{StaticResource textBox}" Grid.Row="1" Margin="105,0,0,0" HorizontalAlignment="Left" Width="145"/>
         <TextBlock Grid.Row="3" Margin="105,0,0,0">Введите пароль:</TextBlock>
-        <PasswordBox PasswordChar="•" Name="passwordBox" Grid.Row="4" Margin="105,0,0,0">
+        <PasswordBox PasswordChar="•" Name="passwordBox" Grid.Row="4" Width="145" Margin="105,0,0,0">
             <PasswordBox.Template>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
                     <Grid>
