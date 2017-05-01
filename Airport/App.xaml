@@ -3,6 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <ControlTemplate x:Key="validationFailed">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red"
+                        BorderThickness="1" 
+                        CornerRadius="4">
+                    <AdornedElementPlaceholder/>
+                </Border>
+                <TextBlock Foreground="Red" FontSize="16" FontWeight="Bold">!</TextBlock>
+            </StackPanel>
+        </ControlTemplate>
+        
         <ControlTemplate TargetType="TextBox" x:Key="textBox">
             <Grid>
                 <Border x:Name="TextBoxBorder"

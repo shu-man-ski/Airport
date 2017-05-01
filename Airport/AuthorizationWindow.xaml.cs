@@ -19,7 +19,6 @@ namespace Airport
     /// </summary>
     public partial class AuthorizationWindow : Window
     {
-        public AuthorizationWindow AuthorizationWnd { get; set; }
         public string Login
         {
             get { return loginBox.Text; }
@@ -33,13 +32,14 @@ namespace Airport
         {
             InitializeComponent();
         }
-        private void Accept_Click(object sender, RoutedEventArgs e)
+
+        private void Entrance_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
         }
-        public void Button_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.AuthorizationWnd = false;
-        }
+        }      
     }
 }

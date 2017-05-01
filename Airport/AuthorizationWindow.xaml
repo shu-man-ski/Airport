@@ -43,8 +43,12 @@
         </PasswordBox>
 
         <WrapPanel Grid.Row="6" HorizontalAlignment="Right" Margin="0,0,0,0">
-            <Button Content="Вход" Template="{StaticResource buttonGreen}" IsDefault="True" Click="Accept_Click" MinWidth="60" Margin="0,0,5,0" Height="20" Width="70" Background="#FFC0FF95"/>
-            <Button IsCancel="True" Template="{StaticResource buttonRed}" MinWidth="60" Click="Button_Click" Height="20" Width="70" Content="Отмена" Background="#FFFFAD95"/>
+            <Button Content="Вход"   Template="{StaticResource buttonGreen}"
+                    Height="20" Width="70" Background="#FFC0FF95"
+                    Click="Entrance_Click" IsDefault="True"  MinWidth="60" Margin="0,0,5,0" />
+            <Button Content="Отмена" Template="{StaticResource buttonRed}"
+                    Height="20" Width="70"  Background="#FFFFAD95"
+                    Click="Cancel_Click" IsCancel="True" MinWidth="60"/>
         </WrapPanel>
     </Grid>
 </Window>

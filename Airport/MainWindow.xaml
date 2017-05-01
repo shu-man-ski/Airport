@@ -8,36 +8,109 @@
         <TabControl HorizontalAlignment="Left" VerticalAlignment="Top" Width="994" Height="571">
             <TabItem Header="Авиарейсы">
                 <Grid Height="544">
-                    <GroupBox Header="Добавить рейс" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="261" Height="128">
+                    <GroupBox Header="Добавить рейс" 
+                              HorizontalAlignment="Left" VerticalAlignment="Top" 
+                              Width="261" Height="128" Margin="10,10,0,0">
                         <Grid>
                             <Label Content="Номер авиарейса" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="ID_авиарейса" Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="123,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Авиакомпания" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="108"/>
-                            <TextBox x:Name="Авиакомпания" HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="123,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Количество мест" HorizontalAlignment="Left" Margin="0,72,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="Количество_мест" HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="123,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox x:Name="ID_авиарейса" Template="{StaticResource textBox}" 
+                                     HorizontalAlignment="Left" VerticalAlignment="Top"
+                                     Width="120" Height="20" Margin="123,16,0,0" TextWrapping="Wrap"
+                                     Validation.ErrorTemplate="{StaticResource validationFailed}">
+                                <TextBox.Text>
+                                    <Binding Path="ID">
+                                        <Binding.ValidationRules>
+                                            <ExceptionValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <Label Content="Авиакомпания" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                   Width="108" Margin="0,41,0,0"/>
+                            <TextBox x:Name="Авиакомпания" Template="{StaticResource textBox}"
+                                     HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                     Width="120" Height="20" Margin="123,47,0,0" TextWrapping="Wrap"
+                                     Validation.ErrorTemplate="{StaticResource validationFailed}">
+                                <TextBox.Text>
+                                    <Binding Path="Airline">
+                                        <Binding.ValidationRules>
+                                            <ExceptionValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <Label Content="Количество мест" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                   Width="108" Margin="0,72,0,0"/>
+                            <TextBox x:Name="Количество_мест" Template="{StaticResource textBox}"
+                                     HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                     Width="120" Height="20" Margin="123,78,0,0" TextWrapping="Wrap"
+                                     Validation.ErrorTemplate="{StaticResource validationFailed}">
+                                <TextBox.Text>
+                                    <Binding Path="NumSeats">
+                                        <Binding.ValidationRules>
+                                            <ExceptionValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Информация об отправлении и прибытии" VerticalAlignment="Top" Margin="276,10,173,0" Height="128">
                         <Grid>
-                            <Label Content="Аэропорт отправления" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="Аэропорт_отправления" Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="143,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Аэропорт прибытия" HorizontalAlignment="Left" Margin="268,10,0,0" VerticalAlignment="Top"/>
-                            <TextBox x:Name="Аэропорт_прибытия" Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="394,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Дата отправления" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top" Width="138"/>
-                            <DatePicker HorizontalAlignment="Left" Margin="143,48,0,0" VerticalAlignment="Top" Width="120" Height="20" Padding="2,-5,2,2" UseLayoutRounding="False" FontStyle="Italic"/>
-                            <Label Content="Дата прибытия" HorizontalAlignment="Left" Margin="268,41,0,0" VerticalAlignment="Top" Width="121"/>
-                            <DatePicker HorizontalAlignment="Left" Margin="394,48,0,0" VerticalAlignment="Top" Width="120" Height="20" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="2,-5,2,2" ScrollViewer.CanContentScroll="True" FontStyle="Italic"/>
-                            <Label Content="Время отправления" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Width="138"/>
-                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="143,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Время прибытия" HorizontalAlignment="Left" Margin="268,73,0,0" VerticalAlignment="Top" Width="121"/>
-                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="394,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <Label Content="Аэропорт отправления" 
+                                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                                   Margin="0,10,0,0"/>
+                            <TextBox x:Name="Аэропорт_отправления" Template="{StaticResource textBox}" 
+                                     HorizontalAlignment="Left" VerticalAlignment="Top"
+                                     Width="120"  Height="20" Margin="143,16,0,0" TextWrapping="Wrap" 
+                                     Validation.ErrorTemplate="{StaticResource validationFailed}">
+                                <TextBox.Text>
+                                    <Binding Path="AirportOfDeparture">
+                                        <Binding.ValidationRules>
+                                            <ExceptionValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <Label Content="Аэропорт прибытия"
+                                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                                   Margin="268,10,0,0"/>
+                            <TextBox x:Name="Аэропорт_прибытия" Template="{StaticResource textBox}" 
+                                     HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                     Width="120" Height="20" Margin="394,16,0,0" TextWrapping="Wrap"
+                                     Validation.ErrorTemplate="{StaticResource validationFailed}">
+                                <TextBox.Text>
+                                    <Binding Path="AirportOfArrival">
+                                        <Binding.ValidationRules>
+                                            <ExceptionValidationRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <Label Content="Дата отправления" 
+                                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                                   Width="138" Margin="0,41,0,0"/>
+                            <DatePicker x:Name="Дата_отправления"
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Width="120" Height="20" Margin="143,48,0,0" Padding="2,-5,2,2"
+                                        UseLayoutRounding="False" FontStyle="Italic"/>
+                            <Label Content="Дата прибытия"
+                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                   Width="121" Margin="268,41,0,0"/>
+                            <DatePicker x:Name="Дата_прибытия"
+                                        HorizontalAlignment="Left"  VerticalAlignment="Top" 
+                                        Width="120" Height="20" Margin="394,48,0,0"
+                                        Padding="2,-5,2,2" ScrollViewer.CanContentScroll="True" FontStyle="Italic"/>
                         </Grid>
                     </GroupBox>
-                    <Button Content="Добавить" Template="{StaticResource buttonBlue}" Click="Button_Click_1" Margin="820,78,20,439"/>
-                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="820,110,0,0" Height="27" Click="Button_Click"/>
+                    <Button Content="Добавить" Template="{StaticResource buttonBlue}" Click="Add_Click" Margin="820,78,20,439"/>
+                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="820,110,0,0" Height="27" Click="UpdateDB_Click"/>
 
-                    <DataGrid x:Name="flightGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="259" Width="958" HeadersVisibility="Column" MinColumnWidth="130.0" MaxColumnWidth="141.0" Margin="10,143,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+                    <DataGrid x:Name="flightsGrid" 
+                              HorizontalAlignment="Left" VerticalAlignment="Top" 
+                              Height="259" Width="958" Margin="10,143,0,0"
+                              HeadersVisibility="Column" MinColumnWidth="135.0" MaxColumnWidth="141.0"
+                              HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
 
                     <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Height="128" Width="402">
                         <Grid>
@@ -60,16 +133,31 @@
             </TabItem>
             <TabItem Header="Пассажиры">
                 <Grid Height="544">
-                    <Label Content="Номер паспорта" HorizontalAlignment="Left" Margin="13,14,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="a1" Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="145,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="0"/>
-                    <Label Content="Место и дата выдачи" HorizontalAlignment="Left" Margin="13,45,0,0" VerticalAlignment="Top" Width="127"/>
-                    <TextBox HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="145,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Label Content="ФИО" HorizontalAlignment="Left" Margin="13,76,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="145,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button Content="Регистрация" Template="{StaticResource buttonBlue}" Click="Button_Click_1" Margin="656,110,184,407"/>
-                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="820,110,0,0" Height="27" Click="Button_Click"/>
+                    <Label Content="Номер паспорта"
+                           HorizontalAlignment="Left" VerticalAlignment="Top" 
+                           Width="127" Margin="13,14,0,0"/>
+                    <TextBox x:Name="a1" Template="{StaticResource textBox}" 
+                             HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Width="120" Height="20" Margin="145,20,0,0" TextWrapping="Wrap"/>
+                    <Label Content="Место и дата выдачи" 
+                           HorizontalAlignment="Left" VerticalAlignment="Top"
+                           Width="127" Margin="13,45,0,0"/>
+                    <TextBox x:Name="a2" Template="{StaticResource textBox}"
+                             HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Width="120" Height="20" Margin="145,51,0,0" TextWrapping="Wrap"/>
+                    <Label Content="ФИО"
+                           HorizontalAlignment="Left" VerticalAlignment="Top"
+                           Width="127" Margin="13,76,0,0"/>
+                    <TextBox x:Name="a3" Template="{StaticResource textBox}"
+                             HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Width="120" Height="20" Margin="145,82,0,0" TextWrapping="Wrap"/>
+                    <Button Content="Регистрация" Template="{StaticResource buttonBlue}" 
+                            Margin="656,110,184,407"/>
+                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" 
+                            HorizontalAlignment="Left" VerticalAlignment="Top" 
+                            Width="148" Height="27" Margin="820,110,0,0"/>
 
-                    <DataGrid x:Name="a2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="289" Width="958" HeadersVisibility="Column" MinColumnWidth="130.0" MaxColumnWidth="141.0" Margin="10,143,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+                    <DataGrid x:Name="passengersGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="289" Width="958" HeadersVisibility="Column" MinColumnWidth="130.0" MaxColumnWidth="141.0" Margin="10,143,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
 
                     <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,437,0,0" VerticalAlignment="Top" Height="97" Width="402">
                         <Grid>
@@ -93,8 +181,8 @@
                 <Grid Height="544">
                     <Label Content="Авиарейс" HorizontalAlignment="Left" Margin="13,14,0,0" VerticalAlignment="Top"/>
                     <Label Content="Пассажир" HorizontalAlignment="Left" Margin="13,45,0,0" VerticalAlignment="Top" Width="127"/>
-                    <Button Content="Купить" Template="{StaticResource buttonBlue}" Click="Button_Click_1" Margin="656,42,184,475"/>
-                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="820,42,0,0" Height="27" Click="Button_Click"/>
+                    <Button Content="Купить" Template="{StaticResource buttonBlue}"  Margin="656,42,184,475"/>
+                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="820,42,0,0" Height="27"/>
 
                     <DataGrid x:Name="a4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="458" Width="958" HeadersVisibility="Column" MinColumnWidth="130.0" MaxColumnWidth="141.0" Margin="10,76,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
                     <ComboBox HorizontalAlignment="Left" Margin="145,18,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
