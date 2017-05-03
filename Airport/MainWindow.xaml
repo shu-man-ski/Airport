@@ -4,7 +4,7 @@
         Title="Диспетчер авиарейсов" WindowStartupLocation="CenterScreen" 
         Height="608" Width="988" MinHeight="608" MinWidth="988"
         Loaded="Window_Loaded" ResizeMode="CanMinimize">
-    <Grid>
+    <Grid Background="#FF9CB2D1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -15,10 +15,12 @@
 
         <Menu Grid.Column="0" Grid.Row="0"
               VerticalAlignment="Top"
-              Height="20">
-            <MenuItem Header="Настройки"/>
-            <MenuItem Header="Вид"/>
-            <MenuItem Header="Выход" Click="MenuItemExit_Click"/>
+              Height="20" HorizontalAlignment="Right" Background="#FF9CB2D1">
+            <MenuItem Header="Настройки"
+                      Height="20"/>
+            <MenuItem Header="Выход"
+                      Height="20"
+                      Click="MenuItemExit_Click"/>
         </Menu>
         <TabControl Grid.Column="0" Grid.Row="1"
                     HorizontalAlignment="Left" VerticalAlignment="Top"
