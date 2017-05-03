@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,7 +6,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Airport
 {
@@ -27,6 +22,7 @@ namespace Airport
             else 
             {
                 Database.Request("SELECT * FROM " + _table + " WHERE " + _obj + " = " + "'" + _search.Text + "'", searchResult);
+                this.Show();
             }
         }
         public ResultWindow(TextBox _search, string _table, string _obj)
@@ -40,6 +36,7 @@ namespace Airport
             else
             {
                 Database.Request("SELECT * FROM " + _table + " WHERE " + _obj + " = " + "'" + _search.Text + "'", searchResult);
+                this.Show();
             }
         }
     }

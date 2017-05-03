@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Data;
-using System.Data.SqlClient;
 using System.Configuration;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Airport
 {
@@ -33,7 +27,10 @@ namespace Airport
 
             InitPlaneTypeComboBox();
             InitPlaneModelComboBox();
-            flightIDPlane.ItemsSource = Database.InitFlightIDPlaneComboBox(flightIDPlane);
+            planeSearchByType.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Тип] FROM Plane", "[Тип]");
+            planeSearchByModel.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Модель] FROM Plane", "[Модель]");
+
+            flightIDPlane.ItemsSource = Database.GetListForComboBox("SELECT [ID] FROM Plane", "ID");
             InitFlightAirline();
 
             Authorization = false;
@@ -49,9 +46,6 @@ namespace Airport
             planeType.Items.Add("Гражданский");
             planeType.Items.Add("Военный");
             planeType.Items.Add("Специальный");
-            planeSearchByType.Items.Add("Гражданский");
-            planeSearchByType.Items.Add("Военный");
-            planeSearchByType.Items.Add("Специальный");
         }
         private void InitPlaneModelComboBox()
         {
@@ -64,16 +58,6 @@ namespace Airport
             planeModel.Items.Add("Junkers (Германия)");
             planeModel.Items.Add("McDonnell Douglas (США)");
             planeModel.Items.Add("Messerschmitt (Германия)");
-
-            planeSearchByModel.Items.Add("Aérospatiale (Франция)");
-            planeSearchByModel.Items.Add("Airbus (ЕС)");
-            planeSearchByModel.Items.Add("Boeing (США)");
-            planeSearchByModel.Items.Add("British Aerospace (Великобритания)");
-            planeSearchByModel.Items.Add("British Aircraft (Великобритания)");
-            planeSearchByModel.Items.Add("Heinkel (Германия)");
-            planeSearchByModel.Items.Add("Junkers (Германия)");
-            planeSearchByModel.Items.Add("McDonnell Douglas (США)");
-            planeSearchByModel.Items.Add("Messerschmitt (Германия)");
         }
         private void InitFlightAirline()
         {
@@ -141,12 +125,10 @@ namespace Airport
         private void Plane_SearchByType_Click(object sender, RoutedEventArgs e)
         {
             ResultWindow resultWnd = new ResultWindow(planeSearchByType, "Plane", "Тип");
-            resultWnd.Show();
         }
         private void Plane_SearchByModel_Click(object sender, RoutedEventArgs e)
         {
             ResultWindow resultWnd = new ResultWindow(planeSearchByModel, "Plane", "Модель");
-            resultWnd.Show();
         }
         private void Plane_SearchByCapasity_Click(object sender, RoutedEventArgs e)
         {
@@ -199,6 +181,12 @@ namespace Airport
         private void Passenger_Add_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+
+        private void Ticket_Add_Click(object sender, RoutedEventArgs e)
+        { 
+        
         }
     }
 }

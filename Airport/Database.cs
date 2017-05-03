@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Airport
 {
@@ -33,24 +29,26 @@ namespace Airport
         }
 
 
-        static public List<int> InitFlightIDPlaneComboBox(ComboBox _flightIdPlane)
+        static public List<string> GetListForComboBox(string _select, string _row)
         {
             dataTable = new DataTable();
-            List<int> list = new List<int>();
+            List<string> list = new List<string>();
 
-            string sql = "SELECT [ID] FROM Plane";
             try
             {
                 connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
+                SqlCommand command = new SqlCommand(_select, connection);
                 adapter = new SqlDataAdapter(command);
 
                 connection.Open();
                 adapter.Fill(dataTable);
 
+                int i = 0;
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    list.Add(int.Parse(row["ID"].ToString()));
+                    if (dataTable.Rows.ToString() == _row)
+                        i++;
+                    list.Add(row[i].ToString());
                 }
             }
             catch (SqlException ex)

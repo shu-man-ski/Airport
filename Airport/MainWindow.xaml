@@ -71,7 +71,7 @@
                                     HorizontalAlignment="Left" VerticalAlignment="Top" 
                                     Width="120" Height="25" Margin="154,130,0,0"
                                     UseLayoutRounding="False" FontStyle="Italic"/>
-                        <Button Content="Добавить" Template="{StaticResource buttonBlue}"
+                        <Button Content="Регистрация" Template="{StaticResource buttonBlue}"
                                 HorizontalAlignment="Right" VerticalAlignment="Top" 
                                 Width="120" Height="25" 
                                 Click="Plane_Add_Click" Margin="0,127,10,0"/>
@@ -182,7 +182,7 @@
                                     HorizontalAlignment="Left" VerticalAlignment="Top" 
                                     Width="120" Height="25" Margin="154,130,0,0"
                                     UseLayoutRounding="False" FontStyle="Italic"/>
-                        <Button Content="Добавить" Template="{StaticResource buttonBlue}"
+                        <Button Content="Регистрация" Template="{StaticResource buttonBlue}"
                                 HorizontalAlignment="Right" VerticalAlignment="Top" 
                                 Width="120" Height="25" 
                                 Click="Flight_Add_Click" Margin="0,127,10,0"/>
@@ -253,7 +253,7 @@
                                Width="120" Height="25" Margin="10,10,0,0"/>
                         <TextBox x:Name="passengerNumberPassport" Template="{StaticResource textBox}" 
                                  HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
-                                  Width="120" Height="25" Margin="154,10,0,0"/>
+                                 Width="120" Height="25" Margin="154,10,0,0"/>
                         <Label Content="Место и дата выдачи" 
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="120"  Height="25" Margin="10,40,0,0"/>
@@ -312,15 +312,43 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Билеты">
-                <Grid Height="544">
-                    <Label Content="Авиарейс" HorizontalAlignment="Left" Margin="13,14,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Пассажир" HorizontalAlignment="Left" Margin="13,45,0,0" VerticalAlignment="Top" Width="127"/>
-                    <Button Content="Купить" Template="{StaticResource buttonBlue}"  Margin="656,42,184,475"/>
-                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="148" Margin="820,42,0,0" Height="27"/>
-
-                    <DataGrid x:Name="a4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="458" Width="958" HeadersVisibility="Column" MinColumnWidth="130.0" MaxColumnWidth="141.0" Margin="10,76,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="145,18,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="145,49,0,0" VerticalAlignment="Top" Width="120"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                        <RowDefinition Height="2.5*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <Label Content="Авиарейс"
+                               HorizontalAlignment="Left" VerticalAlignment="Top" 
+                               Width="120" Height="25" Margin="10,10,0,0"/>
+                        <ComboBox x:Name="ticketFlight"
+                                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                                 Width="120" Height="25" Margin="154,10,0,0"/>
+                        <Label Content="Пассажир"
+                               HorizontalAlignment="Left" VerticalAlignment="Top" 
+                               Width="120"  Height="25" Margin="10,40,0,0"/>
+                        <ComboBox x:Name="ticketPassenger"
+                                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                                 Width="120" Height="25" Margin="154,40,0,0"/>
+                        <Button Content="Регистрация" Template="{StaticResource buttonBlue}" 
+                                HorizontalAlignment="Right" VerticalAlignment="Top" 
+                                Width="120" Height="25" 
+                                Click="Ticket_Add_Click" Margin="0,127,10,0"/>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <DataGrid x:Name="ticketGrid" 
+                                  HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                  Height="240" Width="946" Margin="10,10,0,0"
+                                  HeadersVisibility="Column" MinColumnWidth="155.0" MaxColumnWidth="155.0"
+                                  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="2">
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>
