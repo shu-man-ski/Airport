@@ -59,7 +59,7 @@ namespace Airport {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Airport;component/resultwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Диспетчер авиарейсов;component/resultwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\ResultWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
