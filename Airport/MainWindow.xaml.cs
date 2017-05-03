@@ -49,15 +49,15 @@ namespace Airport
         }
         private void InitPlaneModelComboBox()
         {
-            planeModel.Items.Add("Aérospatiale (Франция)");
-            planeModel.Items.Add("Airbus (ЕС)");
-            planeModel.Items.Add("Boeing (США)");
-            planeModel.Items.Add("British Aerospace (Великобритания)");
-            planeModel.Items.Add("British Aircraft (Великобритания)");
-            planeModel.Items.Add("Heinkel (Германия)");
-            planeModel.Items.Add("Junkers (Германия)");
-            planeModel.Items.Add("McDonnell Douglas (США)");
-            planeModel.Items.Add("Messerschmitt (Германия)");
+            planeModel.Items.Add("Aérospatiale");
+            planeModel.Items.Add("Airbus");
+            planeModel.Items.Add("Boeing");
+            planeModel.Items.Add("British Aerospace");
+            planeModel.Items.Add("British Aircraft");
+            planeModel.Items.Add("Heinkel");
+            planeModel.Items.Add("Junkers");
+            planeModel.Items.Add("McDonnell Douglas");
+            planeModel.Items.Add("Messerschmitt");
         }
         private void InitFlightAirline()
         {

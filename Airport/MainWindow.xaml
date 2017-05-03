@@ -40,13 +40,13 @@
                         <Label Content="Тип самолета" 
                                HorizontalAlignment="Left" VerticalAlignment="Top"
                                Width="120" Height="25" Margin="10,10,0,0"/>
-                        <ComboBox x:Name="planeType" 
+                        <ComboBox x:Name="planeType" Style="{StaticResource roundedCornersComboBox}"
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Width="120" Height="25" Margin="154,10,0,0"/>
                         <Label Content="Модель"
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="120"  Height="25" Margin="10,40,0,0"/>
-                        <ComboBox x:Name="planeModel"
+                        <ComboBox x:Name="planeModel" Style="{StaticResource roundedCornersComboBox}"
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Width="120" Height="25" Margin="154,40,0,0"/>
                         <Label Content="Количество мест"
@@ -87,7 +87,7 @@
                         <Label Content="Поиск по типу" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,70"/>
-                        <ComboBox x:Name="planeSearchByType"
+                        <ComboBox x:Name="planeSearchByType" Style="{StaticResource roundedCornersComboBox}"
                                   HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                   Width="120" Height="25" Margin="195,0,0,70"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
@@ -97,7 +97,7 @@
                         <Label Content="Поиск по модели" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,40"/>
-                        <ComboBox x:Name ="planeSearchByModel"
+                        <ComboBox x:Name ="planeSearchByModel" Style="{StaticResource roundedCornersComboBox}"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                  Height="25" Width="120" Margin="195,0,0,40"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
@@ -143,13 +143,13 @@
                         <Label Content="ID самолета" 
                                HorizontalAlignment="Left" VerticalAlignment="Top"
                                Width="120" Height="25" Margin="10,10,0,0"/>
-                        <ComboBox x:Name="flightIDPlane"
+                        <ComboBox x:Name="flightIDPlane" Style="{StaticResource roundedCornersComboBox}"
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Width="120" Height="25" Margin="154,10,0,0"/>
                         <Label Content="Авиакомпания"
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="120"  Height="25" Margin="10,40,0,0"/>
-                        <ComboBox x:Name="flightAirline"
+                        <ComboBox x:Name="flightAirline" Style="{StaticResource roundedCornersComboBox}"
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Width="120" Height="25" Margin="154,40,0,0"/>
                         <Label Content="Аэропорт прибытия"
@@ -157,8 +157,7 @@
                                Width="120"  Height="25" Margin="10,70,0,0"/>
                         <TextBox x:Name="flightAirportOfArrival" Template="{StaticResource textBox}" 
                              HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
-                             Width="120" Height="25" Margin="154,70,0,0" TextWrapping="Wrap"
-                             Validation.ErrorTemplate="{StaticResource validationFailed}">
+                             Width="120" Height="25" Margin="154,70,0,0" TextWrapping="Wrap">
                             <TextBox.Text>
                                 <Binding Path="Airline">
                                     <Binding.ValidationRules>
@@ -198,7 +197,7 @@
                         <Label Content="Поиск по авиакомпании" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,70"/>
-                        <ComboBox x:Name="flightSearchByAirline"
+                        <ComboBox x:Name="flightSearchByAirline" Style="{StaticResource roundedCornersComboBox}"
                                   HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                   Width="120" Height="25" Margin="195,0,0,70"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
@@ -326,13 +325,13 @@
                         <Label Content="Авиарейс"
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="120" Height="25" Margin="10,10,0,0"/>
-                        <ComboBox x:Name="ticketFlight"
+                        <ComboBox x:Name="ticketFlight" Style="{StaticResource roundedCornersComboBox}"
                                  HorizontalAlignment="Left" VerticalAlignment="Top"
                                  Width="120" Height="25" Margin="154,10,0,0"/>
                         <Label Content="Пассажир"
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="120"  Height="25" Margin="10,40,0,0"/>
-                        <ComboBox x:Name="ticketPassenger"
+                        <ComboBox x:Name="ticketPassenger" Style="{StaticResource roundedCornersComboBox}"
                                  HorizontalAlignment="Left" VerticalAlignment="Top"
                                  Width="120" Height="25" Margin="154,40,0,0"/>
                         <Button Content="Регистрация" Template="{StaticResource buttonBlue}" 
