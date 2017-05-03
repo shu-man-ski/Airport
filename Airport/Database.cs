@@ -72,8 +72,8 @@ namespace Airport
 
         static public void AddPlane(string _Type, string _Model, int _NumberOfSeats, int _Capacity, string _MaintenanceDate)
         {
-            string sql = "insert into Plane([Type], [Model], [NumberOfSeats], [Capacity], [MaintenanceDate])" +
-                                   "values (@Type,  @Model,  @NumberOfSeats,  @Capacity,  @MaintenanceDate)";
+            string sql = "insert into Plane([Тип], [Модель], [Количество мест], [Грузоподъемность], [Дата последнего ТО])" +
+                                   "values (@Type,  @Model,  @NumberOfSeats,    @Capacity,          @MaintenanceDate)";
             try
             {
                 connection = new SqlConnection(connectionString);
@@ -104,8 +104,8 @@ namespace Airport
         }
         static public void AddFlight(int _IDPlane, string _Airline, string _AirportOfArrival, string _DateOfDeparture, string _DateOfArrival)
         {
-            string sql = "insert into Flight([IDPlane], [Airline], [AirportOfArrival], [DateOfDeparture], [DateOfArival])" +
-                                    "values (@IDPlane,  @Airline,  @AirportOfArrival,  @DateOfDeparture,  @DateOfArival)";
+            string sql = "insert into Flight([ID самолета], [Авиакомпания], [Аэропорт прибытия], [Дата отправления], [Дата прибытия])" +
+                                    "values (@IDPlane,      @Airline,       @AirportOfArrival,   @DateOfDeparture,   @DateOfArival)";
             try
             {
                 connection = new SqlConnection(connectionString);
@@ -133,20 +133,20 @@ namespace Airport
                     connection.Close();
             }
         }
-        static public void Update(DataGrid _dataGrid, string _table)
+        
+        static public void Request(string _select, DataGrid _dataGrid = null)
         {
             dataTable = new DataTable();
-
-            string sql = "SELECT * FROM " + _table;
             try
             {
                 connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
+                SqlCommand command = new SqlCommand(_select, connection);
                 adapter = new SqlDataAdapter(command);
 
                 connection.Open();
                 adapter.Fill(dataTable);
-                _dataGrid.ItemsSource = dataTable.DefaultView;
+                if(_dataGrid != null)
+                    _dataGrid.ItemsSource = dataTable.DefaultView;
             }
             catch (SqlException ex)
             {

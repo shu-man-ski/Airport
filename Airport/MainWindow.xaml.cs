@@ -25,7 +25,7 @@ namespace Airport
         private Flight flight;
         private bool Authorization { get; set; }
         public static bool AuthorizationWnd { get; set; }
-        
+
 
         public MainWindow()
         {
@@ -33,7 +33,7 @@ namespace Airport
 
             InitPlaneTypeComboBox();
             InitPlaneModelComboBox();
-            flightIdPlane.ItemsSource = Database.InitFlightIDPlaneComboBox(flightIdPlane);
+            flightIDPlane.ItemsSource = Database.InitFlightIDPlaneComboBox(flightIDPlane);
             InitFlightAirline();
 
             Authorization = false;
@@ -49,6 +49,9 @@ namespace Airport
             planeType.Items.Add("Гражданский");
             planeType.Items.Add("Военный");
             planeType.Items.Add("Специальный");
+            planeSearchByType.Items.Add("Гражданский");
+            planeSearchByType.Items.Add("Военный");
+            planeSearchByType.Items.Add("Специальный");
         }
         private void InitPlaneModelComboBox()
         {
@@ -61,6 +64,16 @@ namespace Airport
             planeModel.Items.Add("Junkers (Германия)");
             planeModel.Items.Add("McDonnell Douglas (США)");
             planeModel.Items.Add("Messerschmitt (Германия)");
+
+            planeSearchByModel.Items.Add("Aérospatiale (Франция)");
+            planeSearchByModel.Items.Add("Airbus (ЕС)");
+            planeSearchByModel.Items.Add("Boeing (США)");
+            planeSearchByModel.Items.Add("British Aerospace (Великобритания)");
+            planeSearchByModel.Items.Add("British Aircraft (Великобритания)");
+            planeSearchByModel.Items.Add("Heinkel (Германия)");
+            planeSearchByModel.Items.Add("Junkers (Германия)");
+            planeSearchByModel.Items.Add("McDonnell Douglas (США)");
+            planeSearchByModel.Items.Add("Messerschmitt (Германия)");
         }
         private void InitFlightAirline()
         {
@@ -71,6 +84,14 @@ namespace Airport
             flightAirline.Items.Add("Minsk Air");
             flightAirline.Items.Add("AZUR Air");
             flightAirline.Items.Add("Air Astana");
+
+            flightSearchByAirline.Items.Add("Lufthansa");
+            flightSearchByAirline.Items.Add("S7 Airline");
+            flightSearchByAirline.Items.Add("Ber Air");
+            flightSearchByAirline.Items.Add("RusAir");
+            flightSearchByAirline.Items.Add("Minsk Air");
+            flightSearchByAirline.Items.Add("AZUR Air");
+            flightSearchByAirline.Items.Add("Air Astana");
         }
 
 
@@ -95,8 +116,14 @@ namespace Airport
         {
             CheckAuthoriztion();
 
-            Database.Update(planesGrid, "Plane");
-            Database.Update(flightsGrid, "Flight");
+            Database.Request("SELECT * FROM Plane", planesGrid);
+            Database.Request("SELECT * FROM Flight", flightsGrid);
+        }
+
+
+        private void MenuItemExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
 
@@ -109,22 +136,69 @@ namespace Airport
             plane.MaintenanceDate = planeMaintenanceDate.SelectedDate.Value.ToString("d");
 
             Database.AddPlane(plane.Type, plane.Model, plane.NumberOfSeats, plane.Capacity, plane.MaintenanceDate);
-            Database.Update(planesGrid, "Plane");
+            Database.Request("SELECT * FROM Plane", planesGrid);
         }
+        private void Plane_SearchByType_Click(object sender, RoutedEventArgs e)
+        {
+            ResultWindow resultWnd = new ResultWindow(planeSearchByType, "Plane", "Тип");
+            resultWnd.Show();
+        }
+        private void Plane_SearchByModel_Click(object sender, RoutedEventArgs e)
+        {
+            ResultWindow resultWnd = new ResultWindow(planeSearchByModel, "Plane", "Модель");
+            resultWnd.Show();
+        }
+        private void Plane_SearchByCapasity_Click(object sender, RoutedEventArgs e)
+        {
+            ResultWindow resultWnd = new ResultWindow(planeSearchByCapasity, "Plane", "Грузоподъемность");
+            resultWnd.Show();
+        }
+        private void Plane_DeleteByID_Click(object sender, RoutedEventArgs e)
+        {
+            if (planeDeleteByID.Text == "")
+            {
+                MessageBox.Show("Поле для удаления пустое. Повторите ввод");
+            }
+            else
+            {
+                Database.Request("DELETE FROM Plane WHERE ID = " + planeDeleteByID.Text);
+            }
+            Database.Request("SELECT * FROM Plane", planesGrid);
+        }
+
+
         private void Flight_Add_Click(object sender, RoutedEventArgs e)
         {
-            flight.IDPlane = int.Parse(flightIdPlane.Text);
+            flight.IDPlane = int.Parse(flightIDPlane.Text);
             flight.Airline = flightAirline.Text;
             flight.AirportOfArrival = flightAirportOfArrival.Text;
             flight.DateOfDeparture = flightDateOfDeparture.SelectedDate.Value.ToString("d");
             flight.DateOfArrival = flightDataOfArrival.SelectedDate.Value.ToString("d");
 
             Database.AddFlight(flight.IDPlane, flight.Airline, flight.AirportOfArrival, flight.DateOfDeparture, flight.DateOfArrival);
-            Database.Update(flightsGrid, "Flight");
+            Database.Request("SELECT * FROM Flight", flightsGrid);
         }
-        private void UpdateDB_Click(object sender, RoutedEventArgs e)
+        private void Flight_SearchByAirline_Click(object sender, RoutedEventArgs e)
         {
-            Database.Update(flightsGrid, "Flight");
+
+        }
+        private void Flight_SearchByAirportOfArrival_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Flight_SearchByDateOfDeparture_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Flight_DeleteByIDPlane_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        private void Passenger_Add_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

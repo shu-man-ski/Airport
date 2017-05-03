@@ -17,8 +17,8 @@
               VerticalAlignment="Top"
               Height="20">
             <MenuItem Header="Настройки"/>
-            <MenuItem Header="Вид" ></MenuItem>
-            <MenuItem Header="Выход" ></MenuItem>
+            <MenuItem Header="Вид"/>
+            <MenuItem Header="Выход" Click="MenuItemExit_Click"/>
         </Menu>
         <TabControl Grid.Column="0" Grid.Row="1"
                     HorizontalAlignment="Left" VerticalAlignment="Top"
@@ -38,7 +38,7 @@
                         <Label Content="Тип самолета" 
                                HorizontalAlignment="Left" VerticalAlignment="Top"
                                Width="120" Height="25" Margin="10,10,0,0"/>
-                        <ComboBox x:Name="planeType"
+                        <ComboBox x:Name="planeType" 
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Width="120" Height="25" Margin="154,10,0,0"/>
                         <Label Content="Модель"
@@ -85,40 +85,44 @@
                         <Label Content="Поиск по типу" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,70"/>
-                        <TextBox Template="{StaticResource textBox}" 
-                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="195,0,0,70"/>
+                        <ComboBox x:Name="planeSearchByType"
+                                  HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                  Width="120" Height="25" Margin="195,0,0,70"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,70"/>
+                                Width="74" Height="25" Margin="320,0,0,70"
+                                Click="Plane_SearchByType_Click"/>
                         <Label Content="Поиск по модели" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,40"/>
-                        <TextBox Template="{StaticResource textBox}" 
+                        <ComboBox x:Name ="planeSearchByModel"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                 Height="25" TextWrapping="Wrap" Width="120" Margin="195,0,0,40"/>
+                                 Height="25" Width="120" Margin="195,0,0,40"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,40"/>
+                                Width="74" Height="25" Margin="320,0,0,40" Click="Plane_SearchByModel_Click"/>
                         <Label Content="Поиск по грузоподъемности" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,10"/>
-                        <TextBox Template="{StaticResource textBox}" 
-                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="195,0,0,10"/>
+                        <TextBox x:Name="planeSearchByCapasity" Template="{StaticResource textBox}" 
+                                 HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center" 
+                                 Width="77" Height="25" TextWrapping="Wrap" Margin="195,0,0,10"/>
+                        <Label Content="(тонн)" 
+                               HorizontalAlignment="Left" VerticalAlignment="Top" 
+                               Width="43" Height="25" Margin="272,68,0,0"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,10"/>
-
+                                Width="74" Height="25" Margin="320,0,0,10" Click="Plane_SearchByCapasity_Click"/>
+                        
                         <Label Content="Удалить самолет по ID" 
                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                                Height="25" Margin="0,0,214,10"/>
-                        <TextBox Template="{StaticResource textBox}" 
-                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                        <TextBox x:Name="planeDeleteByID" Template="{StaticResource textBox}" 
+                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
                                  Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"/>
                         <Button Content="Удалить" Template="{StaticResource buttonRed}" 
                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                                Width="74" Height="25" RenderTransformOrigin="1.473,-1.692" Margin="0,0,10,10"/>
+                                Width="74" Height="25" Margin="0,0,10,10" Click="Plane_DeleteByID_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -131,13 +135,13 @@
                         <RowDefinition Height="1.5*"></RowDefinition>
                         <RowDefinition Height="2.5*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
-                    </Grid.RowDefinitions>                   
+                    </Grid.RowDefinitions>
 
                     <Grid Grid.Column="0" Grid.Row="0">
                         <Label Content="ID самолета" 
                                HorizontalAlignment="Left" VerticalAlignment="Top"
                                Width="120" Height="25" Margin="10,10,0,0"/>
-                        <ComboBox x:Name="flightIdPlane"
+                        <ComboBox x:Name="flightIDPlane"
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Width="120" Height="25" Margin="154,10,0,0"/>
                         <Label Content="Авиакомпания"
@@ -192,87 +196,117 @@
                         <Label Content="Поиск по авиакомпании" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,70"/>
-                        <TextBox Template="{StaticResource textBox}" 
-                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="195,0,0,70"/>
+                        <ComboBox x:Name="flightSearchByAirline"
+                                  HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                  Width="120" Height="25" Margin="195,0,0,70"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,70"/>
+                                Width="74" Height="25" Margin="320,0,0,70" Click="Flight_SearchByAirline_Click"/>
                         <Label Content="Поиск по аэропорту прибытия" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,40"/>
-                        <TextBox Template="{StaticResource textBox}" 
-                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                        <TextBox x:Name="flightSearchByAirportOfArrival" Template="{StaticResource textBox}" 
+                                 HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
                                  Height="25" TextWrapping="Wrap" Width="120" Margin="195,0,0,40"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,40"/>
+                                Width="74" Height="25" Margin="320,0,0,40" Click="Flight_SearchByAirportOfArrival_Click"/>
                         <Label Content="Поиск по дате отправления" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,10"/>
-                        <TextBox Template="{StaticResource textBox}" 
-                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="195,0,0,10"/>
+                        <DatePicker x:Name="flightSearchByDateOfDeparture"
+                                    HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                    Width="120" Height="25" Margin="195,0,0,10"
+                                    UseLayoutRounding="False" FontStyle="Italic"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,10"/>
+                                Width="74" Height="25" Margin="320,0,0,10" Click="Flight_SearchByDateOfDeparture_Click"/>
 
                         <Label Content="Удалить рейс по ID" 
                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                                Height="25" Margin="0,0,214,10"/>
-                        <TextBox Template="{StaticResource textBox}" 
-                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                        <TextBox x:Name="flightDeleteByIDPlane" Template="{StaticResource textBox}" 
+                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
                                  Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"/>
                         <Button Content="Удалить" Template="{StaticResource buttonRed}" 
                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                                Width="74" Height="25" RenderTransformOrigin="1.473,-1.692" Margin="0,0,10,10"/>
+                                Width="74" Height="25" Margin="0,0,10,10" Click="Flight_DeleteByIDPlane_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Пассажиры">
-                <Grid Height="544">
-                    <Label Content="Номер паспорта"
-                           HorizontalAlignment="Left" VerticalAlignment="Top" 
-                           Width="127" Margin="13,14,0,0"/>
-                    <TextBox x:Name="a1" Template="{StaticResource textBox}" 
-                             HorizontalAlignment="Left" VerticalAlignment="Top"
-                             Width="120" Height="20" Margin="145,20,0,0" TextWrapping="Wrap"/>
-                    <Label Content="Место и дата выдачи" 
-                           HorizontalAlignment="Left" VerticalAlignment="Top"
-                           Width="127" Margin="13,45,0,0"/>
-                    <TextBox x:Name="a2" Template="{StaticResource textBox}"
-                             HorizontalAlignment="Left" VerticalAlignment="Top"
-                             Width="120" Height="20" Margin="145,51,0,0" TextWrapping="Wrap"/>
-                    <Label Content="ФИО"
-                           HorizontalAlignment="Left" VerticalAlignment="Top"
-                           Width="127" Margin="13,76,0,0"/>
-                    <TextBox x:Name="a3" Template="{StaticResource textBox}"
-                             HorizontalAlignment="Left" VerticalAlignment="Top"
-                             Width="120" Height="20" Margin="145,82,0,0" TextWrapping="Wrap"/>
-                    <Button Content="Регистрация" Template="{StaticResource buttonBlue}" 
-                            Margin="656,110,184,407"/>
-                    <Button Content="Обновить" Template="{StaticResource buttonCyan}" 
-                            HorizontalAlignment="Left" VerticalAlignment="Top" 
-                            Width="148" Height="27" Margin="820,110,0,0"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                        <RowDefinition Height="2.5*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <Label Content="Номер паспорта"
+                               HorizontalAlignment="Left" VerticalAlignment="Top" 
+                               Width="120" Height="25" Margin="10,10,0,0"/>
+                        <TextBox x:Name="passengerNumberPassport" Template="{StaticResource textBox}" 
+                                 HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                                  Width="120" Height="25" Margin="154,10,0,0"/>
+                        <Label Content="Место и дата выдачи" 
+                               HorizontalAlignment="Left" VerticalAlignment="Top" 
+                               Width="120"  Height="25" Margin="10,40,0,0"/>
+                        <TextBox x:Name="passengerPlaceAndDateIssuing" Template="{StaticResource textBox}"
+                                 HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                                 Width="120" Height="25" Margin="154,40,0,0"/>
+                        <Label Content="ФИО"
+                               HorizontalAlignment="Left" VerticalAlignment="Top" 
+                               Width="120"  Height="25" Margin="10,70,0,0"/>
+                        <TextBox x:Name="a3" Template="{StaticResource textBox}"
+                             HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                             Width="120" Height="25" Margin="154,70,0,0" TextWrapping="Wrap"/>
+                        <Button Content="Регистрация" Template="{StaticResource buttonBlue}" 
+                                HorizontalAlignment="Right" VerticalAlignment="Top" 
+                                Width="120" Height="25" 
+                                Click="Passenger_Add_Click" Margin="0,127,10,0"/>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <DataGrid x:Name="passengerGrid" 
+                                  HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                  Height="240" Width="946" Margin="10,10,0,0"
+                                  HeadersVisibility="Column" MinColumnWidth="155.0" MaxColumnWidth="155.0"
+                                  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="2">
+                        <Label Content="Поиск по номеру паспорта"
+                               HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                               Width="180" Height="25" Margin="10,0,0,70"/>
+                        <TextBox Template="{StaticResource textBox}" 
+                                 HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
+                                 Width="120" Height="25" TextWrapping="Wrap" Margin="195,0,0,70"/>
+                        <Button Content="Найти" Template="{StaticResource buttonGreen}" 
+                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                Width="74" Height="25" Margin="320,0,0,70"/>
+                        <Label Content="Поиск по ФИО"
+                               HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                               Width="180" Height="25" Margin="10,0,0,40"/>
+                        <TextBox Template="{StaticResource textBox}" 
+                                 HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
+                                 Height="25" TextWrapping="Wrap" Width="120" Margin="195,0,0,40"/>
+                        <Button Content="Найти" Template="{StaticResource buttonGreen}" 
+                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                Width="74" Height="25" Margin="320,0,0,40"/>
 
-                    <DataGrid x:Name="passengersGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Height="289" Width="958" HeadersVisibility="Column" MinColumnWidth="130.0" MaxColumnWidth="141.0" Margin="10,143,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
 
-                    <GroupBox Header="Поиск" HorizontalAlignment="Left" Margin="10,437,0,0" VerticalAlignment="Top" Height="97" Width="402">
-                        <Grid>
-                            <Label Content="Поиск по номеру паспорта" HorizontalAlignment="Left" Margin="0,14,0,0" VerticalAlignment="Top" Width="180"/>
-                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="185,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Label Content="Поиск по ФИО" HorizontalAlignment="Left" Margin="0,46,0,0" VerticalAlignment="Top"/>
-                            <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="185,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Button Content="Найти" Template="{StaticResource buttonGreen}" HorizontalAlignment="Left" Margin="310,17,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
-                            <Button Content="Найти" Template="{StaticResource buttonGreen}" HorizontalAlignment="Left" Margin="310,49,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
-                        </Grid>
-                    </GroupBox>
-
-                    <Label Content="Удалить пассажира с № паспорта" HorizontalAlignment="Left" Margin="568,440,0,0" VerticalAlignment="Top"/>
-                    <TextBox Template="{StaticResource textBox}" HorizontalAlignment="Left" Height="20" Margin="769,443,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button Content="Удалить" Template="{StaticResource buttonRed}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="894,443,0,0" Height="20" RenderTransformOrigin="1.473,-1.692"/>
-                    <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="13,104,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Template="{StaticResource textBox}" Height="20" Margin="145,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Удалить пассажира по № паспорта"
+                               HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                               Height="25" Margin="0,0,214,10"/>
+                        <TextBox Template="{StaticResource textBox}" 
+                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
+                                 Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"/>
+                        <Button Content="Удалить" Template="{StaticResource buttonRed}" 
+                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                                Width="74" Height="25" Margin="0,0,10,10"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Билеты">

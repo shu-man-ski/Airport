@@ -106,6 +106,25 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         
+        <!--<ControlTemplate TargetType="ComboBox" x:Key="comboBox">
+            <Border x:Name="buttonRedBorder" 
+                    BorderBrush="#FF8C8C8C" 
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Background="#FFFFAD95"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}">
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="buttonRedBorder" Property="Background" Value="#FFF7734C"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>-->
+        
         <!--<ControlTemplate TargetType="DataGrid" x:Key="dateGrid">
             <Border x:Name="dateGridBorder" 
                     BorderBrush="#FF8C8C8C" 
