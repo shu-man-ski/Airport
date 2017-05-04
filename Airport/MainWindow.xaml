@@ -54,13 +54,31 @@
                                Width="120"  Height="25" Margin="10,70,0,0"/>
                         <TextBox x:Name="planeNumberOfSeats" Template="{StaticResource textBox}" 
                                  HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
-                                 Width="120" Height="25" Margin="154,70,0,0" TextWrapping="Wrap"/>
+                                 Width="120" Height="25" Margin="154,70,0,0" TextWrapping="Wrap"
+                                 Validation.ErrorTemplate="{StaticResource validationFailed}">
+                            <TextBox.Text>
+                                <Binding Path="PlaneNumberOfSeats">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <Label Content="Грузоподъемность" 
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="120" Height="25" Margin="10,100,0,0"/>
                         <TextBox x:Name="planeCapacity" Template="{StaticResource textBox}" 
-                                 HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
-                                 Width="77" Height="25" Margin="154,100,0,0" TextWrapping="Wrap"/>
+                                 HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                                 Width="77" Margin="154,100,0,32" TextWrapping="Wrap"
+                                 Validation.ErrorTemplate="{StaticResource validationFailed}">
+                            <TextBox.Text>
+                                <Binding Path="PlaneCapacity">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <Label Content="(тонн)" 
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="43" Height="25" Margin="231,100,0,0"/>
@@ -108,20 +126,38 @@
                                Width="180" Height="25" Margin="10,0,0,10"/>
                         <TextBox x:Name="planeSearchByCapasity" Template="{StaticResource textBox}" 
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center" 
-                                 Width="77" Height="25" TextWrapping="Wrap" Margin="195,0,0,10"/>
+                                 Width="77" Height="25" TextWrapping="Wrap" Margin="195,0,0,10"
+                                 Validation.ErrorTemplate="{StaticResource validationFailed}">
+                            <TextBox.Text>
+                                <Binding Path="PlaneSearchCapacity">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <Label Content="(тонн)" 
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="43" Height="25" Margin="272,68,0,0"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                 Width="74" Height="25" Margin="320,0,0,10" Click="Plane_SearchByCapasity_Click"/>
-                        
+
                         <Label Content="Удалить самолет по ID" 
                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                                Height="25" Margin="0,0,214,10"/>
                         <TextBox x:Name="planeDeleteByID" Template="{StaticResource textBox}" 
                                  HorizontalAlignment="Right" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"/>
+                                 Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"
+                                 Validation.ErrorTemplate="{StaticResource validationFailed}">
+                            <TextBox.Text>
+                                <Binding Path="PlaneDeleteByID">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <Button Content="Удалить" Template="{StaticResource buttonRed}" 
                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                                 Width="74" Height="25" Margin="0,0,10,10" Click="Plane_DeleteByID_Click"/>
@@ -157,15 +193,7 @@
                                Width="120"  Height="25" Margin="10,70,0,0"/>
                         <TextBox x:Name="flightAirportOfArrival" Template="{StaticResource textBox}" 
                              HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
-                             Width="120" Height="25" Margin="154,70,0,0" TextWrapping="Wrap">
-                            <TextBox.Text>
-                                <Binding Path="Airline">
-                                    <Binding.ValidationRules>
-                                        <ExceptionValidationRule />
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox.Text>
-                        </TextBox>
+                             Width="120" Height="25" Margin="154,70,0,0" TextWrapping="Wrap"/>
                         <Label Content="Дата отправления" 
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="120" Height="25" Margin="10,100,0,0"/>
@@ -208,7 +236,16 @@
                                Width="180" Height="25" Margin="10,0,0,40"/>
                         <TextBox x:Name="flightSearchByAirportOfArrival" Template="{StaticResource textBox}" 
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
-                                 Height="25" TextWrapping="Wrap" Width="120" Margin="195,0,0,40"/>
+                                 Height="25" TextWrapping="Wrap" Width="120" Margin="195,0,0,40"
+                                 Validation.ErrorTemplate="{StaticResource validationFailed}">
+                            <TextBox.Text>
+                                <Binding Path="Capacity">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                 Width="74" Height="25" Margin="320,0,0,40" Click="Flight_SearchByAirportOfArrival_Click"/>
@@ -228,7 +265,16 @@
                                Height="25" Margin="0,0,214,10"/>
                         <TextBox x:Name="flightDeleteByIDPlane" Template="{StaticResource textBox}" 
                                  HorizontalAlignment="Right" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"/>
+                                 Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"
+                                 Validation.ErrorTemplate="{StaticResource validationFailed}">
+                            <TextBox.Text>
+                                <Binding Path="FlightDeleteByIDPlane">
+                                    <Binding.ValidationRules>
+                                        <ExceptionValidationRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <Button Content="Удалить" Template="{StaticResource buttonRed}" 
                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                                 Width="74" Height="25" Margin="0,0,10,10" Click="Flight_DeleteByIDPlane_Click"/>
@@ -245,7 +291,7 @@
                         <RowDefinition Height="2.5*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Column="0" Grid.Row="0">
                         <Label Content="Номер паспорта"
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
@@ -320,7 +366,7 @@
                         <RowDefinition Height="2.5*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Column="0" Grid.Row="0">
                         <Label Content="Авиарейс"
                                HorizontalAlignment="Left" VerticalAlignment="Top" 

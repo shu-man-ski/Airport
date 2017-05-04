@@ -19,6 +19,7 @@ namespace Airport
         private Flight flight;
         private bool Authorization { get; set; }
         public static bool AuthorizationWnd { get; set; }
+        const int validItem = 0;
 
 
         public MainWindow()
@@ -39,6 +40,8 @@ namespace Airport
             admin = new Admin();
             plane = new Plane();
             flight = new Flight();
+
+            this.DataContext = new Valid();
         }
 
         private void InitPlaneTypeComboBox()
@@ -113,14 +116,22 @@ namespace Airport
 
         private void Plane_Add_Click(object sender, RoutedEventArgs e)
         {
-            plane.Type = planeType.SelectedItem.ToString();
-            plane.Model = planeModel.SelectedItem.ToString();
-            plane.NumberOfSeats = int.Parse(planeNumberOfSeats.Text);
-            plane.Capacity = int.Parse(planeCapacity.Text);
-            plane.MaintenanceDate = planeMaintenanceDate.SelectedDate.Value.ToString("d");
 
-            Database.AddPlane(plane.Type, plane.Model, plane.NumberOfSeats, plane.Capacity, plane.MaintenanceDate);
-            Database.Request("SELECT * FROM Plane", planesGrid);
+
+            if (planeType.Items.IndexOf(planeType.Text) > 0 && planeModel.Items.IndexOf(planeModel.Text) > 0 &&
+                planeNumberOfSeats.Text != "" && planeCapacity.Text != "")
+            {
+                plane.Type = planeType.SelectedItem.ToString();
+                plane.Model = planeModel.SelectedItem.ToString();
+                plane.NumberOfSeats = int.Parse(planeNumberOfSeats.Text);
+                plane.Capacity = int.Parse(planeCapacity.Text);
+                plane.MaintenanceDate = planeMaintenanceDate.SelectedDate.Value.ToString("d");
+
+                Database.AddPlane(plane.Type, plane.Model, plane.NumberOfSeats, plane.Capacity, plane.MaintenanceDate);
+                Database.Request("SELECT * FROM Plane", planesGrid);
+            }
+            else
+                MessageBox.Show("Заполните все поля для ввода");
         }
         private void Plane_SearchByType_Click(object sender, RoutedEventArgs e)
         {
