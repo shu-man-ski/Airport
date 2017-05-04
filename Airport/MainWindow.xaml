@@ -299,18 +299,24 @@
                         <TextBox x:Name="passengerNumberPassport" Template="{StaticResource textBox}" 
                                  HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
                                  Width="120" Height="25" Margin="154,10,0,0"/>
-                        <Label Content="Место и дата выдачи" 
+                        <Label Content="Место и кем выдан" 
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="120"  Height="25" Margin="10,40,0,0"/>
                         <TextBox x:Name="passengerPlaceAndDateIssuing" Template="{StaticResource textBox}"
                                  HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
                                  Width="120" Height="25" Margin="154,40,0,0"/>
-                        <Label Content="ФИО"
+                        <Label Content="Дата выдачи"
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="120"  Height="25" Margin="10,70,0,0"/>
-                        <TextBox x:Name="a3" Template="{StaticResource textBox}"
-                             HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
-                             Width="120" Height="25" Margin="154,70,0,0" TextWrapping="Wrap"/>
+                        <DatePicker x:Name="passengerDateIssue"
+                                  HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                  Width="120" Height="25" Margin="154,70,0,0"/>
+                        <Label Content="ФИО" 
+                               HorizontalAlignment="Left" VerticalAlignment="Top" 
+                               Width="120" Height="25" Margin="10,100,0,0"/>
+                        <TextBox x:Name="a4" Template="{StaticResource textBox}" 
+                                 HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                                 Width="120" Margin="154,100,0,32" TextWrapping="Wrap"/>
                         <Button Content="Регистрация" Template="{StaticResource buttonBlue}" 
                                 HorizontalAlignment="Right" VerticalAlignment="Top" 
                                 Width="120" Height="25" 

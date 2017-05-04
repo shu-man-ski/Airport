@@ -26,6 +26,7 @@ namespace Airport
         {
             InitializeComponent();
 
+            InitAllDatePicker();
             InitPlaneTypeComboBox();
             InitPlaneModelComboBox();
             planeSearchByType.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Тип] FROM Plane", "[Тип]");
@@ -80,6 +81,14 @@ namespace Airport
             flightSearchByAirline.Items.Add("AZUR Air");
             flightSearchByAirline.Items.Add("Air Astana");
         }
+        private void InitAllDatePicker()
+        {
+            planeMaintenanceDate.DisplayDateEnd = DateTime.Now;
+            flightDateOfDeparture.DisplayDateEnd = DateTime.Now;
+            flightDataOfArrival.DisplayDateEnd = DateTime.Now;
+            flightSearchByDateOfDeparture.DisplayDateEnd = DateTime.Now;
+            passengerDateIssue.DisplayDateEnd = DateTime.Now;
+        }
 
 
         private void CheckAuthoriztion()
@@ -116,10 +125,9 @@ namespace Airport
 
         private void Plane_Add_Click(object sender, RoutedEventArgs e)
         {
-
-
+            DateTime? date = planeMaintenanceDate.SelectedDate;
             if (planeType.Items.IndexOf(planeType.Text) > 0 && planeModel.Items.IndexOf(planeModel.Text) > 0 &&
-                planeNumberOfSeats.Text != "" && planeCapacity.Text != "")
+                planeNumberOfSeats.Text != "" && planeCapacity.Text != "" && date != null)
             {
                 plane.Type = planeType.SelectedItem.ToString();
                 plane.Model = planeModel.SelectedItem.ToString();
@@ -162,14 +170,22 @@ namespace Airport
 
         private void Flight_Add_Click(object sender, RoutedEventArgs e)
         {
-            flight.IDPlane = int.Parse(flightIDPlane.Text);
-            flight.Airline = flightAirline.Text;
-            flight.AirportOfArrival = flightAirportOfArrival.Text;
-            flight.DateOfDeparture = flightDateOfDeparture.SelectedDate.Value.ToString("d");
-            flight.DateOfArrival = flightDataOfArrival.SelectedDate.Value.ToString("d");
+            DateTime? dateOfDeparture = flightDateOfDeparture.SelectedDate;
+            DateTime? dateOfArrival = flightDataOfArrival.SelectedDate;
+            if (flightIDPlane.Items.IndexOf(flightIDPlane.Text) > 0 && flightAirline.Items.IndexOf(flightAirline.Text) > 0 &&
+                flightAirportOfArrival.Text != "" && dateOfDeparture != null && dateOfArrival != null)
+            {
+                flight.IDPlane = int.Parse(flightIDPlane.Text);
+                flight.Airline = flightAirline.Text;
+                flight.AirportOfArrival = flightAirportOfArrival.Text;
+                flight.DateOfDeparture = flightDateOfDeparture.SelectedDate.Value.ToString("d");
+                flight.DateOfArrival = flightDataOfArrival.SelectedDate.Value.ToString("d");
 
-            Database.AddFlight(flight.IDPlane, flight.Airline, flight.AirportOfArrival, flight.DateOfDeparture, flight.DateOfArrival);
-            Database.Request("SELECT * FROM Flight", flightsGrid);
+                Database.AddFlight(flight.IDPlane, flight.Airline, flight.AirportOfArrival, flight.DateOfDeparture, flight.DateOfArrival);
+                Database.Request("SELECT * FROM Flight", flightsGrid);
+            }
+            else
+                MessageBox.Show("Заполните все поля для ввода");
         }
         private void Flight_SearchByAirline_Click(object sender, RoutedEventArgs e)
         {
@@ -196,8 +212,8 @@ namespace Airport
 
 
         private void Ticket_Add_Click(object sender, RoutedEventArgs e)
-        { 
-        
+        {
+
         }
     }
 }

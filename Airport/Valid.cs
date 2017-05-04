@@ -13,5 +13,8 @@ namespace Airport
         public int PlaneSearchCapacity { get; set; }
         public int PlaneDeleteByID { get; set; }
         public int FlightDeleteByIDPlane { get; set; }
+        public int PassengerNumberPassport { get; set; }
+        public int PassengerSearchNumberPassport { get; set; }
+        public int PassengerDeleteNumberPassport { get; set; }
     }
 }
