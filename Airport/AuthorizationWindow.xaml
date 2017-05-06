@@ -17,11 +17,8 @@
 
         <Image x:Name="mainImage" Grid.Column="0" Grid.RowSpan="6"
                HorizontalAlignment="Left"
-               Margin="0,10,150,10">
-            <Image.Source>
-                <FormatConvertedBitmap Source="D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\Image\aut.png"/>
-            </Image.Source>
-        </Image>
+               Margin="0,10,150,10"
+               Source="aut.png"/>
 
         <TextBlock Text="Введите логин:"
                    Grid.Row="0" 

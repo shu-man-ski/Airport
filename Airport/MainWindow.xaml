@@ -99,6 +99,7 @@
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Height="240" Width="946" Margin="10,10,0,0"
                                   HeadersVisibility="Column" MinColumnWidth="155.0" MaxColumnWidth="155.0"
+                                  RowBackground="White" AlternatingRowBackground="#FF9CB2D1" IsReadOnly="True"
                                   HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
@@ -219,6 +220,7 @@
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Height="240" Width="946" Margin="10,10,0,0"
                                   HeadersVisibility="Column" MinColumnWidth="155.0" MaxColumnWidth="155.0"
+                                  RowBackground="White" AlternatingRowBackground="#FF9CC0FF"
                                   HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
@@ -327,6 +329,7 @@
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Height="240" Width="946" Margin="10,10,0,0"
                                   HeadersVisibility="Column" MinColumnWidth="155.0" MaxColumnWidth="155.0"
+                                  RowBackground="White" AlternatingRowBackground="#FF9CC0FF"
                                   HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
@@ -396,6 +399,7 @@
                                   HorizontalAlignment="Left" VerticalAlignment="Top" 
                                   Height="240" Width="946" Margin="10,10,0,0"
                                   HeadersVisibility="Column" MinColumnWidth="155.0" MaxColumnWidth="155.0"
+                                  RowBackground="White" AlternatingRowBackground="#FF9CC0FF"
                                   HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
