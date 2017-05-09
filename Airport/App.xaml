@@ -192,6 +192,7 @@
             <Setter Property="Margin" Value="10,10,10,10"/>
             <Setter Property="HeadersVisibility" Value="Column"/>
             <Setter Property="MinColumnWidth" Value="154.5"/>
+            <Setter Property="ColumnWidth" Value="*"/>
             <Setter Property="GridLinesVisibility" Value="Vertical"/>
             <Setter Property="RowBackground" Value="White"/>
             <Setter Property="AlternatingRowBackground" Value="#FF9CB2D1"/>
@@ -201,5 +202,25 @@
             <Setter Property="IsReadOnly" Value="True"/>
         </Style>
 
+        <!-- DatePicker -->
+        <Style TargetType="DatePicker">
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="DatePickerTextBox">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <TextBox x:Name="PART_TextBox"
+                                 Text="{Binding Path=SelectedDate, StringFormat = {}{0:dd.MM.yyyy}, 
+                                        RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"
+                                 Margin="-2,-4,0,-3" IsReadOnly="True"
+                                 VerticalContentAlignment="Center"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
     </Application.Resources>
 </Application>

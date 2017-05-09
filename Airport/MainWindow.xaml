@@ -68,8 +68,7 @@
                                Width="330" Height="25" Margin="10,130,0,0"/>
                         <DatePicker x:Name="planeMaintenanceDate"
                                     HorizontalAlignment="Left" VerticalAlignment="Top" 
-                                    Width="120" Height="25" Margin="345,130,0,0"
-                                    FontStyle="Italic"/>
+                                    Width="120" Height="25" Margin="345,130,0,0"/>
                         <Button Content="Регистрация" Template="{StaticResource buttonBlue}"
                                 HorizontalAlignment="Right" VerticalAlignment="Top" 
                                 Width="120" Height="25" 
