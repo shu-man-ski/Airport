@@ -18,6 +18,7 @@ namespace Airport
     {
         static private string connectionString;
         static private SqlDataAdapter adapter;
+        static private SqlCommand command;
         static private SqlConnection connection;
         static private DataTable dataTable;
 
@@ -132,13 +133,13 @@ namespace Airport
             }
         }
         
-        static public void Request(string _select, DataGrid _dataGrid = null)
+        static public int Request(string _select, DataGrid _dataGrid = null)
         {
             dataTable = new DataTable();
             try
             {
                 connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(_select, connection);
+                command = new SqlCommand(_select, connection);
                 adapter = new SqlDataAdapter(command);
 
                 connection.Open();
@@ -159,6 +160,7 @@ namespace Airport
                 if (connection != null)
                     connection.Close();
             }
+            return dataTable.Rows.Count;
         }
     }
 }

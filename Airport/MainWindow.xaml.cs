@@ -47,8 +47,8 @@ namespace Airport
 
         private void InitPlaneTypeComboBox()
         {
-            planeType.Items.Add("Гражданский");
             planeType.Items.Add("Военный");
+            planeType.Items.Add("Гражданский");
             planeType.Items.Add("Специальный");
         }
         private void InitPlaneModelComboBox()
@@ -117,6 +117,14 @@ namespace Airport
         }
 
 
+        private void MenuItemUsers_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Пользователи");
+        }
+        private void MenuItemAbout_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("О программе");
+        }
         private void MenuItemExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -126,7 +134,7 @@ namespace Airport
         private void Plane_Add_Click(object sender, RoutedEventArgs e)
         {
             DateTime? date = planeMaintenanceDate.SelectedDate;
-            if (planeType.Items.IndexOf(planeType.Text) > 0 && planeModel.Items.IndexOf(planeModel.Text) > 0 &&
+            if (planeType.Items.IndexOf(planeType.Text) >= 0 && planeModel.Items.IndexOf(planeModel.Text) >= 0 &&
                 planeNumberOfSeats.Text != "" && planeCapacity.Text != "" && date != null)
             {
                 plane.Type = planeType.SelectedItem.ToString();
@@ -139,7 +147,10 @@ namespace Airport
                 Database.Request("SELECT * FROM Plane", planesGrid);
             }
             else
-                MessageBox.Show("Заполните все поля для ввода");
+                MessageBox.Show("Проверьте, заполненны ли все поля, и убедитесь в их корректности",
+                    "Предупреждение",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
         }
         private void Plane_SearchByType_Click(object sender, RoutedEventArgs e)
         {
@@ -158,11 +169,26 @@ namespace Airport
         {
             if (planeDeleteByID.Text == "")
             {
-                MessageBox.Show("Поле для удаления пустое. Повторите ввод");
+                MessageBox.Show("Пустое поле для удаления. Повторите ввод",
+                    "Предупреждение",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
             }
             else
             {
-                Database.Request("DELETE FROM Plane WHERE ID = " + planeDeleteByID.Text);
+                if (Database.Request("SELECT * FROM Plane WHERE ID = " + planeDeleteByID.Text) != 1)
+                    MessageBox.Show("Самолет с таким ID не найден",
+                        "Предупреждение",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                else
+                {
+                    Database.Request("DELETE FROM Plane WHERE ID = " + planeDeleteByID.Text);
+                    MessageBox.Show("Самолет с ID " + planeDeleteByID.Text + " был успешно удален",
+                        "Предупреждение",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
             }
             Database.Request("SELECT * FROM Plane", planesGrid);
         }
