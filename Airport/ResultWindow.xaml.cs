@@ -39,5 +39,19 @@ namespace Airport
                 this.Show();
             }
         }
+        public ResultWindow(DatePicker _search, string _table, string _obj)
+        {
+            InitializeComponent();
+
+            if (_search.SelectedDate == null)
+            {
+                MessageBox.Show("Поле для поиска пустое. Повторите ввод");
+            }
+            else
+            {
+                Database.Request("SELECT * FROM " + _table + " WHERE " + _obj + " = " + "'" + _search.SelectedDate.Value.ToString("d") + "'", searchResult);
+                this.Show();
+            }
+        }
     }
 }
