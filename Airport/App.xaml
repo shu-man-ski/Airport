@@ -191,7 +191,7 @@
             <Setter Property="Height" Value="240"/>
             <Setter Property="Margin" Value="10,10,10,10"/>
             <Setter Property="HeadersVisibility" Value="Column"/>
-            <Setter Property="MinColumnWidth" Value="145.4"/>
+            <Setter Property="MinColumnWidth" Value="154.5"/>
             <Setter Property="GridLinesVisibility" Value="Vertical"/>
             <Setter Property="RowBackground" Value="White"/>
             <Setter Property="AlternatingRowBackground" Value="#FF9CB2D1"/>

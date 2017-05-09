@@ -53,7 +53,7 @@ namespace Airport
         }
         private void InitPlaneModelComboBox()
         {
-            planeModel.Items.Add("Aérospatiale");
+            planeModel.Items.Add("Aerospatiale");
             planeModel.Items.Add("Airbus");
             planeModel.Items.Add("Boeing");
             planeModel.Items.Add("British Aerospace");

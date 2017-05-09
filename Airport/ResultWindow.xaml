@@ -3,6 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Результат поиска" Height="318" Width="988" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid x:Name="searchResult"/>
+        <DataGrid x:Name="searchResult" Margin="13,0,13,0"/>
     </Grid>
 </Window>
