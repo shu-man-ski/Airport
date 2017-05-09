@@ -134,8 +134,9 @@ namespace Airport
         private void Plane_Add_Click(object sender, RoutedEventArgs e)
         {
             DateTime? date = planeMaintenanceDate.SelectedDate;
-            if (planeType.Items.IndexOf(planeType.Text) >= 0 && planeModel.Items.IndexOf(planeModel.Text) >= 0 &&
-                planeNumberOfSeats.Text != "" && planeCapacity.Text != "" && date != null)
+            if ((planeType.Items.IndexOf(planeType.Text) >= 0 && planeModel.Items.IndexOf(planeModel.Text) >= 0 &&
+                planeNumberOfSeats.Text != "" && planeCapacity.Text != "" && date != null) &&
+                (Valid.IsNum(planeNumberOfSeats.Text) && Valid.IsNum(planeCapacity.Text)))
             {
                 plane.Type = planeType.SelectedItem.ToString();
                 plane.Model = planeModel.SelectedItem.ToString();
@@ -147,7 +148,7 @@ namespace Airport
                 Database.Request("SELECT * FROM Plane", planesGrid);
             }
             else
-                MessageBox.Show("Проверьте, заполненны ли все поля, и убедитесь в их корректности",
+                MessageBox.Show("Проверьте, заполнены ли все поля, и убедитесь в их корректности",
                     "Предупреждение",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
@@ -183,11 +184,11 @@ namespace Airport
                         MessageBoxImage.Information);
                 else
                 {
-                    Database.Request("DELETE FROM Plane WHERE ID = " + planeDeleteByID.Text);
-                    MessageBox.Show("Самолет с ID " + planeDeleteByID.Text + " был успешно удален",
-                        "Предупреждение",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
+                    if (Database.Request("DELETE FROM Plane WHERE ID = " + planeDeleteByID.Text) != 0)
+                        MessageBox.Show("Самолет с ID " + planeDeleteByID.Text + " был успешно удален",
+                            "Предупреждение",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
                 }
             }
             Database.Request("SELECT * FROM Plane", planesGrid);

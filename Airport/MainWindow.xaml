@@ -348,7 +348,7 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Column="0" Grid.Row="0">
-                        <Label Content="Авиарейс/ Flight"
+                        <Label Content="Авиарейс / Flight"
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="330" Height="25" Margin="10,10,0,0"/>
                         <ComboBox x:Name="ticketFlight"

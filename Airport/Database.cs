@@ -132,7 +132,7 @@ namespace Airport
                     connection.Close();
             }
         }
-        
+
         static public int Request(string _select, DataGrid _dataGrid = null)
         {
             dataTable = new DataTable();
@@ -144,12 +144,14 @@ namespace Airport
 
                 connection.Open();
                 adapter.Fill(dataTable);
-                if(_dataGrid != null)
+                if (_dataGrid != null)
                     _dataGrid.ItemsSource = dataTable.DefaultView;
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                if (ex.Number == 547)
+                    MessageBox.Show("Невозможно выполнить дествие, так как текущий объект имеет связь с данными из другой таблицы");
+                return 0;
             }
             catch (Exception ex)
             {
