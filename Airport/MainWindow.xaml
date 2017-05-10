@@ -75,7 +75,7 @@
                                 Click="Plane_Add_Click" Margin="0,127,10,0"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="1">
-                        <DataGrid x:Name="planesGrid"/>
+                        <DataGrid x:Name="planeGrid"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
                         <Label Content="Поиск по типу" 

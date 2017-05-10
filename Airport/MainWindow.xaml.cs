@@ -30,11 +30,7 @@ namespace Airport
             InitAllDatePicker();
             InitPlaneTypeComboBox();
             InitPlaneModelComboBox();
-            planeSearchByType.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Тип] FROM Plane", "[Тип]");
-            planeSearchByModel.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Модель] FROM Plane", "[Модель]");
-
-            flightIDPlane.ItemsSource = Database.GetListForComboBox("SELECT [ID самолета] FROM Plane", "[ID самолета]");
-            flightSearchByAirline.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Авиакомпания] FROM Flight", "[Авиакомпания]");
+            UpdateAllCombobox();
             InitFlightAirline();
 
             Authorization = false;
@@ -84,6 +80,14 @@ namespace Airport
             flightSearchByDateOfDeparture.DisplayDateEnd = DateTime.Now;
             passengerDateIssue.DisplayDateEnd = DateTime.Now;
         }
+        private void UpdateAllCombobox()
+        {
+            planeSearchByType.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Тип] FROM Plane", "[Тип]");
+            planeSearchByModel.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Модель] FROM Plane", "[Модель]");
+
+            flightIDPlane.ItemsSource = Database.GetListForComboBox("SELECT [ID самолета] FROM Plane", "[ID самолета]");
+            flightSearchByAirline.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Авиакомпания] FROM Flight", "[Авиакомпания]");
+        }
 
 
         private void CheckAuthoriztion()
@@ -107,7 +111,7 @@ namespace Airport
         {
             CheckAuthoriztion();
 
-            Database.Request("SELECT * FROM Plane", planesGrid);
+            Database.Request("SELECT * FROM Plane", planeGrid);
             Database.Request("SELECT * FROM Flight", flightGrid);
             Database.Request("SELECT * FROM Passenger", passengerGrid);
         }
@@ -141,22 +145,23 @@ namespace Airport
                 plane.MaintenanceDate = planeMaintenanceDate.SelectedDate.Value.ToString("d");
 
                 Database.AddPlane(plane.Type, plane.Model, plane.NumberOfSeats, plane.Capacity, plane.MaintenanceDate);
-                Database.Request("SELECT * FROM Plane", planesGrid);
+                Database.Request("SELECT * FROM Plane", planeGrid);
             }
             else
                 MessageBox.Show("Проверьте, заполнены ли все поля, и убедитесь в их корректности", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            UpdateAllCombobox();
         }
         private void Plane_SearchByType_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow(planeSearchByType, "Plane", "Тип");
+            ResultWindow resultWnd = new ResultWindow("Plane", "Тип", _searchCB: planeSearchByType, _dataGrid: planeGrid);
         }
         private void Plane_SearchByModel_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow(planeSearchByModel, "Plane", "Модель");
+            ResultWindow resultWnd = new ResultWindow("Plane", "Модель", _searchCB: planeSearchByModel, _dataGrid: planeGrid);
         }
         private void Plane_SearchByCapasity_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow(planeSearchByCapasity, "Plane", "Грузоподъемность");
+            ResultWindow resultWnd = new ResultWindow("Plane", "Грузоподъемность", _searchTB: planeSearchByCapasity, _dataGrid: planeGrid);
         }
         private void Plane_DeleteByID_Click(object sender, RoutedEventArgs e)
         {
@@ -174,7 +179,7 @@ namespace Airport
                         MessageBox.Show("Самолет с ID " + planeDeleteByID.Text + " был успешно удален", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-            Database.Request("SELECT * FROM Plane", planesGrid);
+            Database.Request("SELECT * FROM Plane", planeGrid);
         }
 
 
@@ -196,18 +201,19 @@ namespace Airport
             }
             else
                 MessageBox.Show("Проверьте, заполнены ли все поля, и убедитесь в их корректности", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            UpdateAllCombobox();
         }
         private void Flight_SearchByAirline_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow(flightSearchByAirline, "Flight", "Авиакомпания");
+            ResultWindow resultWnd = new ResultWindow("Flight", "Авиакомпания", _searchCB:flightSearchByAirline, _dataGrid:flightGrid);
         }
         private void Flight_SearchByAirportOfArrival_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow(flightSearchByAirportOfArrival, "Flight", "[Аэропорт прибытия]");
+            ResultWindow resultWnd = new ResultWindow("Flight", "[Аэропорт прибытия]", _searchTB: flightSearchByAirportOfArrival, _dataGrid: flightGrid);
         }
         private void Flight_SearchByDateOfDeparture_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow(flightSearchByDateOfDeparture, "Flight", "[Дата отправления]");
+            ResultWindow resultWnd = new ResultWindow("Flight", "[Дата отправления]", _searchDP: flightSearchByDateOfDeparture, _dataGrid: flightGrid);
         }
         private void Flight_DeleteByIDPlane_Click(object sender, RoutedEventArgs e)
         {
@@ -217,11 +223,11 @@ namespace Airport
             }
             else
             {
-                if (Database.Request("SELECT * FROM Flight WHERE [ID самолета] = " + flightDeleteByIDPlane.Text) != 1)
+                if (Database.Request("SELECT * FROM Flight WHERE [ID авиарейса] = " + flightDeleteByIDPlane.Text) != 1)
                     MessageBox.Show("Авиарейс с таким ID не найден", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
                 {
-                    if (Database.Request("DELETE FROM Flight WHERE [ID самолета] = " + flightDeleteByIDPlane.Text) != 0)
+                    if (Database.Request("DELETE FROM Flight WHERE [ID авиарейса] = " + flightDeleteByIDPlane.Text) != 0)
                         MessageBox.Show("Авиарейс с ID " + flightDeleteByIDPlane.Text + " был успешно удален", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -249,11 +255,11 @@ namespace Airport
         }
         private void Passenger_SearchByNumberPassport_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow(passengerSearchByNumberPassport, "Passenger", "[Номер паспорта]");
+            ResultWindow resultWnd = new ResultWindow("Passenger", "[Номер паспорта]", _searchTB:passengerSearchByNumberPassport);
         }
         private void Passenger_SearchByFullName_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow(passengerSearchByFullName, "Passenger", "[ФИО]");
+            ResultWindow resultWnd = new ResultWindow("Passenger", "[ФИО]", _searchTB:passengerSearchByFullName);
         }
         private void Passenger_DeleteByNumberPassport_Click(object sender, RoutedEventArgs e)
         {
