@@ -144,7 +144,8 @@ namespace Airport
                 plane.Capacity = int.Parse(planeCapacity.Text);
                 plane.MaintenanceDate = planeMaintenanceDate.SelectedDate.Value.ToString("d");
 
-                Database.AddPlane(plane.Type, plane.Model, plane.NumberOfSeats, plane.Capacity, plane.MaintenanceDate);
+                if (plane.NumberOfSeats != 0 && plane.Capacity != 0)
+                    Database.AddPlane(plane.Type, plane.Model, plane.NumberOfSeats, plane.Capacity, plane.MaintenanceDate);
                 Database.Request("SELECT * FROM Plane", planeGrid);
             }
             else
@@ -205,7 +206,7 @@ namespace Airport
         }
         private void Flight_SearchByAirline_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow("Flight", "Авиакомпания", _searchCB:flightSearchByAirline, _dataGrid:flightGrid);
+            ResultWindow resultWnd = new ResultWindow("Flight", "Авиакомпания", _searchCB: flightSearchByAirline, _dataGrid: flightGrid);
         }
         private void Flight_SearchByAirportOfArrival_Click(object sender, RoutedEventArgs e)
         {
@@ -237,7 +238,7 @@ namespace Airport
 
         private void Passenger_Add_Click(object sender, RoutedEventArgs e)
         {
-            DateTime? dateIssue= passengerDateIssue.SelectedDate;
+            DateTime? dateIssue = passengerDateIssue.SelectedDate;
             if (passengerNumberPassport.Text != "" && passengerIdentificationNumberPassport.Text != "" &&
                 passengerAuthorityThatIssuedPassport.Text != "" && dateIssue != null && passengerFullName.Text != "")
             {
@@ -255,11 +256,11 @@ namespace Airport
         }
         private void Passenger_SearchByNumberPassport_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow("Passenger", "[Номер паспорта]", _searchTB:passengerSearchByNumberPassport);
+            ResultWindow resultWnd = new ResultWindow("Passenger", "[Номер паспорта]", _searchTB: passengerSearchByNumberPassport);
         }
         private void Passenger_SearchByFullName_Click(object sender, RoutedEventArgs e)
         {
-            ResultWindow resultWnd = new ResultWindow("Passenger", "[ФИО]", _searchTB:passengerSearchByFullName);
+            ResultWindow resultWnd = new ResultWindow("Passenger", "[ФИО]", _searchTB: passengerSearchByFullName);
         }
         private void Passenger_DeleteByNumberPassport_Click(object sender, RoutedEventArgs e)
         {
