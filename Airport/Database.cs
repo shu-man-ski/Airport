@@ -71,8 +71,8 @@ namespace Airport
 
         static public void AddPlane(string _Type, string _Model, int _NumberOfSeats, int _Capacity, string _MaintenanceDate)
         {
-            string sql = "insert into Plane([Тип], [Модель], [Количество мест], [Грузоподъемность], [Дата последнего ТО])" +
-                                   "values (@Type,  @Model,  @NumberOfSeats,    @Capacity,          @MaintenanceDate)";
+            string sql = "INSERT INTO Plane([Тип], [Модель], [Количество мест], [Грузоподъемность], [Дата последнего ТО])" +
+                                   "VALUES (@Type,  @Model,  @NumberOfSeats,    @Capacity,          @MaintenanceDate)";
             try
             {
                 connection = new SqlConnection(connectionString);
@@ -103,8 +103,8 @@ namespace Airport
         }
         static public void AddFlight(int _IDPlane, string _Airline, string _AirportOfArrival, string _DateOfDeparture, string _DateOfArrival)
         {
-            string sql = "insert into Flight([ID самолета], [Авиакомпания], [Аэропорт прибытия], [Дата отправления], [Дата прибытия])" +
-                                    "values (@IDPlane,      @Airline,       @AirportOfArrival,   @DateOfDeparture,   @DateOfArival)";
+            string sql = "INSERT INTO Flight([ID самолета], [Авиакомпания], [Аэропорт прибытия], [Дата отправления], [Дата прибытия])" +
+                                    "VALUES (@IDPlane,      @Airline,       @AirportOfArrival,   @DateOfDeparture,   @DateOfArival)";
             try
             {
                 connection = new SqlConnection(connectionString);
@@ -132,6 +132,41 @@ namespace Airport
                     connection.Close();
             }
         }
+        static public void AddPassenger(string _NumberPassport, string _IdentificationNumberPassport, string _AuthorityThatIssuedPassport, string _DateIssue, string _FullName)
+        {
+            string sql = "INSERT INTO Passenger([Номер паспорта], [Идентификационный номер],     [Орган, выдавший паспорт],    [Дата выдачи], [ФИО])" +
+                                       "VALUES (@NumberPassport,  @IdentificationNumberPassport, @AuthorityThatIssuedPassport, @DateIssue,    @FullName)";
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@NumberPassport", _NumberPassport);
+                command.Parameters.AddWithValue("@IdentificationNumberPassport", _IdentificationNumberPassport);
+                command.Parameters.AddWithValue("@AuthorityThatIssuedPassport", _AuthorityThatIssuedPassport);
+                command.Parameters.AddWithValue("@DateIssue", _DateIssue);
+                command.Parameters.AddWithValue("@FullName", _FullName);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627)
+                    MessageBox.Show("Невозможно добавить новый объект, так как уже имеется подобный с таким же номером паспорта");
+                else
+                    MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
+
 
         static public int Request(string _select, DataGrid _dataGrid = null)
         {

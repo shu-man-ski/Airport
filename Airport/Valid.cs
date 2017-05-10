@@ -21,7 +21,8 @@ namespace Airport
         {
             foreach (char c in s)
             {
-                if (!Char.IsDigit(c)) return false;
+                if (!Char.IsDigit(c))
+                    return false;
             }
             return true;
         }

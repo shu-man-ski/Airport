@@ -19,10 +19,12 @@ namespace Airport
             {
                 MessageBox.Show("Поле для поиска пустое. Выберите из списка");
             }
-            else 
+            else
             {
-                Database.Request("SELECT * FROM " + _table + " WHERE " + _obj + " = " + "'" + _search.Text + "'", searchResult);
-                this.Show();
+                if (Database.Request("SELECT * FROM " + _table + " WHERE " + _obj + " = " + "'" + _search.Text + "'", searchResult) <= 0)
+                    MessageBox.Show("Такой объект не найден");
+                else
+                    this.Show();
             }
         }
         public ResultWindow(TextBox _search, string _table, string _obj)
@@ -35,8 +37,10 @@ namespace Airport
             }
             else
             {
-                Database.Request("SELECT * FROM " + _table + " WHERE " + _obj + " = " + "'" + _search.Text + "'", searchResult);
-                this.Show();
+                if (Database.Request("SELECT * FROM " + _table + " WHERE " + _obj + " = " + "'" + _search.Text + "'", searchResult) <= 0)
+                    MessageBox.Show("Такой объект не найден");
+                else
+                    this.Show();
             }
         }
         public ResultWindow(DatePicker _search, string _table, string _obj)
@@ -49,8 +53,10 @@ namespace Airport
             }
             else
             {
-                Database.Request("SELECT * FROM " + _table + " WHERE " + _obj + " = " + "'" + _search.SelectedDate.Value.ToString("d") + "'", searchResult);
-                this.Show();
+                if (Database.Request("SELECT * FROM " + _table + " WHERE " + _obj + " = " + "'" + _search.SelectedDate.Value.ToString("d") + "'", searchResult) <= 0)
+                    MessageBox.Show("Такой объект не найден");
+                else
+                    this.Show();
             }
         }
     }

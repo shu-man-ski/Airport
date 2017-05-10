@@ -4,7 +4,7 @@
         Title="Диспетчер авиарейсов" WindowStartupLocation="CenterScreen" 
         Height="608" Width="988" MinHeight="608" MinWidth="988"
         Loaded="Window_Loaded">
-    <Grid Background="{DynamicResource windowColor}">
+    <Grid Background="{StaticResource windowColor}">
         <TabControl>
             <TabItem Header="Самолеты">
                 <Grid>
@@ -280,7 +280,7 @@
                         <Label Content="Орган, выдавший паспорт / Authority that issued passport" 
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="330"  Height="25" Margin="10,70,0,0"/>
-                        <TextBox x:Name="passengerPlaceAndDateIssuing" 
+                        <TextBox x:Name="passengerAuthorityThatIssuedPassport" 
                                  HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
                                  Width="120" Height="25" Margin="345,70,0,0"/>
                         <Label Content="Дата выдачи / Issuance date"
@@ -292,7 +292,7 @@
                         <Label Content="ФИО / Full name" 
                                HorizontalAlignment="Left" VerticalAlignment="Top" 
                                Width="330" Height="25" Margin="10,130,0,0"/>
-                        <TextBox x:Name="a4"  
+                        <TextBox x:Name="passengerFullName"  
                                  HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" 
                                  Width="120" Height="25" Margin="345,130,0,0" TextWrapping="Wrap"/>
                         <Button Content="Регистрация" Template="{StaticResource buttonBlue}" 
@@ -307,31 +307,34 @@
                         <Label Content="Поиск по номеру паспорта"
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,70"/>
-                        <TextBox  
+                        <TextBox x:Name="passengerSearchByNumberPassport"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
                                  Width="120" Height="25" TextWrapping="Wrap" Margin="195,0,0,70"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,70"/>
+                                Width="74" Height="25" Margin="320,0,0,70"
+                                Click="Passenger_SearchByNumberPassport_Click"/>
                         <Label Content="Поиск по ФИО"
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                Width="180" Height="25" Margin="10,0,0,40"/>
-                        <TextBox  
+                        <TextBox x:Name="passengerSearchByFullName"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
                                  Height="25" TextWrapping="Wrap" Width="120" Margin="195,0,0,40"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,40"/>
+                                Width="74" Height="25" Margin="320,0,0,40"
+                                Click="Passenger_SearchByFullName_Click"/>
 
                         <Label Content="Удалить пассажира по № паспорта"
                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                                Height="25" Margin="0,0,214,10"/>
-                        <TextBox  
+                        <TextBox x:Name="passengerDeleteByNumberPassport"
                                  HorizontalAlignment="Right" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
                                  Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"/>
                         <Button Content="Удалить" Template="{StaticResource buttonRed}" 
                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                                Width="74" Height="25" Margin="0,0,10,10"/>
+                                Width="74" Height="25" Margin="0,0,10,10"
+                                Click="Passenger_DeleteByNumberPassport_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>

@@ -17,6 +17,7 @@ namespace Airport
         private Admin admin;
         private Plane plane;
         private Flight flight;
+        private Passenger passenger;
         private bool Authorization { get; set; }
         public static bool AuthorizationWnd { get; set; }
         const int validItem = 0;
@@ -32,7 +33,7 @@ namespace Airport
             planeSearchByType.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Тип] FROM Plane", "[Тип]");
             planeSearchByModel.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Модель] FROM Plane", "[Модель]");
 
-            flightIDPlane.ItemsSource = Database.GetListForComboBox("SELECT [ID] FROM Plane", "ID");
+            flightIDPlane.ItemsSource = Database.GetListForComboBox("SELECT [ID самолета] FROM Plane", "[ID самолета]");
             flightSearchByAirline.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Авиакомпания] FROM Flight", "[Авиакомпания]");
             InitFlightAirline();
 
@@ -42,6 +43,7 @@ namespace Airport
             admin = new Admin();
             plane = new Plane();
             flight = new Flight();
+            passenger = new Passenger();
 
             this.DataContext = new Valid();
         }
@@ -107,6 +109,7 @@ namespace Airport
 
             Database.Request("SELECT * FROM Plane", planesGrid);
             Database.Request("SELECT * FROM Flight", flightGrid);
+            Database.Request("SELECT * FROM Passenger", passengerGrid);
         }
 
 
@@ -163,11 +166,11 @@ namespace Airport
             }
             else
             {
-                if (Database.Request("SELECT * FROM Plane WHERE ID = " + planeDeleteByID.Text) != 1)
+                if (Database.Request("SELECT * FROM Plane WHERE [ID самолета] = " + planeDeleteByID.Text) != 1)
                     MessageBox.Show("Самолет с таким ID не найден", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
                 {
-                    if (Database.Request("DELETE FROM Plane WHERE ID = " + planeDeleteByID.Text) != 0)
+                    if (Database.Request("DELETE FROM Plane WHERE [ID самолета] = " + planeDeleteByID.Text) != 0)
                         MessageBox.Show("Самолет с ID " + planeDeleteByID.Text + " был успешно удален", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -214,11 +217,11 @@ namespace Airport
             }
             else
             {
-                if (Database.Request("SELECT * FROM Flight WHERE ID = " + flightDeleteByIDPlane.Text) != 1)
+                if (Database.Request("SELECT * FROM Flight WHERE [ID самолета] = " + flightDeleteByIDPlane.Text) != 1)
                     MessageBox.Show("Авиарейс с таким ID не найден", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
                 {
-                    if (Database.Request("DELETE FROM Flight WHERE ID = " + flightDeleteByIDPlane.Text) != 0)
+                    if (Database.Request("DELETE FROM Flight WHERE [ID самолета] = " + flightDeleteByIDPlane.Text) != 0)
                         MessageBox.Show("Авиарейс с ID " + flightDeleteByIDPlane.Text + " был успешно удален", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -228,7 +231,47 @@ namespace Airport
 
         private void Passenger_Add_Click(object sender, RoutedEventArgs e)
         {
+            DateTime? dateIssue= passengerDateIssue.SelectedDate;
+            if (passengerNumberPassport.Text != "" && passengerIdentificationNumberPassport.Text != "" &&
+                passengerAuthorityThatIssuedPassport.Text != "" && dateIssue != null && passengerFullName.Text != "")
+            {
+                passenger.NumberPassport = passengerNumberPassport.Text;
+                passenger.IdentificationNumberPassport = passengerIdentificationNumberPassport.Text;
+                passenger.AuthorityThatIssuedPassport = passengerAuthorityThatIssuedPassport.Text;
+                passenger.DateIssue = passengerDateIssue.SelectedDate.Value.ToString("d");
+                passenger.FullName = passengerFullName.Text;
 
+                Database.AddPassenger(passenger.NumberPassport, passenger.IdentificationNumberPassport, passenger.AuthorityThatIssuedPassport, passenger.DateIssue, passenger.FullName);
+                Database.Request("SELECT * FROM Passenger", passengerGrid);
+            }
+            else
+                MessageBox.Show("Проверьте, заполнены ли все поля, и убедитесь в их корректности", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+        private void Passenger_SearchByNumberPassport_Click(object sender, RoutedEventArgs e)
+        {
+            ResultWindow resultWnd = new ResultWindow(passengerSearchByNumberPassport, "Passenger", "[Номер паспорта]");
+        }
+        private void Passenger_SearchByFullName_Click(object sender, RoutedEventArgs e)
+        {
+            ResultWindow resultWnd = new ResultWindow(passengerSearchByFullName, "Passenger", "[ФИО]");
+        }
+        private void Passenger_DeleteByNumberPassport_Click(object sender, RoutedEventArgs e)
+        {
+            if (passengerDeleteByNumberPassport.Text == "")
+            {
+                MessageBox.Show("Пустое поле для удаления. Повторите ввод", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                if (Database.Request("SELECT * FROM Passenger WHERE [Номер паспорта] = " + "'" + passengerDeleteByNumberPassport.Text + "'") != 1)
+                    MessageBox.Show("Пассажир с таким номером паспорта не найден", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                {
+                    if (Database.Request("DELETE FROM Passenger WHERE [Номер паспорта] = " + "'" + passengerDeleteByNumberPassport.Text + "'") != 0)
+                        MessageBox.Show("Пассажир с номером паспорта " + passengerDeleteByNumberPassport.Text + " был успешно удален", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            Database.Request("SELECT * FROM Passenger", passengerGrid);
         }
 
 
