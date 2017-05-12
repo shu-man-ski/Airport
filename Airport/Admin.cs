@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Airport
+﻿namespace Airport
 {
     class Admin
     {

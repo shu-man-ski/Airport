@@ -78,31 +78,31 @@
                         <DataGrid x:Name="planeGrid"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
-                        <Label Content="Поиск по типу" 
+                        <Label Content="Поиск по типу / Search by type" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                               Width="180" Height="25" Margin="10,0,0,70"/>
+                               Width="330" Height="25" Margin="10,0,0,70"/>
                         <ComboBox x:Name="planeSearchByType"
                                   HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                  Width="120" Height="25" Margin="195,0,0,70"/>
+                                  Width="120" Height="25" Margin="345,0,0,70"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,70"
+                                Width="74" Height="25" Margin="470,0,0,70"
                                 Click="Plane_SearchByType_Click"/>
-                        <Label Content="Поиск по модели" 
+                        <Label Content="Поиск по модели / Search by model" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                               Width="180" Height="25" Margin="10,0,0,40"/>
+                               Width="330" Height="25" Margin="10,0,0,40"/>
                         <ComboBox x:Name ="planeSearchByModel"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                 Height="25" Width="120" Margin="195,0,0,40"/>
+                                 Height="25" Width="120" Margin="345,0,0,40"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,40" Click="Plane_SearchByModel_Click"/>
-                        <Label Content="Поиск по грузоподъемности" 
+                                Width="74" Height="25" Margin="470,0,0,40" Click="Plane_SearchByModel_Click"/>
+                        <Label Content="Поиск по грузоподъемности / Search by capacity" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                               Width="180" Height="25" Margin="10,0,0,10"/>
+                               Width="330" Height="25" Margin="10,0,0,10"/>
                         <TextBox x:Name="planeSearchByCapasity"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center" 
-                                 Width="77" Height="25" TextWrapping="Wrap" Margin="195,0,0,10"
+                                 Width="45" Height="25" TextWrapping="Wrap" Margin="345,0,0,10"
                                  Validation.ErrorTemplate="{StaticResource validationFailed}">
                             <TextBox.Text>
                                 <Binding Path="PlaneSearchCapacity">
@@ -112,12 +112,12 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-                        <Label Content="(тонн)" 
+                        <Label Content="(тонн) / (ton)" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom" 
-                               Width="43" Height="25" Margin="272,0,0,10"/>
+                               Width="80" Height="25" Margin="390,0,0,10"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,10" Click="Plane_SearchByCapasity_Click"/>
+                                Width="74" Height="25" Margin="470,0,0,10" Click="Plane_SearchByCapasity_Click"/>
 
                         <Label Content="Удалить самолет по ID" 
                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
@@ -194,21 +194,21 @@
                         <DataGrid x:Name="flightGrid"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
-                        <Label Content="Поиск по авиакомпании" 
+                        <Label Content="Поиск по авиакомпании / Search by airlines" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                               Width="180" Height="25" Margin="10,0,0,70"/>
+                               Width="330" Height="25" Margin="10,0,0,70"/>
                         <ComboBox x:Name="flightSearchByAirline"
                                   HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                  Width="120" Height="25" Margin="195,0,0,70"/>
+                                  Width="120" Height="25" Margin="345,0,0,70"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,70" Click="Flight_SearchByAirline_Click"/>
-                        <Label Content="Поиск по аэропорту прибытия" 
+                                Width="74" Height="25" Margin="470,0,0,70" Click="Flight_SearchByAirline_Click"/>
+                        <Label Content="Поиск по аэропорту прибытия / Search by airport of arrival" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                               Width="180" Height="25" Margin="10,0,0,40"/>
+                               Width="330" Height="25" Margin="10,0,0,40"/>
                         <TextBox x:Name="flightSearchByAirportOfArrival"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
-                                 Height="25" TextWrapping="Wrap" Width="120" Margin="195,0,0,40"
+                                 Height="25" TextWrapping="Wrap" Width="120" Margin="345,0,0,40"
                                  Validation.ErrorTemplate="{StaticResource validationFailed}">
                             <TextBox.Text>
                                 <Binding Path="Capacity">
@@ -220,17 +220,17 @@
                         </TextBox>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,40" Click="Flight_SearchByAirportOfArrival_Click"/>
-                        <Label Content="Поиск по дате отправления" 
+                                Width="74" Height="25" Margin="470,0,0,40" Click="Flight_SearchByAirportOfArrival_Click"/>
+                        <Label Content="Поиск по дате отправления / Search by date of departure" 
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                               Width="180" Height="25" Margin="10,0,0,10"/>
+                               Width="330" Height="25" Margin="10,0,0,10"/>
                         <DatePicker x:Name="flightSearchByDateOfDeparture"
                                     HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                    Width="120" Height="25" Margin="195,0,0,10"
+                                    Width="120" Height="25" Margin="345,0,0,10"
                                     UseLayoutRounding="False" FontStyle="Italic"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,10" Click="Flight_SearchByDateOfDeparture_Click"/>
+                                Width="74" Height="25" Margin="470,0,0,10" Click="Flight_SearchByDateOfDeparture_Click"/>
 
                         <Label Content="Удалить рейс по ID" 
                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
@@ -304,25 +304,25 @@
                         <DataGrid x:Name="passengerGrid"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
-                        <Label Content="Поиск по номеру паспорта"
+                        <Label Content="Поиск по номеру паспорта / Search by passport number"
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                               Width="180" Height="25" Margin="10,0,0,70"/>
+                               Width="330" Height="25" Margin="10,0,0,70"/>
                         <TextBox x:Name="passengerSearchByNumberPassport"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="195,0,0,70"/>
+                                 Width="120" Height="25" TextWrapping="Wrap" Margin="345,0,0,70"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,70"
+                                Width="74" Height="25" Margin="470,0,0,70"
                                 Click="Passenger_SearchByNumberPassport_Click"/>
-                        <Label Content="Поиск по ФИО"
+                        <Label Content="Поиск по ФИО / Search by full name"
                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                               Width="180" Height="25" Margin="10,0,0,40"/>
+                               Width="330" Height="25" Margin="10,0,0,40"/>
                         <TextBox x:Name="passengerSearchByFullName"
                                  HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
-                                 Height="25" TextWrapping="Wrap" Width="120" Margin="195,0,0,40"/>
+                                 Height="25" TextWrapping="Wrap" Width="120" Margin="345,0,0,40"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                Width="74" Height="25" Margin="320,0,0,40"
+                                Width="74" Height="25" Margin="470,0,0,40"
                                 Click="Passenger_SearchByFullName_Click"/>
 
                         <Label Content="Удалить пассажира по № паспорта"
@@ -371,6 +371,16 @@
                         <DataGrid x:Name="ticketGrid"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
+                        <Label Content="Поиск по авиарейсу / Search by flight"
+                               HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                               Width="330" Height="25" Margin="10,0,0,40"/>
+                        <ComboBox x:Name="ticketSearchByFlight"
+                                  HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                  Width="120" Height="25" Margin="345,0,0,40"/>
+                        <Button Content="Найти" Template="{StaticResource buttonGreen}" 
+                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                Width="74" Height="25" Margin="470,0,0,40"
+                                Click="Ticket_SearchByFlighte_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>

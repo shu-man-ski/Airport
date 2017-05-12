@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
 namespace Airport
 {
@@ -153,6 +147,37 @@ namespace Airport
             {
                 if (ex.Number == 2627)
                     MessageBox.Show("Невозможно добавить новый объект, так как уже имеется подобный с таким же номером паспорта");
+                else
+                    MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
+        static public void AddTicket(int _IDFlight, string _NumberPassport)
+        {
+            string sql = "INSERT INTO Ticket([Авиарейс], [Пассажир])" +
+                                    "VALUES (@Flight,    @NumberPassport)";
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@Flight", _IDFlight);
+                command.Parameters.AddWithValue("@NumberPassport", _NumberPassport);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627)
+                    MessageBox.Show("Невозможно добавить новый объект, так как уже имеется на данном авиарейсе такой пассажир");
                 else
                     MessageBox.Show(ex.Message);
             }
