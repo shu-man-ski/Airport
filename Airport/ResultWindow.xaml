@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Результат поиска" Height="363" Width="988" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid x:Name="searchResult" Margin="13,0,13,0"/>
+        <DataGrid x:Name="searchResult" Margin="13,10,13,45"/>
         <Button Content="Удалить все" Template="{StaticResource buttonRed}" 
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                 Width="74" Height="25" Margin="0,0,10,10"

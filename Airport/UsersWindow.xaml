@@ -100,6 +100,6 @@
                     HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                     Width="74" Height="25" Margin="0,0,10,10" Click="User_DeleteByLogin_Click"/>
         </Grid>
-        <DataGrid x:Name="userGrid" Grid.Row="2" Height="Auto"/>
+        <DataGrid x:Name="userGrid" Grid.Row="2"/>
     </Grid>
 </Window>

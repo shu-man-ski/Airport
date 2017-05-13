@@ -188,7 +188,7 @@
 
         <!-- DataGrid -->
         <Style TargetType="DataGrid">
-            <Setter Property="Height" Value="240"/>
+            <Setter Property="Height" Value="Auto"/>
             <Setter Property="Margin" Value="10,10,10,10"/>
             <Setter Property="HeadersVisibility" Value="Column"/>
             <Setter Property="MinColumnWidth" Value="154.5"/>

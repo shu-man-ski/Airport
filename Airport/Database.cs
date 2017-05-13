@@ -24,7 +24,7 @@ namespace Airport
         }
 
 
-        static public List<string> GetListForComboBox(string _select, string _row)
+        static public List<string> GetListRows(string _select, string _row)
         {
             dataTable = new DataTable();
             List<string> list = new List<string>();

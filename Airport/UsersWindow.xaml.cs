@@ -10,12 +10,16 @@ namespace Airport
             InitializeComponent();
 
             Database.Request("SELECT * FROM [User]", userGrid);
-            userUpdateLogin.ItemsSource = Database.GetListForComboBox("SELECT [Логин] FROM [User]", "[Логин]");
-            userDeleteByLogin.ItemsSource = Database.GetListForComboBox("SELECT [Логин] FROM [User]", "[Логин]");
+            UpdateAllCombobx();
 
             user = new User();
         }
 
+        private void UpdateAllCombobx()
+        {
+            userUpdateLogin.ItemsSource = Database.GetListRows("SELECT [Логин] FROM [User]", "[Логин]");
+            userDeleteByLogin.ItemsSource = Database.GetListRows("SELECT [Логин] FROM [User] WHERE [Логин] != 'Admin'", "[Логин]");
+        }
         private void UserAdd_Click(object sender, RoutedEventArgs e)
         {
             if (userAddLogin.Text != "" && userAddPassword.Text != "" && userAddFullName.Text != "")
@@ -26,7 +30,7 @@ namespace Airport
 
                 Database.AddUser(user.Login, user.Password, user.FullName);
                 Database.Request("SELECT * FROM [User]", userGrid);
-                userUpdateLogin.ItemsSource = Database.GetListForComboBox("SELECT [Логин] FROM [User]", "[Логин]");
+                UpdateAllCombobx();
             }
             else
                 MessageBox.Show("Проверьте, заполнены ли все поля", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -40,8 +44,8 @@ namespace Airport
                 user.FullName = userUpdateFullName.Text;
 
                 Database.UpdateUser(user.Login, user.Password, user.FullName);
-                userUpdateLogin.ItemsSource = Database.GetListForComboBox("SELECT [Логин] FROM [User]", "[Логин]");
                 Database.Request("SELECT * FROM [User]", userGrid);
+                UpdateAllCombobx();
             }
             else
                 MessageBox.Show("Проверьте, заполнены ли все поля", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -53,8 +57,8 @@ namespace Airport
                 user.Login = userDeleteByLogin.Text;
 
                 Database.Request("DELETE FROM [User] WHERE [Логин] = '" + user.Login + "'");
-                userUpdateLogin.ItemsSource = Database.GetListForComboBox("SELECT [Логин] FROM [User]", "[Логин]");
                 Database.Request("SELECT * FROM [User]", userGrid);
+                UpdateAllCombobx();
             }
             else
                 MessageBox.Show("Выберите логин пользователя из списка", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);

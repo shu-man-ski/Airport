@@ -76,15 +76,15 @@ namespace Airport
         }
         private void UpdateAllCombobox()
         {
-            planeSearchByType.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Тип] FROM Plane", "[Тип]");
-            planeSearchByModel.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Модель] FROM Plane", "[Модель]");
+            planeSearchByType.ItemsSource = Database.GetListRows("SELECT DISTINCT [Тип] FROM Plane", "[Тип]");
+            planeSearchByModel.ItemsSource = Database.GetListRows("SELECT DISTINCT [Модель] FROM Plane", "[Модель]");
 
-            flightIDPlane.ItemsSource = Database.GetListForComboBox("SELECT [ID самолета] FROM Plane", "[ID самолета]");
-            flightSearchByAirline.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Авиакомпания] FROM Flight", "[Авиакомпания]");
+            flightIDPlane.ItemsSource = Database.GetListRows("SELECT [ID самолета] FROM Plane", "[ID самолета]");
+            flightSearchByAirline.ItemsSource = Database.GetListRows("SELECT DISTINCT [Авиакомпания] FROM Flight", "[Авиакомпания]");
 
-            ticketFlight.ItemsSource = Database.GetListForComboBox("SELECT [ID авиарейса] FROM Flight", "[ID авиарейса]");
-            ticketPassenger.ItemsSource = Database.GetListForComboBox("SELECT [Номер паспорта] FROM Passenger", "[Номер паспорта]");
-            ticketSearchByFlight.ItemsSource = Database.GetListForComboBox("SELECT DISTINCT [Авиарейс] FROM Ticket", "[Авиарейс]");
+            ticketFlight.ItemsSource = Database.GetListRows("SELECT [ID авиарейса] FROM Flight", "[ID авиарейса]");
+            ticketPassenger.ItemsSource = Database.GetListRows("SELECT [Номер паспорта] FROM Passenger", "[Номер паспорта]");
+            ticketSearchByFlight.ItemsSource = Database.GetListRows("SELECT DISTINCT [Авиарейс] FROM Ticket", "[Авиарейс]");
         }
 
 
@@ -97,8 +97,8 @@ namespace Airport
                     AuthorizationWindow AWnd = new AuthorizationWindow();
                     if (AWnd.ShowDialog() == true)
                     {
-                        List<string> login = Database.GetListForComboBox("SELECT [Логин] FROM [User] WHERE [Логин] = '" + AWnd.Password + "'", "[Логин]");
-                        List<string> password = Database.GetListForComboBox("SELECT [Пароль] FROM [User] WHERE [Пароль] = '" + AWnd.Login + "'", "[Пароль]");
+                        List<string> login = Database.GetListRows("SELECT [Логин] FROM [User] WHERE [Логин] = '" + AWnd.Password + "'", "[Логин]");
+                        List<string> password = Database.GetListRows("SELECT [Пароль] FROM [User] WHERE [Пароль] = '" + AWnd.Login + "'", "[Пароль]");
 
                         if (AWnd.Password == login[0] && AWnd.Login == password[0])
                         {
@@ -144,7 +144,9 @@ namespace Airport
         }
         private void MenuItemExit_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow mainWMnd = new MainWindow();
             this.Close();
+            mainWMnd.Show();
         }
 
 
