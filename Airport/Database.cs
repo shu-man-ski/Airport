@@ -191,6 +191,69 @@ namespace Airport
                     connection.Close();
             }
         }
+        static public void AddUser(string _Login, string _Password, string _FullName)
+        {
+            string sql = "INSERT INTO [User]([Логин], [Пароль], [ФИО])" +
+                                  "VALUES (@Login, @Password, @FullName)";
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@Login", _Login);
+                command.Parameters.AddWithValue("@Password", _Password);
+                command.Parameters.AddWithValue("@FullName", _FullName);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627)
+                    MessageBox.Show("Невозможно добавить новый объект, так как уже имеется пользователь с таким логином");
+                else
+                    MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
+        static public void UpdateUser(string _Login, string _Password, string _FullName)
+        {
+            string sql = "UPDATE [User] SET [Логин] = @Login, [Пароль] = @Password, [ФИО] = @FullName";
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@Login", _Login);
+                command.Parameters.AddWithValue("@Password", _Password);
+                command.Parameters.AddWithValue("@FullName", _FullName);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627)
+                    MessageBox.Show("Невозможно добавить новый объект, так как уже имеется пользователь с таким логином");
+                else
+                    MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
 
 
         static public int Request(string _select, DataGrid _dataGrid = null)
@@ -223,6 +286,34 @@ namespace Airport
                     connection.Close();
             }
             return dataTable.Rows.Count;
+        }
+        static public void RequestAutoriztion(ref string _login, ref string _password)
+        {
+            dataTable = new DataTable();
+            string select = "SELECT [Логин],[Пароль] FROM [User] WHERE [Логин] = " + _login + " AND [Пароль] = " + _password;
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                command = new SqlCommand(select, connection);
+                adapter = new SqlDataAdapter(command);
+
+                connection.Open();
+                adapter.Fill(dataTable);
+                _login = dataTable.Columns[0].ToString();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
         }
     }
 }

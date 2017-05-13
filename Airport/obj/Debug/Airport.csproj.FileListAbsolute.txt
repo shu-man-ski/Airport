@@ -49,3 +49,5 @@ D:\GitHub\Airport\Airport\obj\Debug\Диспетчер авиарейсов.pdb
 D:\GitHub\Airport\Airport\obj\Debug\AboutProgramWindow.g.cs
 D:\GitHub\Airport\Airport\obj\Debug\Диспетчер авиарейсов_MarkupCompile.lref
 D:\GitHub\Airport\Airport\obj\Debug\AboutProgramWindow.baml
+D:\GitHub\Airport\Airport\obj\Debug\UsersWindow.g.cs
+D:\GitHub\Airport\Airport\obj\Debug\UsersWindow.baml

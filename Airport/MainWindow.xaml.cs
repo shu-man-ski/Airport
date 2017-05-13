@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace Airport
 {
     public partial class MainWindow : Window
     {
-        private Admin admin;
+        private User user;
         private Plane plane;
         private Flight flight;
         private Passenger passenger;
@@ -28,7 +29,7 @@ namespace Airport
             Authorization = false;
             AuthorizationWnd = true;
 
-            admin = new Admin();
+            user = new User();
             plane = new Plane();
             flight = new Flight();
             passenger = new Passenger();
@@ -91,14 +92,22 @@ namespace Airport
         {
             while (!Authorization && AuthorizationWnd)
             {
-                AuthorizationWindow AWnd = new AuthorizationWindow();
-                if (AWnd.ShowDialog() == true)
+                try
                 {
-                    if (AWnd.Password == admin.Password && AWnd.Login == admin.Login)
-                        Authorization = true;
-                    else
-                        MessageBox.Show(this, "Проверьте правильность ввода логина и пароля",
-                                              "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    AuthorizationWindow AWnd = new AuthorizationWindow();
+                    if (AWnd.ShowDialog() == true)
+                    {
+                        List<string> login = Database.GetListForComboBox("SELECT [Логин] FROM [User] WHERE [Логин] = '" + AWnd.Password + "'", "[Логин]");
+                        List<string> password = Database.GetListForComboBox("SELECT [Пароль] FROM [User] WHERE [Пароль] = '" + AWnd.Login + "'", "[Пароль]");
+
+                        if (AWnd.Password == login[0] && AWnd.Login == password[0])
+                            Authorization = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(this, "Проверьте правильность ввода логина и пароля",
+                                                      "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             if (!AuthorizationWnd)
@@ -115,9 +124,14 @@ namespace Airport
         }
 
 
+        private void MenuItemDB_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("База данных");
+        }
         private void MenuItemUsers_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Пользователи");
+            UsersWindow userWnd = new UsersWindow();
+            userWnd.Show();
         }
         private void MenuItemAbout_Click(object sender, RoutedEventArgs e)
         {

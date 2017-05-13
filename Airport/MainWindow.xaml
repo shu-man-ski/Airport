@@ -388,9 +388,12 @@
         <Menu Background="{DynamicResource windowColor}" Foreground="White"
               VerticalAlignment="Top" HorizontalAlignment="Right"
               Height="23">
-            <MenuItem Header="Пользователи"
-                      Height="23"
-                      Click="MenuItemUsers_Click">
+            <MenuItem Header="Параметры"
+                      Height="23">
+                <MenuItem Header="База данных"
+                          Click="MenuItemDB_Click" Background="{DynamicResource windowColor}"/>
+                <MenuItem Header="Пользователи"
+                          Click="MenuItemUsers_Click" Background="{DynamicResource windowColor}"/>
             </MenuItem>
             <MenuItem Header="О программе"
                       Height="23"
