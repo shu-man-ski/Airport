@@ -33,19 +33,19 @@
                            HorizontalAlignment="Left" VerticalAlignment="Top"
                            Width="140" Height="25" Margin="5,5,0,0"/>
                     <TextBox x:Name="userAddLogin" Grid.Row="0"
-                             HorizontalAlignment="Left" VerticalAlignment="Top"
+                             HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center"
                              Width="120" Height="23" Margin="150,5,5,0" TextWrapping="Wrap"/>
                     <Label Content="Пароль пользователя" Grid.Row="1"
                            HorizontalAlignment="Left" VerticalAlignment="Top"
                            Width="140" Height="25" Margin="5,5,0,0"/>
                     <TextBox x:Name="userAddPassword" Grid.Row="1"
-                             HorizontalAlignment="Left" VerticalAlignment="Top"
+                             HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center"
                              Width="120" Height="23" Margin="150,5,5,0" TextWrapping="Wrap"/>
                     <Label Content="ФИО пользователя" Grid.Row="2"
                            HorizontalAlignment="Left" VerticalAlignment="Top"
                            Width="140" Height="25" Margin="5,5,0,0"/>
                     <TextBox x:Name="userAddFullName" Grid.Row="2"
-                             HorizontalAlignment="Left" VerticalAlignment="Top"
+                             HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center"
                              Width="120" Height="23" Margin="150,5,5,0" TextWrapping="Wrap"/>
                     <Button x:Name="userAdd" Content="Добавить" Grid.Row="3"
                             Template="{StaticResource buttonBlue}"
@@ -68,19 +68,19 @@
                            HorizontalAlignment="Left" VerticalAlignment="Top"
                            Width="140" Height="25" Margin="5,5,0,0"/>
                     <ComboBox x:Name="userUpdateLogin" Grid.Row="0"
-                              HorizontalAlignment="Left" VerticalAlignment="Top"
+                              HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center"
                               Width="120" Height="23" Margin="150,5,5,0"/>
                     <Label Content="Пароль пользователя" Grid.Row="1"
                            HorizontalAlignment="Left" VerticalAlignment="Top"
                            Width="140" Height="25" Margin="5,5,0,0"/>
                     <TextBox x:Name="userUpdatePassword" Grid.Row="1"
-                             HorizontalAlignment="Left" VerticalAlignment="Top"
+                             HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center"
                              Width="120" Height="23" Margin="150,5,5,0" TextWrapping="Wrap"/>
                     <Label Content="ФИО пользователя" Grid.Row="2"
                            HorizontalAlignment="Left" VerticalAlignment="Top"
                            Width="140" Height="25" Margin="5,5,0,0"/>
                     <TextBox x:Name="userUpdateFullName" Grid.Row="2"
-                             HorizontalAlignment="Left" VerticalAlignment="Top"
+                             HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center"
                              Width="120" Height="23" Margin="150,5,5,0" TextWrapping="Wrap"/>
                     <Button x:Name="userUpdate" Content="Изменить" Grid.Row="3"
                             Template="{StaticResource buttonBlue}"

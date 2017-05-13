@@ -225,7 +225,7 @@ namespace Airport
         }
         static public void UpdateUser(string _Login, string _Password, string _FullName)
         {
-            string sql = "UPDATE [User] SET [Логин] = @Login, [Пароль] = @Password, [ФИО] = @FullName";
+            string sql = "UPDATE [User] SET [Пароль] = '" + _Password + "', [ФИО] = '" + _FullName + "' WHERE [Логин] = '" + _Login + "'";
             try
             {
                 connection = new SqlConnection(connectionString);
@@ -286,34 +286,6 @@ namespace Airport
                     connection.Close();
             }
             return dataTable.Rows.Count;
-        }
-        static public void RequestAutoriztion(ref string _login, ref string _password)
-        {
-            dataTable = new DataTable();
-            string select = "SELECT [Логин],[Пароль] FROM [User] WHERE [Логин] = " + _login + " AND [Пароль] = " + _password;
-            try
-            {
-                connection = new SqlConnection(connectionString);
-                command = new SqlCommand(select, connection);
-                adapter = new SqlDataAdapter(command);
-
-                connection.Open();
-                adapter.Fill(dataTable);
-                _login = dataTable.Columns[0].ToString();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (connection != null)
-                    connection.Close();
-            }
         }
     }
 }
