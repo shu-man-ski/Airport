@@ -5,6 +5,9 @@ using System.Windows.Controls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Security.Cryptography;
+using System.Text;
+using System.IO;
 
 namespace Airport
 {
@@ -15,6 +18,7 @@ namespace Airport
         static private SqlCommand command;
         static private SqlConnection connection;
         static private DataTable dataTable;
+
 
         static Database()
         {
@@ -286,6 +290,155 @@ namespace Airport
                     connection.Close();
             }
             return dataTable.Rows.Count;
+        }
+
+
+        public static string Encryption(string ishText, string pass,
+               string sol = "doberman", string cryptographicAlgorithm = "SHA1",
+               int passIter = 2, string initVec = "a8doSuDitOz1hZe#",
+               int keySize = 256)
+        {
+            if (string.IsNullOrEmpty(ishText))
+                return "";
+
+            byte[] initVecB = Encoding.ASCII.GetBytes(initVec);
+            byte[] solB = Encoding.ASCII.GetBytes(sol);
+            byte[] ishTextB = Encoding.UTF8.GetBytes(ishText);
+
+            PasswordDeriveBytes derivPass = new PasswordDeriveBytes(pass, solB, cryptographicAlgorithm, passIter);
+            byte[] keyBytes = derivPass.GetBytes(keySize / 8);
+            RijndaelManaged symmK = new RijndaelManaged();
+            symmK.Mode = CipherMode.CBC;
+
+            byte[] cipherTextBytes = null;
+
+            using (ICryptoTransform encryptor = symmK.CreateEncryptor(keyBytes, initVecB))
+            {
+                using (MemoryStream memStream = new MemoryStream())
+                {
+                    using (CryptoStream cryptoStream = new CryptoStream(memStream, encryptor, CryptoStreamMode.Write))
+                    {
+                        cryptoStream.Write(ishTextB, 0, ishTextB.Length);
+                        cryptoStream.FlushFinalBlock();
+                        cipherTextBytes = memStream.ToArray();
+                        memStream.Close();
+                        cryptoStream.Close();
+                    }
+                }
+            }
+
+            symmK.Clear();
+            return Convert.ToBase64String(cipherTextBytes);
+        }
+        public static string Decryption(string ciphText, string pass,
+               string sol = "doberman", string cryptographicAlgorithm = "SHA1",
+               int passIter = 2, string initVec = "a8doSuDitOz1hZe#",
+               int keySize = 256)
+        {
+            if (string.IsNullOrEmpty(ciphText))
+                return "";
+
+            byte[] initVecB = Encoding.ASCII.GetBytes(initVec);
+            byte[] solB = Encoding.ASCII.GetBytes(sol);
+            byte[] cipherTextBytes = Convert.FromBase64String(ciphText);
+
+            PasswordDeriveBytes derivPass = new PasswordDeriveBytes(pass, solB, cryptographicAlgorithm, passIter);
+            byte[] keyBytes = derivPass.GetBytes(keySize / 8);
+
+            RijndaelManaged symmK = new RijndaelManaged();
+            symmK.Mode = CipherMode.CBC;
+
+            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+            int byteCount = 0;
+
+            using (ICryptoTransform decryptor = symmK.CreateDecryptor(keyBytes, initVecB))
+            {
+                using (MemoryStream mSt = new MemoryStream(cipherTextBytes))
+                {
+                    using (CryptoStream cryptoStream = new CryptoStream(mSt, decryptor, CryptoStreamMode.Read))
+                    {
+                        byteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                        mSt.Close();
+                        cryptoStream.Close();
+                    }
+                }
+            }
+
+            symmK.Clear();
+            return Encoding.UTF8.GetString(plainTextBytes, 0, byteCount);
+        }
+        static public int DecryptionRequest(string _select, DataGrid _dataGrid = null)
+        {
+            dataTable = new DataTable();
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                command = new SqlCommand(_select, connection);
+                adapter = new SqlDataAdapter(command);
+
+                connection.Open();
+                adapter.Fill(dataTable);
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                    for (int j = 0; j < dataTable.Columns.Count; j++)
+                        dataTable.Rows[i][j] = Decryption(dataTable.Rows[i][j].ToString(), "1320");
+
+                if (_dataGrid != null)
+                    _dataGrid.ItemsSource = dataTable.DefaultView;
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 547)
+                    MessageBox.Show("Невозможно выполнить дествие, так как текущий объект имеет связь с данными из другой таблицы");
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+            return dataTable.Rows.Count;
+        }
+        static public List<string> GetDecryptListRows(string _select, string _row)
+        {
+            dataTable = new DataTable();
+            List<string> list = new List<string>();
+
+            try
+            {
+                connection = new SqlConnection(connectionString);
+                SqlCommand command = new SqlCommand(_select, connection);
+                adapter = new SqlDataAdapter(command);
+
+                connection.Open();
+                adapter.Fill(dataTable);
+
+                int i = 0;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    if (dataTable.Rows.ToString() == Encryption(_row, "1320"))
+                        i++;
+                    list.Add(Decryption(row[i].ToString(), "1320"));
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+            return list;
         }
     }
 }

@@ -97,13 +97,14 @@ namespace Airport
                     AuthorizationWindow AWnd = new AuthorizationWindow();
                     if (AWnd.ShowDialog() == true)
                     {
-                        List<string> login = Database.GetListRows("SELECT [Логин] FROM [User] WHERE [Логин] = '" + AWnd.Password + "'", "[Логин]");
-                        List<string> password = Database.GetListRows("SELECT [Пароль] FROM [User] WHERE [Пароль] = '" + AWnd.Login + "'", "[Пароль]");
+                        List<string> login = Database.GetListRows("SELECT [Логин] FROM [User] WHERE [Логин] = '" + Database.Encryption(AWnd.Login, "1320") + "'", "[Логин]");
+                        List<string> password = Database.GetListRows("SELECT [Пароль] FROM [User] WHERE [Пароль] = '" + Database.Encryption(AWnd.Password, "1320") + "'", "[Пароль]");
 
-                        if (AWnd.Password == login[0] && AWnd.Login == password[0])
+                        if (Database.Encryption(AWnd.Password, "1320") == login[0] && 
+                            Database.Encryption(AWnd.Login, "1320") == password[0])
                         {
                             Authorization = true;
-                            if (login[0] != "Admin")
+                            if (login[0] != Database.Encryption("Admin", "1320"))
                                 setting.IsEnabled = false;
                         }
                     }

@@ -9,7 +9,7 @@ namespace Airport
         {
             InitializeComponent();
 
-            Database.Request("SELECT * FROM [User]", userGrid);
+            Database.DecryptionRequest("SELECT * FROM [User]", userGrid);
             UpdateAllCombobx();
 
             user = new User();
@@ -17,8 +17,8 @@ namespace Airport
 
         private void UpdateAllCombobx()
         {
-            userUpdateLogin.ItemsSource = Database.GetListRows("SELECT [Логин] FROM [User]", "[Логин]");
-            userDeleteByLogin.ItemsSource = Database.GetListRows("SELECT [Логин] FROM [User] WHERE [Логин] != 'Admin'", "[Логин]");
+            userUpdateLogin.ItemsSource = Database.GetDecryptListRows("SELECT [Логин] FROM [User]", "[Логин]");
+            userDeleteByLogin.ItemsSource = Database.GetDecryptListRows("SELECT [Логин] FROM [User] WHERE [Логин] != '" + Database.Encryption("Admin", "1320") + "'", "[Логин]");
         }
         private void UserAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -28,8 +28,8 @@ namespace Airport
                 user.Password = userAddPassword.Text;
                 user.FullName = userAddFullName.Text;
 
-                Database.AddUser(user.Login, user.Password, user.FullName);
-                Database.Request("SELECT * FROM [User]", userGrid);
+                Database.AddUser(Database.Encryption(user.Login, "1320"), Database.Encryption(user.Password, "1320"), Database.Encryption(user.FullName, "1320"));
+                Database.DecryptionRequest("SELECT * FROM [User]", userGrid);
                 UpdateAllCombobx();
             }
             else
@@ -43,8 +43,8 @@ namespace Airport
                 user.Password = userUpdatePassword.Text;
                 user.FullName = userUpdateFullName.Text;
 
-                Database.UpdateUser(user.Login, user.Password, user.FullName);
-                Database.Request("SELECT * FROM [User]", userGrid);
+                Database.UpdateUser(Database.Encryption(user.Login, "1320"), Database.Encryption(user.Password, "1320"), Database.Encryption(user.FullName, "1320"));
+                Database.DecryptionRequest("SELECT * FROM [User]", userGrid);
                 UpdateAllCombobx();
             }
             else
@@ -56,8 +56,8 @@ namespace Airport
             {
                 user.Login = userDeleteByLogin.Text;
 
-                Database.Request("DELETE FROM [User] WHERE [Логин] = '" + user.Login + "'");
-                Database.Request("SELECT * FROM [User]", userGrid);
+                Database.Request("DELETE FROM [User] WHERE [Логин] = '" + Database.Encryption(user.Login, "1320") + "'");
+                Database.DecryptionRequest("SELECT * FROM [User]", userGrid);
                 UpdateAllCombobx();
             }
             else
