@@ -101,7 +101,11 @@ namespace Airport
                         List<string> password = Database.GetListForComboBox("SELECT [Пароль] FROM [User] WHERE [Пароль] = '" + AWnd.Login + "'", "[Пароль]");
 
                         if (AWnd.Password == login[0] && AWnd.Login == password[0])
+                        {
                             Authorization = true;
+                            if (login[0] != "Admin")
+                                setting.IsEnabled = false;
+                        }
                     }
                 }
                 catch (Exception ex)

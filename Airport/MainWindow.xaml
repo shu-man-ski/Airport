@@ -388,7 +388,7 @@
         <Menu Background="{DynamicResource windowColor}" Foreground="White"
               VerticalAlignment="Top" HorizontalAlignment="Right"
               Height="23">
-            <MenuItem Header="Параметры"
+            <MenuItem x:Name="setting" Header="Параметры"
                       Height="23">
                 <MenuItem Header="База данных"
                           Click="MenuItemDB_Click" Background="{DynamicResource windowColor}"/>
