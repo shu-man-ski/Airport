@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 using System.IO;
@@ -13,18 +12,79 @@ namespace Airport
 {
     class Database : MainWindow
     {
-        static private string connectionString;
+        static private SqlConnection connection;
         static private SqlDataAdapter adapter;
         static private SqlCommand command;
-        static private SqlConnection connection;
         static private DataTable dataTable;
 
 
         static Database()
         {
-            connection = null;
-            // Получаем строку подключения из app.config
-            connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            connection = new SqlConnection(@"Server=.\SQLEXPRESS;Integrated security=SSPI;database=master");
+        }
+
+
+        static public void CreateDatabase()
+        {
+            string str;
+
+            using (FileStream fstream = File.OpenRead(@"CREATE DATABASE.sql"))
+            {
+                byte[] array = new byte[fstream.Length]; // Преобразуем строку в байты
+                fstream.Read(array, 0, array.Length);    // Считываем данные 
+                str = Encoding.Default.GetString(array); // Декодируем байты в строку
+            }
+
+            SqlCommand myCommand = new SqlCommand(str, connection);
+            try
+            {
+                connection.Open();
+                myCommand.ExecuteNonQuery();
+                MessageBox.Show("База данных 'Airport' создана успешно", "Создание базы данных", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Создание базы данных", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                }
+            }
+        }
+        static public void CreateTables()
+        {
+            string str;
+
+            using (FileStream fstream = File.OpenRead(@"CREATE TABLES.sql"))
+            {
+                byte[] array = new byte[fstream.Length]; // Преобразуем строку в байты
+                fstream.Read(array, 0, array.Length);    // Считываем данные 
+                str = Encoding.Default.GetString(array); // Декодируем байты в строку
+            }
+
+            try
+            {
+                SqlCommand command = new SqlCommand(str, connection);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
         }
 
 
@@ -35,8 +95,7 @@ namespace Airport
 
             try
             {
-                connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(_select, connection);
+                SqlCommand command = new SqlCommand("USE [Airport] " + _select, connection);
                 adapter = new SqlDataAdapter(command);
 
                 connection.Open();
@@ -73,8 +132,7 @@ namespace Airport
                                    "VALUES (@Type,  @Model,  @NumberOfSeats,    @Capacity,          @MaintenanceDate)";
             try
             {
-                connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
+                SqlCommand command = new SqlCommand("USE [Airport] " + sql, connection);
 
                 command.Parameters.AddWithValue("@Type", _Type);
                 command.Parameters.AddWithValue("@Model", _Model);
@@ -105,8 +163,7 @@ namespace Airport
                                     "VALUES (@IDPlane,      @Airline,       @AirportOfArrival,   @DateOfDeparture,   @DateOfArival)";
             try
             {
-                connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
+                SqlCommand command = new SqlCommand("USE [Airport] " + sql, connection);
                 command.Parameters.AddWithValue("@IDPlane", _IDPlane);
                 command.Parameters.AddWithValue("@Airline", _Airline);
                 command.Parameters.AddWithValue("@AirportOfArrival", _AirportOfArrival);
@@ -136,8 +193,7 @@ namespace Airport
                                        "VALUES (@NumberPassport,  @IdentificationNumberPassport, @AuthorityThatIssuedPassport, @DateIssue,    @FullName)";
             try
             {
-                connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
+                SqlCommand command = new SqlCommand("USE [Airport] " + sql, connection);
                 command.Parameters.AddWithValue("@NumberPassport", _NumberPassport);
                 command.Parameters.AddWithValue("@IdentificationNumberPassport", _IdentificationNumberPassport);
                 command.Parameters.AddWithValue("@AuthorityThatIssuedPassport", _AuthorityThatIssuedPassport);
@@ -170,8 +226,7 @@ namespace Airport
                                     "VALUES (@Flight,    @NumberPassport)";
             try
             {
-                connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
+                SqlCommand command = new SqlCommand("USE [Airport] " + sql, connection);
                 command.Parameters.AddWithValue("@Flight", _IDFlight);
                 command.Parameters.AddWithValue("@NumberPassport", _NumberPassport);
 
@@ -201,8 +256,7 @@ namespace Airport
                                   "VALUES (@Login, @Password, @FullName)";
             try
             {
-                connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
+                SqlCommand command = new SqlCommand("USE [Airport] " + sql, connection);
                 command.Parameters.AddWithValue("@Login", _Login);
                 command.Parameters.AddWithValue("@Password", _Password);
                 command.Parameters.AddWithValue("@FullName", _FullName);
@@ -232,8 +286,7 @@ namespace Airport
             string sql = "UPDATE [User] SET [Пароль] = '" + _Password + "', [ФИО] = '" + _FullName + "' WHERE [Логин] = '" + _Login + "'";
             try
             {
-                connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
+                SqlCommand command = new SqlCommand("USE [Airport] " + sql, connection);
                 command.Parameters.AddWithValue("@Login", _Login);
                 command.Parameters.AddWithValue("@Password", _Password);
                 command.Parameters.AddWithValue("@FullName", _FullName);
@@ -265,8 +318,7 @@ namespace Airport
             dataTable = new DataTable();
             try
             {
-                connection = new SqlConnection(connectionString);
-                command = new SqlCommand(_select, connection);
+                command = new SqlCommand("USE [Airport] " + _select, connection);
                 adapter = new SqlDataAdapter(command);
 
                 connection.Open();
@@ -278,6 +330,8 @@ namespace Airport
             {
                 if (ex.Number == 547)
                     MessageBox.Show("Невозможно выполнить дествие, так как текущий объект имеет связь с данными из другой таблицы");
+                if (ex.Number == 911)
+                    return 911;
                 return 0;
             }
             catch (Exception ex)
@@ -372,8 +426,7 @@ namespace Airport
             dataTable = new DataTable();
             try
             {
-                connection = new SqlConnection(connectionString);
-                command = new SqlCommand(_select, connection);
+                command = new SqlCommand("USE [Airport] " + _select, connection);
                 adapter = new SqlDataAdapter(command);
 
                 connection.Open();
@@ -410,8 +463,7 @@ namespace Airport
 
             try
             {
-                connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(_select, connection);
+                SqlCommand command = new SqlCommand("USE [Airport] " + _select, connection);
                 adapter = new SqlDataAdapter(command);
 
                 connection.Open();

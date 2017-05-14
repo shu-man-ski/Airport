@@ -51,3 +51,5 @@ D:\GitHub\Airport\Airport\obj\Debug\Диспетчер авиарейсов_Mark
 D:\GitHub\Airport\Airport\obj\Debug\AboutProgramWindow.baml
 D:\GitHub\Airport\Airport\obj\Debug\UsersWindow.g.cs
 D:\GitHub\Airport\Airport\obj\Debug\UsersWindow.baml
+D:\GitHub\Airport\Airport\obj\Debug\DatabaseWindow.g.cs
+D:\GitHub\Airport\Airport\obj\Debug\DatabaseWindow.baml

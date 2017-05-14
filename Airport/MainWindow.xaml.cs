@@ -76,15 +76,18 @@ namespace Airport
         }
         private void UpdateAllCombobox()
         {
-            planeSearchByType.ItemsSource = Database.GetListRows("SELECT DISTINCT [Тип] FROM Plane", "[Тип]");
-            planeSearchByModel.ItemsSource = Database.GetListRows("SELECT DISTINCT [Модель] FROM Plane", "[Модель]");
+            if (Database.Request("") != 911)
+            {
+                planeSearchByType.ItemsSource = Database.GetListRows("SELECT DISTINCT [Тип] FROM Plane", "[Тип]");
+                planeSearchByModel.ItemsSource = Database.GetListRows("SELECT DISTINCT [Модель] FROM Plane", "[Модель]");
 
-            flightIDPlane.ItemsSource = Database.GetListRows("SELECT [ID самолета] FROM Plane", "[ID самолета]");
-            flightSearchByAirline.ItemsSource = Database.GetListRows("SELECT DISTINCT [Авиакомпания] FROM Flight", "[Авиакомпания]");
+                flightIDPlane.ItemsSource = Database.GetListRows("SELECT [ID самолета] FROM Plane", "[ID самолета]");
+                flightSearchByAirline.ItemsSource = Database.GetListRows("SELECT DISTINCT [Авиакомпания] FROM Flight", "[Авиакомпания]");
 
-            ticketFlight.ItemsSource = Database.GetListRows("SELECT [ID авиарейса] FROM Flight", "[ID авиарейса]");
-            ticketPassenger.ItemsSource = Database.GetListRows("SELECT [Номер паспорта] FROM Passenger", "[Номер паспорта]");
-            ticketSearchByFlight.ItemsSource = Database.GetListRows("SELECT DISTINCT [Авиарейс] FROM Ticket", "[Авиарейс]");
+                ticketFlight.ItemsSource = Database.GetListRows("SELECT [ID авиарейса] FROM Flight", "[ID авиарейса]");
+                ticketPassenger.ItemsSource = Database.GetListRows("SELECT [Номер паспорта] FROM Passenger", "[Номер паспорта]");
+                ticketSearchByFlight.ItemsSource = Database.GetListRows("SELECT DISTINCT [Авиарейс] FROM Ticket", "[Авиарейс]");
+            }
         }
 
 
@@ -100,7 +103,7 @@ namespace Airport
                         List<string> login = Database.GetListRows("SELECT [Логин] FROM [User] WHERE [Логин] = '" + Database.Encryption(AWnd.Login, "1320") + "'", "[Логин]");
                         List<string> password = Database.GetListRows("SELECT [Пароль] FROM [User] WHERE [Пароль] = '" + Database.Encryption(AWnd.Password, "1320") + "'", "[Пароль]");
 
-                        if (Database.Encryption(AWnd.Password, "1320") == login[0] && 
+                        if (Database.Encryption(AWnd.Password, "1320") == login[0] &&
                             Database.Encryption(AWnd.Login, "1320") == password[0])
                         {
                             Authorization = true;
@@ -120,18 +123,22 @@ namespace Airport
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            CheckAuthoriztion();
+            if (Database.Request("") != 911)
+            {
+                CheckAuthoriztion();
 
-            Database.Request("SELECT * FROM Plane", planeGrid);
-            Database.Request("SELECT * FROM Flight", flightGrid);
-            Database.Request("SELECT * FROM Passenger", passengerGrid);
-            Database.Request("SELECT * FROM Ticket", ticketGrid);
+                Database.Request("SELECT * FROM Plane", planeGrid);
+                Database.Request("SELECT * FROM Flight", flightGrid);
+                Database.Request("SELECT * FROM Passenger", passengerGrid);
+                Database.Request("SELECT * FROM Ticket", ticketGrid);
+            }
         }
 
 
         private void MenuItemDB_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("База данных");
+            DatabaseWindow databaseWnd = new DatabaseWindow();
+            databaseWnd.Show();
         }
         private void MenuItemUsers_Click(object sender, RoutedEventArgs e)
         {
