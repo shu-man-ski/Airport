@@ -24,16 +24,26 @@ namespace Airport
         }
 
 
-        static public void CreateDatabase()
+        static public void CreateDatabase(string fileName)
         {
-            string str;
-
-            using (FileStream fstream = File.OpenRead(@"CREATE DATABASE.sql"))
-            {
-                byte[] array = new byte[fstream.Length]; // Преобразуем строку в байты
-                fstream.Read(array, 0, array.Length);    // Считываем данные 
-                str = Encoding.Default.GetString(array); // Декодируем байты в строку
-            }
+            string str = "CREATE DATABASE [Airport]" + 
+                          " ON PRIMARY" + 
+                            "(" +
+                              " NAME = N'airportdb'," +
+                              " FILENAME = N'" + fileName + @"\airportdb.mdf'," +
+                              " SIZE = 15MB," +
+                              " MAXSIZE = UNLIMITED," +
+                              " FILEGROWTH = 1024KB" +
+                            ")" +
+                          " LOG ON " +
+                            "(" +
+                          " NAME = N'airportdb_log'," +
+                          " FILENAME = N'" + fileName + @"\airportdb_log.ldf'," +
+                          " SIZE = 1024KB," + 
+                          " MAXSIZE = 2048GB," +
+                          " FILEGROWTH = 10 %" +
+                            ")" +
+                         @" ALTER AUTHORIZATION ON DATABASE::[Airport] TO[NT AUTHORITY\СИСТЕМА]; ";
 
             SqlCommand myCommand = new SqlCommand(str, connection);
             try

@@ -5,12 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Airport"
         mc:Ignorable="d"
-        Title="База данных" Height="300" Width="600">
+        Title="База данных" Height="150" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="craeteDB" Content="Создать базу данных"
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Width="120" Height="25" Margin="237,122,0,0"
-                Template="{StaticResource buttonBlue}" Click="craeteDB_Click"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Content="Укажите путь к базе данных / Way to the database: " Grid.Row="0"
+               HorizontalAlignment="Left" VerticalAlignment="Top"
+               Height="25" Margin="20,30,0,0" />
+        <TextBox x:Name="databaseWay" Grid.Row="0"
+                 HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center"
+                 Width="259" Height="25" Margin="0,30,20,0" TextWrapping="Wrap"/>
+        <Button x:Name="craeteDB" Content="Создать новую БД" Grid.Row="1"
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                Width="120" Height="25" Margin="0,15,0,0"
+                Template="{StaticResource buttonGreen}" Click="craeteDB_Click"/>
     </Grid>
 </Window>

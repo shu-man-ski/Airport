@@ -11,8 +11,13 @@ namespace Airport
 
         private void craeteDB_Click(object sender, RoutedEventArgs e)
         {
-            Database.CreateDatabase();
-            Database.CreateTables();
+            if (databaseWay.Text != "")
+            {
+                Database.CreateDatabase(databaseWay.Text);
+                Database.CreateTables();
+            }
+            else
+                MessageBox.Show("Вы не ввели путь. Повторите ввод");
         }
     }
 }
