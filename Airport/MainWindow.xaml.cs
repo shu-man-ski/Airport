@@ -38,6 +38,8 @@ namespace Airport
             this.DataContext = new Valid();
         }
 
+
+        #region Init Combobox
         private void InitPlaneTypeComboBox()
         {
             planeType.Items.Add("Военный");
@@ -89,6 +91,7 @@ namespace Airport
                 ticketSearchByFlight.ItemsSource = Database.GetListRows("SELECT DISTINCT [Авиарейс] FROM Ticket", "[Авиарейс]");
             }
         }
+        #endregion
 
 
         private void CheckAuthoriztion()
@@ -135,6 +138,7 @@ namespace Airport
         }
 
 
+        #region Menu Items
         private void MenuItemDB_Click(object sender, RoutedEventArgs e)
         {
             DatabaseWindow databaseWnd = new DatabaseWindow();
@@ -156,8 +160,9 @@ namespace Airport
             this.Close();
             mainWMnd.Show();
         }
+        #endregion
 
-
+        #region Plane Tab
         private void Plane_Add_Click(object sender, RoutedEventArgs e)
         {
             DateTime? date = planeMaintenanceDate.SelectedDate;
@@ -213,8 +218,9 @@ namespace Airport
             Database.Request("SELECT * FROM Plane", planeGrid);
             UpdateAllCombobox();
         }
+        #endregion
 
-
+        #region Flight Tab
         private void Flight_Add_Click(object sender, RoutedEventArgs e)
         {
             DateTime? dateOfDeparture = flightDateOfDeparture.SelectedDate;
@@ -269,8 +275,9 @@ namespace Airport
             Database.Request("SELECT * FROM Flight", flightGrid);
             UpdateAllCombobox();
         }
+        #endregion
 
-
+        #region Passanger Tab
         private void Passenger_Add_Click(object sender, RoutedEventArgs e)
         {
             DateTime? dateIssue = passengerDateIssue.SelectedDate;
@@ -319,8 +326,9 @@ namespace Airport
             Database.Request("SELECT * FROM Passenger", passengerGrid);
             UpdateAllCombobox();
         }
+        #endregion
 
-
+        #region Ticket Tab
         private void Ticket_Add_Click(object sender, RoutedEventArgs e)
         {
             if (ticketFlight.Items.IndexOf(ticketFlight.Text) >= 0 && ticketPassenger.Items.IndexOf(ticketPassenger.Text) >= 0)
@@ -340,5 +348,6 @@ namespace Airport
             ResultWindow resultWnd = new ResultWindow("Ticket", "[Авиарейс]", _searchCB: ticketSearchByFlight, _dataGrid: ticketGrid);
             UpdateAllCombobox();
         }
+        #endregion
     }
 }
