@@ -19,7 +19,7 @@
         <Image x:Name="mainImage" Grid.Column="0" Grid.RowSpan="6"
                HorizontalAlignment="Left"
                Margin="0,10,150,10"
-               Source="aut.png"/>
+               Source="/Диспетчер авиарейсов;component/Resources/aut.png"/>
 
         <TextBlock Text="Введите логин:"
                    Grid.Row="0" 

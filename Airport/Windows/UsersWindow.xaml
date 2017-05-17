@@ -50,7 +50,7 @@
                     <Button x:Name="userAdd" Content="Добавить" Grid.Row="3"
                             Template="{StaticResource buttonBlue}"
                             HorizontalAlignment="Right" VerticalAlignment="Top" 
-                            Width="120" Height="25" Margin="0,5,5,0" Click="UserAdd_Click"/>
+                            Width="120" Height="25" Margin="0,5,5,0" Click="User_Add_Click"/>
                 </Grid>
             </GroupBox>
             <GroupBox Header="Изменить данные пользователя" Grid.Column="1"
@@ -85,7 +85,7 @@
                     <Button x:Name="userUpdate" Content="Изменить" Grid.Row="3"
                             Template="{StaticResource buttonBlue}"
                             HorizontalAlignment="Right" VerticalAlignment="Top" 
-                            Width="120" Height="25" Margin="0,5,5,0" Click="UserUpdate_Click"/>
+                            Width="120" Height="25" Margin="0,5,5,0" Click="User_Update_Click"/>
                 </Grid>
             </GroupBox>
         </Grid>

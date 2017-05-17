@@ -121,10 +121,10 @@
 
                         <Label Content="Удалить самолет по ID" 
                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                               Height="25" Margin="0,0,214,10"/>
+                               Height="25" Margin="0,0,174,10"/>
                         <TextBox x:Name="planeDeleteByID"
                                  HorizontalAlignment="Right" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"
+                                 Width="80" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"
                                  Validation.ErrorTemplate="{StaticResource validationFailed}">
                             <TextBox.Text>
                                 <Binding Path="PlaneDeleteByID">
@@ -234,10 +234,10 @@
 
                         <Label Content="Удалить рейс по ID" 
                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                               Height="25" Margin="0,0,214,10"/>
+                               Height="25" Margin="0,0,174,10"/>
                         <TextBox x:Name="flightDeleteByIDPlane"
                                  HorizontalAlignment="Right" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"
+                                 Width="80" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"
                                  Validation.ErrorTemplate="{StaticResource validationFailed}">
                             <TextBox.Text>
                                 <Binding Path="FlightDeleteByIDPlane">
@@ -327,10 +327,10 @@
 
                         <Label Content="Удалить пассажира по № паспорта"
                                HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                               Height="25" Margin="0,0,214,10"/>
+                               Height="25" Margin="0,0,174,10"/>
                         <TextBox x:Name="passengerDeleteByNumberPassport"
                                  HorizontalAlignment="Right" VerticalAlignment="Bottom" VerticalContentAlignment="Center"
-                                 Width="120" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"/>
+                                 Width="80" Height="25" TextWrapping="Wrap" Margin="0,0,89,10"/>
                         <Button Content="Удалить" Template="{StaticResource buttonRed}" 
                                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
                                 Width="74" Height="25" Margin="0,0,10,10"

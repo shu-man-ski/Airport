@@ -1,18 +1,6 @@
-C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Airport.exe.config
-C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Airport.exe
-C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Airport.pdb
-C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.csprojResolveAssemblyReference.cache
-C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\AuthorizationWindow.baml
-C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\MainWindow.baml
-C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\AuthorizationWindow.g.cs
-C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\MainWindow.g.cs
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\App.g.cs
-C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport_MarkupCompile.cache
-C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.g.resources
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.Properties.Resources.resources
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.csproj.GenerateResource.Cache
-C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.exe
-C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.pdb
 D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\bin\Debug\Airport.exe.config
 D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.exe
 D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.pdb
@@ -53,3 +41,25 @@ D:\GitHub\Airport\Airport\obj\Debug\UsersWindow.g.cs
 D:\GitHub\Airport\Airport\obj\Debug\UsersWindow.baml
 D:\GitHub\Airport\Airport\obj\Debug\DatabaseWindow.g.cs
 D:\GitHub\Airport\Airport\obj\Debug\DatabaseWindow.baml
+C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Диспетчер авиарейсов.exe.config
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Диспетчер авиарейсов.exe
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Диспетчер авиарейсов.pdb
+C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Диспетчер авиарейсов.exe
+C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Диспетчер авиарейсов.pdb
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\App.baml
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Диспетчер авиарейсов_MarkupCompile.cache
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Диспетчер авиарейсов_MarkupCompile.lref
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Диспетчер авиарейсов.g.resources
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\AuthorizationWindow.baml
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\MainWindow.baml
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\ResultWindow.baml
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\AboutProgramWindow.g.cs
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\AuthorizationWindow.g.cs
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\DatabaseWindow.g.cs
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\MainWindow.g.cs
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\ResultWindow.g.cs
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\UsersWindow.g.cs
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\AboutProgramWindow.baml
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\DatabaseWindow.baml
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\UsersWindow.baml
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.csprojResolveAssemblyReference.cache

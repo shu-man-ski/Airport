@@ -9,7 +9,7 @@ namespace Airport
             InitializeComponent();
         }
 
-        private void craeteDB_Click(object sender, RoutedEventArgs e)
+        private void CraeteDB_Click(object sender, RoutedEventArgs e)
         {
             if (databaseWay.Text != "")
             {
@@ -17,7 +17,7 @@ namespace Airport
                 Database.CreateTables();
             }
             else
-                MessageBox.Show("Вы не ввели путь. Повторите ввод");
+                MessageBox.Show("Вы не ввели путь. Повторите ввод", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

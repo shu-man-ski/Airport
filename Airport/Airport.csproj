@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>plain.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\plain.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -72,62 +72,63 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AboutProgramWindow.xaml.cs">
+    <Compile Include="Windows\AboutProgramWindow.xaml.cs">
       <DependentUpon>AboutProgramWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseWindow.xaml.cs">
+    <Compile Include="Classes\Cryptographer.cs" />
+    <Compile Include="Windows\DatabaseWindow.xaml.cs">
       <DependentUpon>DatabaseWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Passenger.cs" />
-    <Compile Include="ResultWindow.xaml.cs">
+    <Compile Include="Classes\Passenger.cs" />
+    <Compile Include="Windows\ResultWindow.xaml.cs">
       <DependentUpon>ResultWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ticket.cs" />
-    <Compile Include="UsersWindow.xaml.cs">
+    <Compile Include="Classes\Ticket.cs" />
+    <Compile Include="Windows\UsersWindow.xaml.cs">
       <DependentUpon>UsersWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Valid.cs" />
-    <Page Include="AboutProgramWindow.xaml">
+    <Compile Include="Classes\Valid.cs" />
+    <Page Include="Windows\AboutProgramWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AuthorizationWindow.xaml">
+    <Page Include="Windows\AuthorizationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DatabaseWindow.xaml">
+    <Page Include="Windows\DatabaseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="User.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AuthorizationWindow.xaml.cs">
+    <Compile Include="Windows\AuthorizationWindow.xaml.cs">
       <DependentUpon>AuthorizationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Database.cs" />
-    <Compile Include="Flight.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\Flight.cs" />
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ResultWindow.xaml">
+    <Page Include="Windows\ResultWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UsersWindow.xaml">
+    <Page Include="Windows\UsersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Plane.cs" />
+    <Compile Include="Classes\Plane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -172,10 +173,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="plain.ico" />
+    <Resource Include="Resources\plain.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="aut.png" />
+    <Resource Include="Resources\aut.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

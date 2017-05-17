@@ -1,28 +1,32 @@
 ﻿<Application x:Class="Airport.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Windows/MainWindow.xaml">
     <Application.Resources>
 
         <!-- Window Color -->
         <SolidColorBrush x:Key="windowColor" Color="#FF9CB2D1"/>
 
+        <!-- Label -->
+        <Style TargetType="Label">
+            <Setter Property="Padding" Value="5,5,5,0"/>
+        </Style>
+        
         <!-- TextBox -->
         <Style TargetType="TextBox">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Grid>
-                            <Border BorderBrush="#FF9CB2D1" 
-                                    BorderThickness="1" 
-                                    CornerRadius="3" 
-                                    Opacity="1">
-                                <ScrollViewer x:Name="PART_ContentHost" 
+                        <Border BorderBrush="#FF9CB2D1" 
+                                Opacity="1">
+                            <Border.BorderThickness>
+                                <Thickness Left="0" Right="0" Top="0" Bottom="1"/>
+                            </Border.BorderThickness>
+                            <ScrollViewer x:Name="PART_ContentHost" 
                                               BorderThickness="0" IsTabStop="False" 
                                               Margin="0" Padding="{TemplateBinding Padding}">
-                                </ScrollViewer>
-                            </Border>
-                        </Grid>
+                            </ScrollViewer>
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -46,10 +50,12 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type PasswordBox}">
                         <Grid>
-                            <Border BorderBrush="#FF9CB2D1" 
-                                    BorderThickness="1" 
+                            <Border BorderBrush="#FF9CB2D1"  
                                     CornerRadius="3" 
                                     Opacity="1">
+                                <Border.BorderThickness>
+                                    <Thickness Left="0" Right="0" Top="0" Bottom="1"/>
+                                </Border.BorderThickness>
                                 <ScrollViewer x:Name="PART_ContentHost" 
                                               BorderThickness="0" IsTabStop="False" 
                                               Margin="0" Padding="{TemplateBinding Padding}">
@@ -65,7 +71,7 @@
         <ControlTemplate TargetType="Button" x:Key="buttonBlue">
             <Border x:Name="buttonBlueBorder" 
                     BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
+                    BorderThickness="0"
                     CornerRadius="3"
                     Background="#FF9CB2D1"
                     Height="{TemplateBinding Height}"
@@ -76,15 +82,24 @@
                                 Content="{TemplateBinding Content}"/>
             </Border>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
+                <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="buttonBlueBorder" Property="Background" Value="#FF5E98FD"/>
                 </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True" />
+                        <Condition Property="IsPressed" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter TargetName="buttonBlueBorder" Property="Background" Value="#426AB1"/>
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <ControlTemplate TargetType="Button" x:Key="buttonGreen">
             <Border x:Name="buttonGreenBorder" 
                     BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
+                    BorderThickness="0"
                     CornerRadius="3"
                     Background="#FFC0FF95"
                     Height="{TemplateBinding Height}"
@@ -95,15 +110,24 @@
                                 Content="{TemplateBinding Content}"/>
             </Border>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
+                <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="buttonGreenBorder" Property="Background" Value="#FF86FF33"/>
                 </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True" />
+                        <Condition Property="IsPressed" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter TargetName="buttonGreenBorder" Property="Background" Value="#24B200"/>
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <ControlTemplate TargetType="Button" x:Key="buttonRed">
             <Border x:Name="buttonRedBorder" 
                     BorderBrush="#FF8C8C8C" 
-                    BorderThickness="1"
+                    BorderThickness="0"
                     CornerRadius="3"
                     Background="#FFFFAD95"
                     Height="{TemplateBinding Height}"
@@ -114,9 +138,18 @@
                                 Content="{TemplateBinding Content}"/>
             </Border>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
+                <Trigger Property="IsMouseOver" Value="True">
                     <Setter TargetName="buttonRedBorder" Property="Background" Value="#FFF7734C"/>
                 </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True" />
+                        <Condition Property="IsPressed" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter TargetName="buttonRedBorder" Property="Background" Value="#AC5136"/>
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
@@ -126,10 +159,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ComboBox}">
                         <Border BorderBrush="#FF9CB2D1" 
-                                BorderThickness="1" 
-                                CornerRadius="3" 
                                 ClipToBounds="True" 
                                 Background="White">
+                            <Border.BorderThickness>
+                                <Thickness Left="0" Right="0" Top="0" Bottom="1"/>
+                            </Border.BorderThickness>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
@@ -221,6 +255,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
     </Application.Resources>
 </Application>

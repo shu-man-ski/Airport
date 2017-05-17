@@ -21,6 +21,6 @@
         <Button x:Name="craeteDB" Content="Создать новую БД" Grid.Row="1"
                 HorizontalAlignment="Center" VerticalAlignment="Top"
                 Width="120" Height="25" Margin="0,15,0,0"
-                Template="{StaticResource buttonBlue}" Click="craeteDB_Click"/>
+                Template="{StaticResource buttonBlue}" Click="CraeteDB_Click"/>
     </Grid>
 </Window>

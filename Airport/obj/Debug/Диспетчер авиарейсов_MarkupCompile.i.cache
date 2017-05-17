@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\GitHub\Airport\Airport\obj\Debug\
+C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\
 Airport
 none
 false
 DEBUG;TRACE
-D:\GitHub\Airport\Airport\App.xaml
-6116735437
+C:\Users\dima-\Desktop\Airport\Airport\App.xaml
+6-1770644781
 
-21706497749
+22-1015483306
 13-1093145242
-AboutProgramWindow.xaml;AuthorizationWindow.xaml;DatabaseWindow.xaml;MainWindow.xaml;ResultWindow.xaml;UsersWindow.xaml;
+Windows\AboutProgramWindow.xaml;Windows\AuthorizationWindow.xaml;Windows\DatabaseWindow.xaml;Windows\MainWindow.xaml;Windows\ResultWindow.xaml;Windows\UsersWindow.xaml;
 
 False
 
