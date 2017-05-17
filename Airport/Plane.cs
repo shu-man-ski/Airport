@@ -7,8 +7,8 @@ namespace Airport
         public string ID { get; set; }
         public string Type { get; set; }
         public string Model { get; set; }
-        private int numberOfSeats;
-        public int NumberOfSeats
+        private int? numberOfSeats;
+        public int? NumberOfSeats
         {
             get { return numberOfSeats; }
             set
@@ -16,11 +16,14 @@ namespace Airport
                 if (value > 5 && value < 750)
                     numberOfSeats = value;
                 else
+                {
                     MessageBox.Show("Недопустимое количество мест в самолете. Проверьте корректность ввода");
+                    numberOfSeats = null;
+                }
             }
         }
-        private int capacity;
-        public int Capacity
+        private int? capacity;
+        public int? Capacity
         {
             get { return capacity; }
             set
@@ -28,7 +31,10 @@ namespace Airport
                 if (value > 20 && value < 350)
                     capacity = value;
                 else
+                {
                     MessageBox.Show("Недопустимый размер грузоподъемности самолета. Проверьте корректность ввода");
+                    capacity = null;
+                }
             }
         }
         public string MaintenanceDate { get; set; }
