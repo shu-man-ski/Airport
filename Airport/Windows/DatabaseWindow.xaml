@@ -11,16 +11,20 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
+
         <Label Content="Укажите путь к базе данных / Way to the database: " Grid.Row="0"
                HorizontalAlignment="Left" VerticalAlignment="Top"
-               Height="25" Margin="20,30,0,0" />
+               Height="25" Margin="10,30,0,0" />
         <TextBox x:Name="databaseWay" Grid.Row="0"
                  HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center"
-                 Width="259" Height="25" Margin="0,30,20,0" TextWrapping="Wrap"/>
-        <Button x:Name="craeteDB" Content="Создать новую БД" Grid.Row="1"
-                HorizontalAlignment="Center" VerticalAlignment="Top"
-                Width="120" Height="25" Margin="0,15,0,0"
+                 Width="154" Height="25" Margin="0,30,135,0" TextWrapping="Wrap"/>
+        <Button x:Name="craeteDB" Content="Создать новую БД" Grid.Row="0"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Width="120" Height="25" Margin="455,30,10,0"
                 Template="{StaticResource buttonBlue}" Click="CraeteDB_Click"/>
+        <Button x:Name="dropDB" Content="Удалить существующую БД" Grid.Row="1"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Width="155" Height="25" Margin="0,0,10,10"
+                Template="{StaticResource buttonRed}" Click="DropDB_Click"/>
     </Grid>
 </Window>

@@ -17,16 +17,10 @@ D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\
 D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.Properties.Resources.resources
 D:\Study\2 курс\2 семестр\Курсовая\Airport\Airport\obj\Debug\Airport.csproj.GenerateResource.Cache
 D:\GitHub\Airport\Airport\obj\Debug\Airport.csprojResolveAssemblyReference.cache
-D:\GitHub\Airport\Airport\obj\Debug\AuthorizationWindow.baml
-D:\GitHub\Airport\Airport\obj\Debug\MainWindow.baml
-D:\GitHub\Airport\Airport\obj\Debug\AuthorizationWindow.g.cs
-D:\GitHub\Airport\Airport\obj\Debug\MainWindow.g.cs
 D:\GitHub\Airport\Airport\obj\Debug\App.g.cs
 D:\GitHub\Airport\Airport\obj\Debug\Airport.Properties.Resources.resources
 D:\GitHub\Airport\Airport\obj\Debug\Airport.csproj.GenerateResource.Cache
 D:\GitHub\Airport\Airport\obj\Debug\App.baml
-D:\GitHub\Airport\Airport\obj\Debug\ResultWindow.baml
-D:\GitHub\Airport\Airport\obj\Debug\ResultWindow.g.cs
 D:\GitHub\Airport\Airport\bin\Debug\Диспетчер авиарейсов.exe.config
 D:\GitHub\Airport\Airport\bin\Debug\Диспетчер авиарейсов.exe
 D:\GitHub\Airport\Airport\bin\Debug\Диспетчер авиарейсов.pdb
@@ -34,13 +28,7 @@ D:\GitHub\Airport\Airport\obj\Debug\Диспетчер авиарейсов_Mark
 D:\GitHub\Airport\Airport\obj\Debug\Диспетчер авиарейсов.g.resources
 D:\GitHub\Airport\Airport\obj\Debug\Диспетчер авиарейсов.exe
 D:\GitHub\Airport\Airport\obj\Debug\Диспетчер авиарейсов.pdb
-D:\GitHub\Airport\Airport\obj\Debug\AboutProgramWindow.g.cs
 D:\GitHub\Airport\Airport\obj\Debug\Диспетчер авиарейсов_MarkupCompile.lref
-D:\GitHub\Airport\Airport\obj\Debug\AboutProgramWindow.baml
-D:\GitHub\Airport\Airport\obj\Debug\UsersWindow.g.cs
-D:\GitHub\Airport\Airport\obj\Debug\UsersWindow.baml
-D:\GitHub\Airport\Airport\obj\Debug\DatabaseWindow.g.cs
-D:\GitHub\Airport\Airport\obj\Debug\DatabaseWindow.baml
 C:\Users\dima-\Desktop\Airport\Airport\bin\Debug\Диспетчер авиарейсов.exe.config
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Диспетчер авиарейсов.exe
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Диспетчер авиарейсов.pdb
@@ -63,3 +51,15 @@ C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\AboutProgramWindow.baml
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\DatabaseWindow.baml
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Windows\UsersWindow.baml
 C:\Users\dima-\Desktop\Airport\Airport\obj\Debug\Airport.csprojResolveAssemblyReference.cache
+D:\GitHub\Airport\Airport\obj\Debug\Windows\AuthorizationWindow.baml
+D:\GitHub\Airport\Airport\obj\Debug\Windows\MainWindow.baml
+D:\GitHub\Airport\Airport\obj\Debug\Windows\ResultWindow.baml
+D:\GitHub\Airport\Airport\obj\Debug\Windows\AboutProgramWindow.g.cs
+D:\GitHub\Airport\Airport\obj\Debug\Windows\AuthorizationWindow.g.cs
+D:\GitHub\Airport\Airport\obj\Debug\Windows\DatabaseWindow.g.cs
+D:\GitHub\Airport\Airport\obj\Debug\Windows\MainWindow.g.cs
+D:\GitHub\Airport\Airport\obj\Debug\Windows\ResultWindow.g.cs
+D:\GitHub\Airport\Airport\obj\Debug\Windows\UsersWindow.g.cs
+D:\GitHub\Airport\Airport\obj\Debug\Windows\AboutProgramWindow.baml
+D:\GitHub\Airport\Airport\obj\Debug\Windows\DatabaseWindow.baml
+D:\GitHub\Airport\Airport\obj\Debug\Windows\UsersWindow.baml

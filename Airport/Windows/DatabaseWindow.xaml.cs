@@ -19,5 +19,9 @@ namespace Airport
             else
                 MessageBox.Show("Вы не ввели путь. Повторите ввод", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
+        private void DropDB_Click(object sender, RoutedEventArgs e)
+        {
+            Database.DropDatabase();
+        }
     }
 }

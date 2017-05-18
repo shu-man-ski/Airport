@@ -93,6 +93,29 @@ namespace Airport
                     connection.Close();
             }
         }
+        static public void DropDatabase()
+        {
+            try
+            {
+                command = new SqlCommand("DROP DATABASE [Airport]", connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                MessageBox.Show("База данных 'Airport' успешно удалена", "Удаление базы данных", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Исключение (SqlException)", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Исключение (Exception)", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            finally
+            {
+                if (connection != null)
+                    connection.Close();
+            }
+        }
 
 
         static public int Query(string query                  /* Строка запроса */,
