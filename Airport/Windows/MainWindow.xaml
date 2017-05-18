@@ -175,16 +175,14 @@
                                Width="330" Height="25" Margin="10,100,0,0"/>
                         <DatePicker x:Name="flightDateOfDeparture" ToolTip="Выберите дату отправления"
                                     HorizontalAlignment="Left" VerticalAlignment="Top" 
-                                    Width="120" Height="25" Margin="345,100,0,0"
-                                    UseLayoutRounding="False" FontStyle="Italic">
+                                    Width="120" Height="25" Margin="345,100,0,0">
                         </DatePicker>
                         <Label Content="Дата прибытия / Arrival date" 
                                HorizontalAlignment="Left" VerticalAlignment="Top"
                                Width="330" Height="25" Margin="10,130,0,0"/>
                         <DatePicker x:Name="flightDataOfArrival" ToolTip="Выберите дату прибытия"
                                     HorizontalAlignment="Left" VerticalAlignment="Top" 
-                                    Width="120" Height="25" Margin="345,130,0,0"
-                                    UseLayoutRounding="False" FontStyle="Italic"/>
+                                    Width="120" Height="25" Margin="345,130,0,0"/>
                         <Button Content="Регистрация" Template="{StaticResource buttonBlue}"
                                 HorizontalAlignment="Right" VerticalAlignment="Top" 
                                 Width="120" Height="25" 
@@ -226,8 +224,7 @@
                                Width="330" Height="25" Margin="10,0,0,10"/>
                         <DatePicker x:Name="flightSearchByDateOfDeparture" ToolTip="Выберите дату отпраления для поиска"
                                     HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                                    Width="120" Height="25" Margin="345,0,0,10"
-                                    UseLayoutRounding="False" FontStyle="Italic"/>
+                                    Width="120" Height="25" Margin="345,0,0,10"/>
                         <Button Content="Найти" Template="{StaticResource buttonGreen}" 
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
                                 Width="74" Height="25" Margin="470,0,0,10" Click="Flight_SearchByDateOfDeparture_Click"/>

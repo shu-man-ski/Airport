@@ -241,6 +241,7 @@
             <Setter Property="FontStyle" Value="Italic"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="UseLayoutRounding" Value="True"/>
         </Style>
         <Style TargetType="DatePickerTextBox">
             <Setter Property="Control.Template">

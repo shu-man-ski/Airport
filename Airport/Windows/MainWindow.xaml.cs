@@ -38,7 +38,7 @@ namespace Airport
         }
 
 
-        #region Init Combobox
+        #region Init Combobox And DatePicker
         private void InitPlaneTypeComboBox()
         {
             planeType.Items.Add("Военный");
@@ -70,9 +70,8 @@ namespace Airport
         private void InitAllDatePicker()
         {
             planeMaintenanceDate.DisplayDateEnd = DateTime.Now;
-            flightDateOfDeparture.DisplayDateEnd = DateTime.Now;
-            flightDataOfArrival.DisplayDateEnd = DateTime.Now;
-            flightSearchByDateOfDeparture.DisplayDateEnd = DateTime.Now;
+            flightDateOfDeparture.DisplayDateStart = DateTime.Now;
+            flightDataOfArrival.DisplayDateStart = DateTime.Now;
             passengerDateIssue.DisplayDateEnd = DateTime.Now;
         }
         private void UpdateAllCombobox()
@@ -230,7 +229,7 @@ namespace Airport
             DateTime? dateOfDeparture = flightDateOfDeparture.SelectedDate;
             DateTime? dateOfArrival = flightDataOfArrival.SelectedDate;
             if (flightIDPlane.Items.IndexOf(flightIDPlane.Text) >= 0 && flightAirline.Items.IndexOf(flightAirline.Text) >= 0 &&
-                flightAirportOfArrival.Text != "" && dateOfDeparture != null && dateOfArrival != null)
+                flightAirportOfArrival.Text != "" && !Valid.IsNum(flightAirportOfArrival.Text) && dateOfDeparture != null && dateOfArrival != null)
             {
                 flight.IDPlane = int.Parse(flightIDPlane.Text);
                 flight.Airline = flightAirline.Text;
@@ -239,7 +238,7 @@ namespace Airport
                 flight.DateOfArrival = flightDataOfArrival.SelectedDate.Value.ToString("d");
 
                 string query = "INSERT INTO Flight([ID самолета], [Авиакомпания], [Аэропорт прибытия], [Дата отправления], [Дата прибытия])" +
-                                        "VALUES (@IDPlane,      @Airline,       @AirportOfArrival,   @DateOfDeparture,   @DateOfArival)";
+                                          "VALUES (@IDPlane,      @Airline,       @AirportOfArrival,   @DateOfDeparture,   @DateOfArival)";
                 string[] sqlVariables = { "IDPlane", "Airline", "AirportOfArrival", "DateOfDeparture", "DateOfArival" };
                 object[] obj = { flight.IDPlane, flight.Airline, flight.AirportOfArrival, flight.DateOfDeparture, flight.DateOfArrival };
                 Database.Query(query, sqlVariables, obj);
