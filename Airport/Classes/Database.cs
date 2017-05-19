@@ -26,26 +26,26 @@ namespace Airport
         }
 
 
-        static public void CreateDatabase(string fileName)
+        static public void CreateDatabase(string path)
         {
             string query = "CREATE DATABASE [Airport]" +
-                          " ON PRIMARY" +
-                            "(" +
+                           "ON PRIMARY" +
+                           "(" +
                               " NAME = N'airportdb'," +
-                              " FILENAME = N'" + fileName + @"\airportdb.mdf'," +
+                              " FILENAME = N'" + path + @"\airportdb.mdf'," +
                               " SIZE = 15MB," +
                               " MAXSIZE = UNLIMITED," +
                               " FILEGROWTH = 1024KB" +
-                            ")" +
-                          " LOG ON " +
+                           ")" +
+                           "LOG ON " +
                             "(" +
-                          " NAME = N'airportdb_log'," +
-                          " FILENAME = N'" + fileName + @"\airportdb_log.ldf'," +
-                          " SIZE = 1024KB," +
-                          " MAXSIZE = 2048GB," +
-                          " FILEGROWTH = 10 %" +
-                            ")" +
-                         @" ALTER AUTHORIZATION ON DATABASE::[Airport] TO[NT AUTHORITY\СИСТЕМА]; ";
+                           "NAME = N'airportdb_log'," +
+                           "FILENAME = N'" + path + @"\airportdb_log.ldf'," +
+                           "SIZE = 1024KB," +
+                           "MAXSIZE = 2048GB," +
+                           "FILEGROWTH = 10 %" +
+                           ")" +
+                          @" ALTER AUTHORIZATION ON DATABASE::[Airport] TO[NT AUTHORITY\СИСТЕМА]; ";
             try
             {
                 command = new SqlCommand(query, connection);
