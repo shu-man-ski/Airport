@@ -289,7 +289,7 @@ namespace Airport
         {
             DateTime? dateIssue = passengerDateIssue.SelectedDate;
             if (passengerNumberPassport.Text != "" && passengerIdentificationNumberPassport.Text != "" &&
-                passengerAuthorityThatIssuedPassport.Text != "" && dateIssue != null && passengerFullName.Text != "")
+                passengerAuthorityThatIssuedPassport.Text != "" && Valid.IsNum(passengerAuthorityThatIssuedPassport.Text) && dateIssue != null && passengerFullName.Text != "")
             {
                 passenger.NumberPassport = passengerNumberPassport.Text;
                 passenger.IdentificationNumberPassport = passengerIdentificationNumberPassport.Text;
