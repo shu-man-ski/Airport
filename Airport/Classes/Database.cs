@@ -139,7 +139,7 @@ namespace Airport
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 2627)
+                if (ex.Number == 2627) /* Ошибка первичного ключа */
                     return 2627;
             }
             catch (Exception ex)
@@ -176,9 +176,9 @@ namespace Airport
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 547)
+                if (ex.Number == 547) /* Ошибка внешнего ключа */
                     MessageBox.Show("Невозможно выполнить дествие, так как текущий объект имеет связь с данными из другой таблицы", "Исключение (SqlException)", MessageBoxButton.OK, MessageBoxImage.Warning);
-                if (ex.Number == 911)
+                if (ex.Number == 911) /* Ошибка базы данных (не существует) */
                     return 911;
                 return 0;
             }

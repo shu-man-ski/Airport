@@ -18,13 +18,16 @@
         <Label Content="Курсовая работа по дисциплине:" FontSize="12"
                HorizontalAlignment="Center" VerticalAlignment="Top"
                Margin="0,128,0,0"/>
-        <Label Content="''Объектно-ориентированное программирование''" FontSize="11"
+        <Label Content="''Современные технологии программирования" FontSize="11"
                HorizontalAlignment="Center" VerticalAlignment="Top"
                Margin="0,151,0,0"/>
+        <Label Content="мобильных систем''" FontSize="11"
+               HorizontalAlignment="Center" VerticalAlignment="Top"
+               Margin="0,166,0,0"/>
         <Label Content="Разработал: Шуманский Д.А." FontSize="11"
                HorizontalAlignment="Center" VerticalAlignment="Top"
                Margin="0,203,0,0"/>
-        <Label Content="Руководители: Андронова М.В., Пацей Н.В." FontSize="11"
+        <Label Content="Руководители: Андронова М.В." FontSize="11"
                HorizontalAlignment="Center" VerticalAlignment="Top"
                Margin="0,228,0,0"/>
     </Grid>
