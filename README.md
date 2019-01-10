@@ -1,6 +1,6 @@
-# Airport
+# Airport — «Диспетчер авиарейсов»
 
-Desktop application at .Net using WPF
+Desktop application at using WPF and ADO.NET. Flight control software with users authentication
 
 ![screenshot of sample](https://github.com/dima-shm/Airport/blob/master/Preview1.png)
 
